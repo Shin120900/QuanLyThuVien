@@ -122,36 +122,36 @@ public class QLDangNhapGUI {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
-					System.out.println(pfMatKhau.getText());
-					if (DangNhapBLL.getInstance().dangNhap(tfTaiKhoan.getText(), pfMatKhau.getText()))
-						frame.setVisible(false);
-					else {
-						lblMessage.setText("Đăng nhập không thành công! vui lòng kiểm tra lại");
-					}
-				}
+//				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
+//					System.out.println(pfMatKhau.getText());
+//					if (DangNhapBLL.getInstance().dangNhap(tfTaiKhoan.getText(), pfMatKhau.getText()))
+//						frame.setVisible(false);
+//					else {
+//						lblMessage.setText("Ä�Äƒng nháº­p khÃ´ng thÃ nh cÃ´ng! vui lÃ²ng kiá»ƒm tra láº¡i");
+//					}
+//				}
 			}
 		});
 		
-		JLabel lblMatKhau = new JLabel("Mật khẩu:*");
+		JLabel lblMatKhau = new JLabel("Mat khau:*");
 		lblMatKhau.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		lblMatKhau.setBounds(10, 195, 76, 27);
 		pnDangNhap.add(lblMatKhau);
 		
-		lblMessage = new JLabel("(*) Không được để trống");
+		lblMessage = new JLabel("(*) KhÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng");
 		lblMessage.setFont(new Font("Times New Roman", Font.ITALIC, 12));
 		lblMessage.setForeground(Color.RED);
 		lblMessage.setBounds(122, 243, 156, 27);
 		pnDangNhap.add(lblMessage);
 		
-		JButton btnDangNhap = new JButton("ĐĂNG NHẬP");
+		JButton btnDangNhap = new JButton("Ä�Ä‚NG NHáº¬P");
 		btnDangNhap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println(pfMatKhau.getText());
 				if (DangNhapBLL.getInstance().dangNhap(tfTaiKhoan.getText(), pfMatKhau.getText()))
 					frame.setVisible(false);
 				else {
-					lblMessage.setText("Đăng nhập không thành công! vui lòng kiểm tra lại");
+					lblMessage.setText("Ä�Äƒng nháº­p khÃ´ng thÃ nh cÃ´ng! vui lÃ²ng kiá»ƒm tra láº¡i");
 				}
 			}
 		});
@@ -181,14 +181,14 @@ public class QLDangNhapGUI {
 					if (DangNhapBLL.getInstance().dangNhap(tfTaiKhoan.getText(), pfMatKhau.getText()))
 						frame.setVisible(false);
 					else {
-						lblMessage.setText("Đăng nhập không thành công! vui lòng kiểm tra lại");
+						lblMessage.setText("Ä�Äƒng nháº­p khÃ´ng thÃ nh cÃ´ng! vui lÃ²ng kiá»ƒm tra láº¡i");
 					}
 				}
 			}
 		});
 		pnDangNhap.add(btnDangNhap);
 		
-		JButton btnThoat = new JButton("THOÁT");
+		JButton btnThoat = new JButton("THOÃ�T");
 		btnThoat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
@@ -227,13 +227,13 @@ public class QLDangNhapGUI {
 					if (DangNhapBLL.getInstance().dangNhap(tfTaiKhoan.getText(), pfMatKhau.getText()))
 						frame.setVisible(false);
 					else {
-						lblMessage.setText("Đăng nhập không thành công! vui lòng kiểm tra lại");
+						lblMessage.setText("Ä�Äƒng nháº­p khÃ´ng thÃ nh cÃ´ng! vui lÃ²ng kiá»ƒm tra láº¡i");
 					}
 				}
 			}
 		});
 		
-		JLabel lblDangNhap = new JLabel("ĐĂNG NHẬP");
+		JLabel lblDangNhap = new JLabel("Ä�Ä‚NG NHáº¬P");
 		lblDangNhap.setBounds(80, 57, 149, 35);
 		pnDangNhap.add(lblDangNhap);
 		lblDangNhap.setForeground(Color.BLUE);

@@ -24,7 +24,6 @@
 	<classpathentry kind="lib" path="poi-bin-5.0.0-20210120/poi-5.0.0/poi-ooxml-lite-5.0.0.jar"/>
 	<classpathentry kind="lib" path="poi-bin-5.0.0-20210120/poi-5.0.0/poi-scratchpad-5.0.0.jar"/>
 	<classpathentry kind="lib" path="jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="mysql-connector.jar"/>
 	<classpathentry kind="lib" path="poi-bin-5.0.0-20210120/poi-5.0.0/poi-ooxml-schemas-3.16.jar"/>
 	<classpathentry kind="lib" path="poi-bin-5.0.0-20210120/poi-5.0.0/lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="poi-bin-5.0.0-20210120/poi-5.0.0/lib/junit-4.12.jar"/>
@@ -34,5 +33,6 @@
 	<classpathentry kind="lib" path="poi-bin-5.0.0-20210120/poi-5.0.0/ooxml-lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="poi-bin-5.0.0-20210120/poi-5.0.0/ooxml-lib/stax-api-1.0.1.jar"/>
 	<classpathentry kind="lib" path="poi-bin-5.0.0-20210120/poi-5.0.0/ooxml-lib/xmlbeans-4.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/DoAnCSDLNangCao/QuanLyThuVien/QuanLyThuVien/mssql-jdbc-9.2.1.jre8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

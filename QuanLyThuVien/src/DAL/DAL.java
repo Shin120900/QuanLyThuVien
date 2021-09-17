@@ -2,12 +2,13 @@ package DAL;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 
-import com.mysql.jdbc.Connection;
+
 
 public class DAL {
 	private static DAL instance;
@@ -41,10 +42,11 @@ public class DAL {
 	
 	public boolean connectToDatabase() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = (Connection) DriverManager.getConnection(values.get("con"), values.get("user"), values.get("pass"));
-			st = con.createStatement();
-			
+			String connect= values.get("con")+";databasename="+values.get("db")+";username="+values.get("user")+";password="+values.get("pass");
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			con = (Connection) DriverManager.getConnection(connect);
+			st=con.createStatement();
+			System.out.println("Thanh cong");
 			return true;
 		}
 		catch(Exception ex) {
@@ -52,10 +54,10 @@ public class DAL {
 			return false;
 		}
 	}
-	
-	// Thực hiện cho Update, delete, add
-	// Return int cho so hàng bị thay đổi
-	// Return 0 nếu không có hàng nào thay đổi
+//
+//	 Thá»±c hiá»‡n cho Update, delete, add
+//	 Return int cho so hÃ ng bá»‹ thay Ä‘á»•i
+//	 Return 0 náº¿u khÃ´ng cÃ³ hÃ ng nÃ o thay Ä‘á»•i
 	public int executeQueryUpdate(String query) {
 		try {
 
@@ -82,7 +84,7 @@ public class DAL {
 		}
 	}
 	
-	// Trả về ResultSet tương ứng với bảng dữ liệu trong table
+	// Tráº£ vá»� ResultSet tÆ°Æ¡ng á»©ng vá»›i báº£ng dá»¯ liá»‡u trong table
 	public ResultSet executeQueryToGetData(String query) {
 		try {
 			if (con == null)

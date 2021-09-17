@@ -54,13 +54,13 @@ public class QLNhanVienGUI {
 		tbQLNhanVien.setModel(QLNhanVienBLL.getInstance().getResources());
 	}
 	
-	private void reloadResources() {
-		DefaultTableModel dm = (DefaultTableModel) tbQLNhanVien.getModel();
-		dm.getDataVector().removeAllElements();
-		dm.fireTableDataChanged();
-		tbQLNhanVien.setModel(QLNhanVienBLL.getInstance().reloadResources());
-	}
-	
+//	private void reloadResources() {
+//		DefaultTableModel dm = (DefaultTableModel) tbQLNhanVien.getModel();
+//		dm.getDataVector().removeAllElements();
+//		dm.fireTableDataChanged();
+//		tbQLNhanVien.setModel(QLNhanVienBLL.getInstance().reloadResources());
+//	}
+//	
 	
 	public static QLNhanVienGUI getInstance() {
 		if(instance == null)
@@ -94,7 +94,7 @@ public class QLNhanVienGUI {
 		pnTongQuanQLNhanVien.add(pnTieuDeQLNhanVien);
 		pnTieuDeQLNhanVien.setLayout(null);
 		
-		JLabel lblQLNhanVien = new JLabel("QUẢN LÝ TÀI KHOẢN");
+		JLabel lblQLNhanVien = new JLabel("QUáº¢N LÃ� TÃ€I KHOáº¢N");
 		lblQLNhanVien.setForeground(Color.RED);
 		lblQLNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblQLNhanVien.setBounds(394, 11, 291, 31);
@@ -130,7 +130,7 @@ public class QLNhanVienGUI {
 		pnTongQuanQLNhanVien.add(pnThongTinNhanVien);
 		pnThongTinNhanVien.setLayout(null);
 		
-		JLabel lblThongTinNhanVien = new JLabel("THÔNG TIN TÀI KHOẢN");
+		JLabel lblThongTinNhanVien = new JLabel("THÃ”NG TIN TÃ€I KHOáº¢N");
 		lblThongTinNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 17));
 		lblThongTinNhanVien.setBounds(10, 5, 208, 22);
 		pnThongTinNhanVien.add(lblThongTinNhanVien);
@@ -141,13 +141,13 @@ public class QLNhanVienGUI {
 		pnThongTinNhanVien.add(pnThongTinNhap);
 		pnThongTinNhap.setLayout(null);
 		
-		JLabel lblMessage = new JLabel("(*) Không được bỏ trống");
+		JLabel lblMessage = new JLabel("(*) KhÃ´ng Ä‘Æ°á»£c bá»� trá»‘ng");
 		lblMessage.setForeground(Color.RED);
 		lblMessage.setFont(new Font("Times New Roman", Font.ITALIC, 14));
 		lblMessage.setBounds(125, 11, 654, 34);
 		pnThongTinNhap.add(lblMessage);
 		
-		JLabel lblTenNhanVien = new JLabel("Tên nhân viên:*");
+		JLabel lblTenNhanVien = new JLabel("TÃªn nhÃ¢n viÃªn:*");
 		lblTenNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblTenNhanVien.setBounds(24, 116, 91, 30);
 		pnThongTinNhap.add(lblTenNhanVien);
@@ -157,7 +157,7 @@ public class QLNhanVienGUI {
 		pnThongTinNhap.add(tfTenNhanVien);
 		tfTenNhanVien.setColumns(10);
 		
-		JLabel lblLoaiTaiKhoan = new JLabel("Chức vụ:*");
+		JLabel lblLoaiTaiKhoan = new JLabel("Chá»©c vá»¥:*");
 		lblLoaiTaiKhoan.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblLoaiTaiKhoan.setBounds(420, 116, 91, 30);
 		pnThongTinNhap.add(lblLoaiTaiKhoan);
@@ -165,12 +165,12 @@ public class QLNhanVienGUI {
 		cbbLoaiTaiKhoan = new JComboBox<String>();
 		cbbLoaiTaiKhoan.setBounds(521,  116, 258, 31);
 		cbbLoaiTaiKhoan.addItem("");
-		cbbLoaiTaiKhoan.addItem("Thủ thư");
-		cbbLoaiTaiKhoan.addItem("Quản trị hệ thống");
+		cbbLoaiTaiKhoan.addItem("Thá»§ thÆ°");
+		cbbLoaiTaiKhoan.addItem("Quáº£n trá»‹ há»‡ thá»‘ng");
 		pnThongTinNhap.add(cbbLoaiTaiKhoan);
 		
 		
-		JLabel lblTaiKhoan = new JLabel("Tên tài khoản:*");
+		JLabel lblTaiKhoan = new JLabel("TÃªn tÃ i khoáº£n:*");
 		lblTaiKhoan.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblTaiKhoan.setBounds(24, 56, 91, 30);
 		pnThongTinNhap.add(lblTaiKhoan);
@@ -180,7 +180,7 @@ public class QLNhanVienGUI {
 		pnThongTinNhap.add(tfTenTaiKhoan);
 		tfTenTaiKhoan.setColumns(10);
 		
-		JLabel lblMatKhau = new JLabel("Mật khẩu:*");
+		JLabel lblMatKhau = new JLabel("Máº­t kháº©u:*");
 		lblMatKhau.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblMatKhau.setBounds(420, 56, 91, 30);
 		pnThongTinNhap.add(lblMatKhau);
@@ -199,7 +199,7 @@ public class QLNhanVienGUI {
 		pfPass.setBounds(521, 56, 152, 30);
 		pnThongTinNhap.add(pfPass);
 		
-		JButton btnShowPass = new JButton("Hiển thị");
+		JButton btnShowPass = new JButton("Hiá»ƒn thá»‹");
 		btnShowPass.setBounds(683, 56, 96, 30);
 		pnThongTinNhap.add(btnShowPass);
 		btnShowPass.addActionListener(new ActionListener() {
@@ -217,52 +217,52 @@ public class QLNhanVienGUI {
 			}
 		});
 		
-		JButton btnThem = new JButton("Thêm");
+		JButton btnThem = new JButton("ThÃªm");
 		btnThem.setIcon(new ImageIcon("icon\\new.png"));
 		btnThem.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnThem.setBounds(896, 26, 138, 41);
-		btnThem.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String maTK;
-				if (tbQLNhanVien.getRowCount()<= 0) 
-					maTK = "TK0";
-				else
-					maTK ="TK" + (1+Integer.parseInt(tbQLNhanVien.getValueAt(tbQLNhanVien.getRowCount()-1, 1).toString().substring(2)));
-				NhanVienDTO nv = new NhanVienDTO(maTK, tfTenTaiKhoan.getText(), pfPass.getText(), 
-						tfTenNhanVien.getText(), cbbLoaiTaiKhoan.getSelectedItem().toString(), tfEmail.getText());
-				String result = QLNhanVienBLL.getInstance().addProcessing(nv);
-				lblMessage.setText(result);
-				reloadResources();
-			}
-		});
+//		btnThem.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				String maTK;
+//				if (tbQLNhanVien.getRowCount()<= 0) 
+//					maTK = "TK0";
+//				else
+//					maTK ="TK" + (1+Integer.parseInt(tbQLNhanVien.getValueAt(tbQLNhanVien.getRowCount()-1, 1).toString().substring(2)));
+//				NhanVienDTO nv = new NhanVienDTO(maTK, tfTenTaiKhoan.getText(), pfPass.getText(), 
+//						tfTenNhanVien.getText(), cbbLoaiTaiKhoan.getSelectedItem().toString(), tfEmail.getText());
+//				String result = QLNhanVienBLL.getInstance().addProcessing(nv);
+//				lblMessage.setText(result);
+//				reloadResources();
+//			}
+//		});
 		pnThongTinNhanVien.add(btnThem);
 		
-		JButton btnSua = new JButton("Sửa");
+		JButton btnSua = new JButton("Sá»­a");
 		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
 		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnSua.setBounds(896, 85, 138, 41);
-		btnSua.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				NhanVienDTO nv = new NhanVienDTO(
-						tbQLNhanVien.getValueAt(tbQLNhanVien.getSelectedRow(), 1).toString(), 
-						tfTenTaiKhoan.getText(), 
-						pfPass.getText(), 
-						tfTenNhanVien.getText(), 
-						cbbLoaiTaiKhoan.getSelectedItem().toString(), 
-						tfEmail.getText());
-				String result = QLNhanVienBLL.getInstance().changeProcessing(nv);
-				lblMessage.setText(result);
-				reloadResources();
-			}
-		});
+//		btnSua.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				
+//				NhanVienDTO nv = new NhanVienDTO(
+//						tbQLNhanVien.getValueAt(tbQLNhanVien.getSelectedRow(), 1).toString(), 
+//						tfTenTaiKhoan.getText(), 
+//						pfPass.getText(), 
+//						tfTenNhanVien.getText(), 
+//						cbbLoaiTaiKhoan.getSelectedItem().toString(), 
+//						tfEmail.getText());
+//				String result = QLNhanVienBLL.getInstance().changeProcessing(nv);
+//				lblMessage.setText(result);
+//				reloadResources();
+//			}
+//		});
 		pnThongTinNhanVien.add(btnSua);
 		
-		JButton btnHuy = new JButton("Hủy");
+		JButton btnHuy = new JButton("Há»§y");
 		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
 		btnHuy.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnHuy.setBounds(896, 143, 138, 41);
@@ -276,21 +276,21 @@ public class QLNhanVienGUI {
 		});
 		pnThongTinNhanVien.add(btnHuy);
 		
-		JButton btnXoa = new JButton("Xóa");
+		JButton btnXoa = new JButton("XÃ³a");
 		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
 		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnXoa.setBounds(896, 204, 138, 41);
-		btnXoa.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				String msg = QLNhanVienBLL.getInstance().deleteProcessing(tbQLNhanVien.getValueAt(tbQLNhanVien.getSelectedRow(), 1).toString(),
-				cbbLoaiTaiKhoan.getSelectedItem().toString());
-				lblMessage.setText(msg);
-				reloadResources();
-				clearField();
-			}
-		});
+//		btnXoa.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				String msg = QLNhanVienBLL.getInstance().deleteProcessing(tbQLNhanVien.getValueAt(tbQLNhanVien.getSelectedRow(), 1).toString(),
+//				cbbLoaiTaiKhoan.getSelectedItem().toString());
+//				lblMessage.setText(msg);
+//				reloadResources();
+//				clearField();
+//			}
+//		});
 		pnThongTinNhanVien.add(btnXoa);
 	}
 }

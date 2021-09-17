@@ -1,3 +1,4 @@
-con:=jdbc:mysql://localhost:3306/data?useUnicode=yes&characterEncoding=UTF-8
-user:=root
-pass:=taokonho123
+con:=jdbc:sqlserver://localhost:1433
+db:=QLTV
+user:=sa
+pass:=minhhieu2
