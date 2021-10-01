@@ -23,6 +23,10 @@ public class QLThongTinCaNhanGUI {
 	public JTextField tfMaNhanVien;
 	public JTextField tfTenNhanVien;
 	public JTextField tfChucVu;
+	public JTextField tfGioiTinh;
+	public JTextField tfNgaySinh;
+	public JTextField tfDiaChi;
+	public JTextField tfSdt;
 	public JTextField tfMatKhau;
 	public JTextField tfMatKhauMoi;
 	public JTextField tfNhapLaiMatKhauMoi;
@@ -64,7 +68,7 @@ public class QLThongTinCaNhanGUI {
 		pnTongQuanQLChaoMung.add(pnTieuDeTTCN);
 		pnTieuDeTTCN.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("QUẢN LÝ THÔNG TIN CÁ NHÂN");
+		JLabel lblNewLabel = new JLabel("QUAN LY THONG TIN CA NHAN");
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblNewLabel.setBounds(348, 11, 391, 57);
@@ -76,7 +80,7 @@ public class QLThongTinCaNhanGUI {
 		pnTongQuanQLChaoMung.add(pnThongTinCaNhan);
 		pnThongTinCaNhan.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("THÔNG TIN CÁ NHÂN");
+		JLabel lblNewLabel_1 = new JLabel("THONG TIN CA NHAN");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 17));
 		lblNewLabel_1.setBounds(10, 5, 226, 34);
 		pnThongTinCaNhan.add(lblNewLabel_1);
@@ -86,41 +90,89 @@ public class QLThongTinCaNhanGUI {
 		pnThongTinCaNhan.add(pnQLTTCN);
 		pnQLTTCN.setLayout(null);
 		
-		JLabel lblMaNhanVien = new JLabel("Mã nhân viên:");
+		JLabel lblMaNhanVien = new JLabel("Ma nhan vien:");
 		lblMaNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblMaNhanVien.setBounds(30, 25, 90, 14);
+		lblMaNhanVien.setBounds(140, 45, 80, 15);
 		pnQLTTCN.add(lblMaNhanVien);
 		
-		JLabel lblTenNhanVien = new JLabel("Tên nhân viên:");
-		lblTenNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblTenNhanVien.setBounds(291, 78, 90, 14);
-		pnQLTTCN.add(lblTenNhanVien);
-		
-		JLabel lblChucVu = new JLabel("Chức vụ:");
-		lblChucVu.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblChucVu.setBounds(291, 128, 90, 14);
-		pnQLTTCN.add(lblChucVu);
-		
 		tfMaNhanVien = new JTextField();
-		tfMaNhanVien.setBounds(130, 17, 258, 31);
+		tfMaNhanVien.setBounds(220, 40, 160, 30);
 		tfMaNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnQLTTCN.add(tfMaNhanVien);
 		tfMaNhanVien.setEditable(false);
 		tfMaNhanVien.setColumns(10);
 		
+		JLabel lblTenNhanVien = new JLabel("Ten nhan vien:");
+		lblTenNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblTenNhanVien.setBounds(400, 45, 80, 15);
+		pnQLTTCN.add(lblTenNhanVien);
+		
 		tfTenNhanVien = new JTextField();
-		tfTenNhanVien.setBounds(437, 70, 258, 31);
+		tfTenNhanVien.setBounds(482, 40, 160, 30);
 		tfTenNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnQLTTCN.add(tfTenNhanVien);
 		tfTenNhanVien.setEditable(false);
 		tfTenNhanVien.setColumns(10);
 		
+		JLabel lblChucVu = new JLabel("Chuc vu:");
+		lblChucVu.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblChucVu.setBounds(684, 45, 80, 15);
+		pnQLTTCN.add(lblChucVu);
+		
 		tfChucVu = new JTextField();
-		tfChucVu.setBounds(437, 117, 258, 36);
+		tfChucVu.setBounds(742, 40, 160, 30);
 		tfChucVu.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnQLTTCN.add(tfChucVu);
 		tfChucVu.setEditable(false);
 		tfChucVu.setColumns(10);
+		
+		JLabel lblGioiTinh = new JLabel("Gioi tinh:");
+		lblGioiTinh.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblGioiTinh.setBounds(20, 110, 80, 15);
+		pnQLTTCN.add(lblGioiTinh);
+		
+		tfGioiTinh = new JTextField();
+		tfGioiTinh.setBounds(100, 105, 160, 30);
+		tfGioiTinh.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		pnQLTTCN.add(tfGioiTinh);
+		tfGioiTinh.setEditable(false);
+		tfGioiTinh.setColumns(10);
+		
+		JLabel lblNgaySinh = new JLabel("Ngay sinh:");
+		lblNgaySinh.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblNgaySinh.setBounds(280, 110, 80, 15);
+		pnQLTTCN.add(lblNgaySinh);
+		
+		tfNgaySinh = new JTextField();
+		tfNgaySinh.setBounds(360, 105, 160, 30);
+		tfNgaySinh.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		pnQLTTCN.add(tfNgaySinh);
+		tfNgaySinh.setEditable(false);
+		tfNgaySinh.setColumns(10);
+		
+		JLabel lblDiaChi = new JLabel("Dia chi:");
+		lblDiaChi.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblDiaChi.setBounds(540, 110, 80, 15);
+		pnQLTTCN.add(lblDiaChi);
+		
+		tfDiaChi = new JTextField();
+		tfDiaChi.setBounds(620, 105, 160, 30);
+		tfDiaChi.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		pnQLTTCN.add(tfDiaChi);
+		tfDiaChi.setEditable(false);
+		tfDiaChi.setColumns(10);
+		
+		JLabel lblSdt = new JLabel("So dien thoai:");
+		lblSdt.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblSdt.setBounds(800, 110, 80, 15);
+		pnQLTTCN.add(lblSdt);
+		
+		tfSdt = new JTextField();
+		tfSdt.setBounds(880, 105, 160, 30);
+		tfSdt.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		pnQLTTCN.add(tfSdt);
+		tfSdt.setEditable(false);
+		tfSdt.setColumns(10);
 		
 		JPanel pnMatKhau = new JPanel();
 		pnMatKhau.setBackground(SystemColor.activeCaption);
@@ -128,7 +180,7 @@ public class QLThongTinCaNhanGUI {
 		pnTongQuanQLChaoMung.add(pnMatKhau);
 		pnMatKhau.setLayout(null);
 		
-		JLabel lblNewLabel_7 = new JLabel("ĐỔI MẬT KHẨU");
+		JLabel lblNewLabel_7 = new JLabel("Ä�á»”I Máº¬T KHáº¨U");
 		lblNewLabel_7.setIcon(new ImageIcon("icon\\changpass.png"));
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblNewLabel_7.setBounds(10, 5, 174, 24);
@@ -139,17 +191,17 @@ public class QLThongTinCaNhanGUI {
 		pnMatKhau.add(pnQLMatKhau);
 		pnQLMatKhau.setLayout(null);
 		
-		JLabel lblMatKhau = new JLabel("Mật khẩu:");
+		JLabel lblMatKhau = new JLabel("Máº­t kháº©u:");
 		lblMatKhau.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblMatKhau.setBounds(289, 27, 109, 14);
 		pnQLMatKhau.add(lblMatKhau);
 		
-		JLabel lblMatKhauMoi = new JLabel("Mật khẩu mới:");
+		JLabel lblMatKhauMoi = new JLabel("Máº­t kháº©u má»›i:");
 		lblMatKhauMoi.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblMatKhauMoi.setBounds(289, 71, 123, 14);
 		pnQLMatKhau.add(lblMatKhauMoi);
 		
-		JLabel lblNhapLaiMatKhauMoi = new JLabel("Nhập lại mật khẩu mới:");
+		JLabel lblNhapLaiMatKhauMoi = new JLabel("Nháº­p láº¡i máº­t kháº©u má»›i:");
 		lblNhapLaiMatKhauMoi.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblNhapLaiMatKhauMoi.setBounds(289, 116, 137, 14);
 		pnQLMatKhau.add(lblNhapLaiMatKhauMoi);
@@ -172,7 +224,7 @@ public class QLThongTinCaNhanGUI {
 		pnQLMatKhau.add(tfNhapLaiMatKhauMoi);
 		tfNhapLaiMatKhauMoi.setColumns(10);
 		
-		JButton btnLuu = new JButton("Lưu");
+		JButton btnLuu = new JButton("LÆ°u");
 		btnLuu.setIcon(new ImageIcon("icon\\save.png"));
 		btnLuu.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnLuu.setBounds(289, 154, 168, 41);
@@ -186,7 +238,7 @@ public class QLThongTinCaNhanGUI {
 		});
 		pnQLMatKhau.add(btnLuu);
 		
-		JButton btnHuy = new JButton("Hủy");
+		JButton btnHuy = new JButton("Há»§y");
 		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
 		btnHuy.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnHuy.setBounds(576, 154, 168, 41);
@@ -199,7 +251,7 @@ public class QLThongTinCaNhanGUI {
 		});
 		pnQLMatKhau.add(btnHuy);
 		
-		JButton btnDangXuat = new JButton("Đăng xuất");
+		JButton btnDangXuat = new JButton("Ä�Äƒng xuáº¥t");
 		btnDangXuat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TrangChuGUI.getInstance().getFrmTrangChu().setVisible(false);
