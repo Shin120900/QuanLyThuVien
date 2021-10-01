@@ -36,13 +36,15 @@ public class DangNhapBLL {
 	public boolean dangNhap(String taiKhoan, String matKhau) {
 		try {
 			ArrayList<NhanVienDTO> dsNhanVien = new ArrayList<NhanVienDTO>();
-			dsNhanVien = NhanVienDAL.getInstance().getResources();
+//			dsNhanVien = NhanVienDAL.getInstance().getResources();
+			NhanVienDTO nv2 = new NhanVienDTO("1", "Tuan", "Nam", null, "01234", "diaChi", "1", "1", "Thủ thư");
+			dsNhanVien.add(nv2);
 			checkData(taiKhoan, matKhau);
 			
 			for (NhanVienDTO nv: dsNhanVien) {
 				if (nv.getTaiKhoan().equals(taiKhoan) && nv.getMatKhau().equals(matKhau)) {
-					if(nv.getLoaiTaiKhoan().equals("Thu thu")) {
-						ChaoMungBLL.GetInstance().setNhanVien(nv);
+					if(nv.getLoaiTaiKhoan().equals("Thủ thư")) {
+						QLThongTinCaNhanBLL.GetInstance().setNhanVien(nv);
 						TrangChuGUI trangchu=TrangChuGUI.getInstance();
 						trangchu.getFrmTrangChu().setVisible(true);
 					}
@@ -50,7 +52,7 @@ public class DangNhapBLL {
 						QuanTriHeThongGUI.getInstance().getFrmMain().setVisible(true);
 					}
 					return true;
-				}
+				}			
 			}
 			return false;
 		}catch(MyNullException e) {

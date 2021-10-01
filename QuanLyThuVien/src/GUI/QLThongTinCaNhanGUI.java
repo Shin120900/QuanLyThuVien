@@ -9,17 +9,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import BLL.ChaoMungBLL;
+import BLL.QLThongTinCaNhanBLL;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class QLChaoMung {
+public class QLThongTinCaNhanGUI {
 
 	private JPanel pnTongQuanQLChaoMung;
 
-	static QLChaoMung instance = null;
+	static QLThongTinCaNhanGUI instance = null;
 	public JTextField tfMaNhanVien;
 	public JTextField tfTenNhanVien;
 	public JTextField tfChucVu;
@@ -28,17 +28,17 @@ public class QLChaoMung {
 	public JTextField tfNhapLaiMatKhauMoi;
 	public JLabel lblMessage;
 	
-	public QLChaoMung() {
+	public QLThongTinCaNhanGUI() {
 		initialize();
 	}
 	
 	public void loadResources() {
-		ChaoMungBLL.GetInstance().LoadResources();
+		//QLThongTinCaNhanBLL.GetInstance().LoadResources();
 	}
 	
-	public static QLChaoMung getInstance() {
+	public static QLThongTinCaNhanGUI getInstance() {
 		if(instance == null)
-			instance = new QLChaoMung();
+			instance = new QLThongTinCaNhanGUI();
 		return instance;
 	}
 	
@@ -88,7 +88,7 @@ public class QLChaoMung {
 		
 		JLabel lblMaNhanVien = new JLabel("Mã nhân viên:");
 		lblMaNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblMaNhanVien.setBounds(291, 25, 90, 14);
+		lblMaNhanVien.setBounds(30, 25, 90, 14);
 		pnQLTTCN.add(lblMaNhanVien);
 		
 		JLabel lblTenNhanVien = new JLabel("Tên nhân viên:");
@@ -102,7 +102,7 @@ public class QLChaoMung {
 		pnQLTTCN.add(lblChucVu);
 		
 		tfMaNhanVien = new JTextField();
-		tfMaNhanVien.setBounds(437, 17, 258, 31);
+		tfMaNhanVien.setBounds(130, 17, 258, 31);
 		tfMaNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnQLTTCN.add(tfMaNhanVien);
 		tfMaNhanVien.setEditable(false);
@@ -180,7 +180,7 @@ public class QLChaoMung {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ChaoMungBLL.GetInstance().luu();
+				QLThongTinCaNhanBLL.GetInstance().luu();
 				
 			}
 		});

@@ -42,10 +42,10 @@ public class TrangChuGUI {
 	}
 	
 	public void initTitle() {
-		soCuonSach=QLSachBLL.getInstance().SoCuonSach();
-		soTheLoai=QLSachBLL.getInstance().SoTheLoai();
-		soDocGia=QLDocGiaBLL.getInstance().SoDocGia();
-		soSachMuon=QLMuonTraBLL.getInstance().SoSachMuon();
+//		soCuonSach=QLSachBLL.getInstance().SoCuonSach();
+//		soTheLoai=QLSachBLL.getInstance().SoTheLoai();
+//		soDocGia=QLDocGiaBLL.getInstance().SoDocGia();
+//		soSachMuon=QLMuonTraBLL.getInstance().SoSachMuon();
 		
 		pnTitle = new JPanel();
 		pnTitle.setBounds(10, 0, 1060, 118);
@@ -218,7 +218,7 @@ public class TrangChuGUI {
 				// TODO Auto-generated method stub
 				pnMain.removeAll();
 				//ChaoMungBLL.GetInstance().setNhanVien(nv);
-				QLChaoMung qlChaoMung=QLChaoMung.getInstance();
+				QLThongTinCaNhanGUI qlChaoMung=QLThongTinCaNhanGUI.getInstance();
 				qlChaoMung.loadResources();
 				pnMain.add(qlChaoMung.getPnTongQuanQLChaoMung());
 				pnMain.revalidate();

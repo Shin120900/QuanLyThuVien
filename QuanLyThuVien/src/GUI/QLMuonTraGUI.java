@@ -53,7 +53,7 @@ public class QLMuonTraGUI {
 	}
 
 	private void loadResources() {
-		tbMuonTra.setModel(QLMuonTraBLL.getInstance().getResources());
+		//tbMuonTra.setModel(QLMuonTraBLL.getInstance().getResources());
 		tbMuonTra.getColumn("Trả sách").setCellRenderer(new ButtonRenderer());
 		tbMuonTra.getColumn("Trả sách").setCellEditor(new ButtonEditor(new JCheckBox()));
 	}
