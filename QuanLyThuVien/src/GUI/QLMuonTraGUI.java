@@ -54,8 +54,8 @@ public class QLMuonTraGUI {
 
 	private void loadResources() {
 		//tbMuonTra.setModel(QLMuonTraBLL.getInstance().getResources());
-//		tbMuonTra.getColumn("Trả sách").setCellRenderer(new ButtonRenderer());
-//		tbMuonTra.getColumn("Trả sách").setCellEditor(new ButtonEditor(new JCheckBox()));
+//		tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellRenderer(new ButtonRenderer());
+//		tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellEditor(new ButtonEditor(new JCheckBox()));
 	}
 
 	public static QLMuonTraGUI getInstance() {
@@ -89,51 +89,97 @@ public class QLMuonTraGUI {
 		JPanel pnTitle = new JPanel();
 		pnTitle.setLayout(null);
 		pnTitle.setBackground(SystemColor.activeCaption);
-		pnTitle.setBounds(0, 0, 1065, 51);
+		pnTitle.setBounds(0, 0, 1065, 70);
 		pnMain.add(pnTitle);
 
 		JPanel pnDanhSachMuon = new JPanel();
 		pnDanhSachMuon.setLayout(null);
 		pnDanhSachMuon.setBackground(SystemColor.activeCaption);
-		pnDanhSachMuon.setBounds(0, 51, 1065, 256);
+		pnDanhSachMuon.setBounds(0, 73	, 1065, 487);
 		pnMain.add(pnDanhSachMuon);
 
-		JPanel pnThongTinMuonTra = new JPanel();
-		pnThongTinMuonTra.setLayout(null);
-		pnThongTinMuonTra.setBackground(SystemColor.activeCaption);
-		pnThongTinMuonTra.setBounds(0, 304, 1065, 256);
-		pnMain.add(pnThongTinMuonTra);
+//		JPanel pnThongTinMuonTra = new JPanel();
+//		pnThongTinMuonTra.setLayout(null);
+//		pnThongTinMuonTra.setBackground(SystemColor.activeCaption);
+//		pnThongTinMuonTra.setBounds(0, 304, 1065, 256);
+//		pnMain.add(pnThongTinMuonTra);
 
 		// them tieu de
-		JLabel lblTitle = new JLabel("QUẢN LÝ MƯỢN TRẢ SÁCH");
+		JLabel lblTitle = new JLabel("QUAN LY MUON TRA SACH");
 		lblTitle.setForeground(Color.RED);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		lblTitle.setBounds(349, 11, 377, 39);
+		lblTitle.setBounds(349, 16, 377, 39);
 		pnTitle.add(lblTitle);
 
+		JButton btnThem = new JButton();
+		btnThem.setText("Them");
+		btnThem.setIcon(new ImageIcon("icon\\new.png"));
+		btnThem.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		btnThem.setBounds(10, 15, 134, 30);
+		btnThem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String msg = null;
+				MuonTraDTO mt = null;
+				try {
+					Calendar cal = dcNgayMuon.getCalendar();
+					java.util.Date date = cal.getTime();
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+					String nm = sdf.format(date);
+					cal = dcNgayTra.getCalendar();
+					date = cal.getTime();
+					String nt = sdf.format(date);
+					mt = new MuonTraDTO(tfMaDocGia.getText(), tfMaSach.getText(), Date.valueOf(nm), Date.valueOf(nt), tfTrangThai.getText());
+				} catch (Exception e1) {
+					lblMessage.setText("Kiá»ƒm tra ngÃ y thÃ¡ng");
+				}
+				if (mt == null)
+					return;
+
+				try {
+					msg = QLMuonTraBLL.getInstance().addProcessing(mt);
+				} catch (MyException e1) {
+
+					e1.printStackTrace();
+				} catch (ContainException e1) {
+
+					e1.printStackTrace();
+				}
+				;
+				lblMessage.setText(msg);
+				TrangChuGUI.getInstance().initTitle();
+				loadResources();
+			}
+		});
+		pnDanhSachMuon.add(btnThem);
+		
 		tfTimKiem = new JTextField();
-		tfTimKiem.setToolTipText("Nhập mã độc giả hoặc họ tên,...");
+		tfTimKiem.setToolTipText("NHAP MA PHIEU MUON HOAC HO TEN SINH VIEN ...");
 		tfTimKiem.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		tfTimKiem.setBounds(559, 5, 337, 30);
+		tfTimKiem.setBounds(559, 15, 337, 30);
 		pnDanhSachMuon.add(tfTimKiem);
+
 
 		JButton btnTimKiem = new JButton();
 		btnTimKiem.setIcon(new ImageIcon("icon\\find.png"));
-		btnTimKiem.setText("Tìm kiếm");
+		btnTimKiem.setText("Tim kiem");
 		btnTimKiem.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnTimKiem.setBounds(919, 4, 134, 35);
+		btnTimKiem.setBounds(919, 15, 134, 30);
 		pnDanhSachMuon.add(btnTimKiem);
+		
+		
 		btnTimKiem.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (tfTimKiem.getText().length() == 0)
-					JOptionPane.showMessageDialog(null, "Bạn chưa nhập từ khóa cần tìm!", "Thông báo", 1);
+					JOptionPane.showMessageDialog(null, "Báº¡n chÆ°a nháº­p tá»« khÃ³a cáº§n tÃ¬m!", "ThÃ´ng bÃ¡o", 1);
 				else {
 					tbMuonTra.setModel(QLMuonTraBLL.getInstance().timKiem(tfTimKiem.getText()));
-					tbMuonTra.getColumn("Trả sách").setCellRenderer(new ButtonRenderer());
-					tbMuonTra.getColumn("Trả sách").setCellEditor(new ButtonEditor(new JCheckBox()));
+					tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellRenderer(new ButtonRenderer());
+					tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellEditor(new ButtonEditor(new JCheckBox()));
 				}
 			}
 		});
@@ -142,7 +188,7 @@ public class QLMuonTraGUI {
 		tbMuonTra.setBounds(0, 0, 1060, 230);
 		JScrollPane sc = new JScrollPane(tbMuonTra, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		sc.setBounds(0, 44, 1055, 212);
+		sc.setBounds(10, 60, 1040, 412);
 //		tbMuonTra.addMouseListener(new MouseAdapter() {
 //			@Override
 //			public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -158,7 +204,7 @@ public class QLMuonTraGUI {
 //					} else {
 //						isEdit = false;
 //						setStateForTextfeild();
-//						// hiển thị thông tin vào trong các trường
+//						// hiá»ƒn thá»‹ thÃ´ng tin vÃ o trong cÃ¡c trÆ°á»�ng
 //						tfMaDocGia.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 1).toString());
 //						tfHoTen.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 2).toString());
 //						tfMaSach.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 3).toString());
@@ -168,7 +214,7 @@ public class QLMuonTraGUI {
 //									Date.valueOf(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 5).toString()));
 //							dcNgayTra.setDate(
 //									Date.valueOf(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 6).toString()));
-//							tfTrangThai.setText("Đang được mượn");
+//							tfTrangThai.setText("Ä�ang Ä‘Æ°á»£c mÆ°á»£n");
 //							Calendar cal = dcNgayMuon.getCalendar();
 //							java.util.Date date = cal.getTime();
 //							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -188,13 +234,13 @@ public class QLMuonTraGUI {
 //		});
 		pnDanhSachMuon.add(sc, BorderLayout.CENTER);
 
-		JLabel lblThongTinMuonTra = new JLabel("THÔNG TIN MƯỢN TRẢ");
+		/*JLabel lblThongTinMuonTra = new JLabel("THÃ”NG TIN MÆ¯á»¢N TRáº¢");
 		lblThongTinMuonTra.setBounds(10, 5, 199, 28);
 		pnThongTinMuonTra.add(lblThongTinMuonTra);
 		lblThongTinMuonTra.setFont(new Font("Times New Roman", Font.BOLD, 17));
 
 		JButton btnThem = new JButton();
-		btnThem.setText("Thêm");
+		btnThem.setText("ThÃªm");
 		btnThem.setIcon(new ImageIcon("icon\\new.png"));
 		btnThem.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnThem.setBounds(910, 39, 138, 41);
@@ -214,7 +260,7 @@ public class QLMuonTraGUI {
 					String nt = sdf.format(date);
 					mt = new MuonTraDTO(tfMaDocGia.getText(), tfMaSach.getText(), Date.valueOf(nm), Date.valueOf(nt), tfTrangThai.getText());
 				} catch (Exception e1) {
-					lblMessage.setText("Kiểm tra ngày tháng");
+					lblMessage.setText("Kiá»ƒm tra ngÃ y thÃ¡ng");
 				}
 				if (mt == null)
 					return;
@@ -237,7 +283,7 @@ public class QLMuonTraGUI {
 		pnThongTinMuonTra.add(btnThem);
 
 		JButton btnSua = new JButton();
-		btnSua.setText("Sửa");
+		btnSua.setText("Sá»­a");
 		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
 		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnSua.setBounds(910, 94, 138, 41);
@@ -250,7 +296,7 @@ public class QLMuonTraGUI {
 		pnThongTinMuonTra.add(btnSua);
 
 		JButton btnTra = new JButton();
-		btnTra.setText("Trả");
+		btnTra.setText("Tráº£");
 		btnTra.setIcon(new ImageIcon("icon\\reset.png"));
 		btnTra.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnTra.setBounds(910, 204, 138, 41);
@@ -272,37 +318,37 @@ public class QLMuonTraGUI {
 		pnThongTinMuonTra.add(pnThongTinNhap);
 		pnThongTinNhap.setLayout(null);
 
-		JLabel lblHoTen = new JLabel("Họ và tên:");
+		JLabel lblHoTen = new JLabel("Há»� vÃ  tÃªn:");
 		lblHoTen.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblHoTen.setBounds(21, 107, 114, 26);
 		pnThongTinNhap.add(lblHoTen);
 
-		JLabel lblMaDocGia = new JLabel("Mã độc giả:*");
+		JLabel lblMaDocGia = new JLabel("MÃ£ Ä‘á»™c giáº£:*");
 		lblMaDocGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblMaDocGia.setBounds(21, 47, 114, 26);
 		pnThongTinNhap.add(lblMaDocGia);
 
-		JLabel lblTrangThai = new JLabel("Trạng thái:");
+		JLabel lblTrangThai = new JLabel("Tráº¡ng thÃ¡i:");
 		lblTrangThai.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblTrangThai.setBounds(21, 170, 114, 26);
 		pnThongTinNhap.add(lblTrangThai);
 
-		JLabel lblTenSach = new JLabel("Tên sách:");
+		JLabel lblTenSach = new JLabel("TÃªn sÃ¡ch:");
 		lblTenSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblTenSach.setBounds(464, 89, 87, 26);
 		pnThongTinNhap.add(lblTenSach);
 
-		JLabel lblMaSach = new JLabel("Mã sách:*");
+		JLabel lblMaSach = new JLabel("MÃ£ sÃ¡ch:*");
 		lblMaSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblMaSach.setBounds(464, 47, 87, 26);
 		pnThongTinNhap.add(lblMaSach);
 
-		JLabel lblNgayMuon = new JLabel("Ngày mượn:*");
+		JLabel lblNgayMuon = new JLabel("NgÃ y mÆ°á»£n:*");
 		lblNgayMuon.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblNgayMuon.setBounds(464, 129, 87, 26);
 		pnThongTinNhap.add(lblNgayMuon);
 
-		JLabel lblNgayTra = new JLabel("Ngày trả:*");
+		JLabel lblNgayTra = new JLabel("NgÃ y tráº£:*");
 		lblNgayTra.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblNgayTra.setBounds(464, 170, 87, 26);
 		pnThongTinNhap.add(lblNgayTra);
@@ -343,7 +389,7 @@ public class QLMuonTraGUI {
 		lblMessage.setBounds(145, 11, 311, 25);
 		pnThongTinNhap.add(lblMessage);
 
-		JLabel lblKhongBoTrong = new JLabel("(*) Không được bỏ trống");
+		JLabel lblKhongBoTrong = new JLabel("(*) KhÃ´ng Ä‘Æ°á»£c bá»� trá»‘ng");
 		lblKhongBoTrong.setForeground(Color.RED);
 		lblKhongBoTrong.setFont(new Font("Times New Roman", Font.ITALIC, 13));
 		lblKhongBoTrong.setBounds(464, 11, 235, 22);
@@ -361,7 +407,7 @@ public class QLMuonTraGUI {
 
 		JButton btnHuy = new JButton();
 		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
-		btnHuy.setText("Hủy");
+		btnHuy.setText("Há»§y");
 		btnHuy.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnHuy.setBounds(910, 149, 138, 41);
 		btnHuy.addActionListener(new ActionListener() {
@@ -381,7 +427,8 @@ public class QLMuonTraGUI {
 
 			}
 		});
-
-		pnThongTinMuonTra.add(btnHuy);
+		pnThongTinMuonTra.add(btnHuy);*/
 	}
+	
 }
+
