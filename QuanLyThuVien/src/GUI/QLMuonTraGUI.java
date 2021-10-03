@@ -54,8 +54,8 @@ public class QLMuonTraGUI {
 
 	private void loadResources() {
 		//tbMuonTra.setModel(QLMuonTraBLL.getInstance().getResources());
-		tbMuonTra.getColumn("Trả sách").setCellRenderer(new ButtonRenderer());
-		tbMuonTra.getColumn("Trả sách").setCellEditor(new ButtonEditor(new JCheckBox()));
+//		tbMuonTra.getColumn("Trả sách").setCellRenderer(new ButtonRenderer());
+//		tbMuonTra.getColumn("Trả sách").setCellEditor(new ButtonEditor(new JCheckBox()));
 	}
 
 	public static QLMuonTraGUI getInstance() {
@@ -143,49 +143,49 @@ public class QLMuonTraGUI {
 		JScrollPane sc = new JScrollPane(tbMuonTra, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		sc.setBounds(0, 44, 1055, 212);
-		tbMuonTra.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				int row = tbMuonTra.rowAtPoint(evt.getPoint());
-				int col = tbMuonTra.columnAtPoint(evt.getPoint());
-				if (row >= 0 && col >= 0) {
-					if (col == 7) {
-						String msg = QLMuonTraBLL.getInstance().traSach(
-								tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 1).toString(),
-								tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 3).toString());
-						lblMessage.setText(msg);
-						loadResources();
-					} else {
-						isEdit = false;
-						setStateForTextfeild();
-						// hiển thị thông tin vào trong các trường
-						tfMaDocGia.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 1).toString());
-						tfHoTen.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 2).toString());
-						tfMaSach.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 3).toString());
-						tfTenSach.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 4).toString());
-						try {
-							dcNgayMuon.setDate(
-									Date.valueOf(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 5).toString()));
-							dcNgayTra.setDate(
-									Date.valueOf(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 6).toString()));
-							tfTrangThai.setText("Đang được mượn");
-							Calendar cal = dcNgayMuon.getCalendar();
-							java.util.Date date = cal.getTime();
-							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-							String nm = sdf.format(date);
-							cal = dcNgayTra.getCalendar();
-							date = cal.getTime();
-							String nt = sdf.format(date);
-							QLMuonTraBLL.getInstance().muonTra = new MuonTraDTO(tfMaDocGia.getText(),
-									tfMaSach.getText(), Date.valueOf(nm), Date.valueOf(nt));
-						} catch (Exception e1) {
-							lblMessage.setText(e1.getMessage());
-
-						}
-					}
-				}
-			}
-		});
+//		tbMuonTra.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseClicked(java.awt.event.MouseEvent evt) {
+//				int row = tbMuonTra.rowAtPoint(evt.getPoint());
+//				int col = tbMuonTra.columnAtPoint(evt.getPoint());
+//				if (row >= 0 && col >= 0) {
+//					if (col == 7) {
+//						String msg = QLMuonTraBLL.getInstance().traSach(
+//								tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 1).toString(),
+//								tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 3).toString());
+//						lblMessage.setText(msg);
+//						loadResources();
+//					} else {
+//						isEdit = false;
+//						setStateForTextfeild();
+//						// hiển thị thông tin vào trong các trường
+//						tfMaDocGia.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 1).toString());
+//						tfHoTen.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 2).toString());
+//						tfMaSach.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 3).toString());
+//						tfTenSach.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 4).toString());
+//						try {
+//							dcNgayMuon.setDate(
+//									Date.valueOf(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 5).toString()));
+//							dcNgayTra.setDate(
+//									Date.valueOf(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 6).toString()));
+//							tfTrangThai.setText("Đang được mượn");
+//							Calendar cal = dcNgayMuon.getCalendar();
+//							java.util.Date date = cal.getTime();
+//							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//							String nm = sdf.format(date);
+//							cal = dcNgayTra.getCalendar();
+//							date = cal.getTime();
+//							String nt = sdf.format(date);
+//							QLMuonTraBLL.getInstance().muonTra = new MuonTraDTO(tfMaDocGia.getText(),
+//									tfMaSach.getText(), Date.valueOf(nm), Date.valueOf(nt));
+//						} catch (Exception e1) {
+//							lblMessage.setText(e1.getMessage());
+//
+//						}
+//					}
+//				}
+//			}
+//		});
 		pnDanhSachMuon.add(sc, BorderLayout.CENTER);
 
 		JLabel lblThongTinMuonTra = new JLabel("THÔNG TIN MƯỢN TRẢ");
