@@ -71,7 +71,7 @@ public class QLDocGiaGUI {
 		DefaultTableModel dm = (DefaultTableModel) tbDocGia.getModel();
 		dm.getDataVector().removeAllElements();
 		dm.fireTableDataChanged();
-		tbDocGia.setModel(QLDocGiaBLL.getInstance().reloadResources());
+//		tbDocGia.setModel(QLDocGiaBLL.getInstance().reloadResources());
 	}
 
 	private void setStateForTexfeild() {
