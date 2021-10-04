@@ -15,6 +15,19 @@ private String matKhau;
 private String loaiTaiKhoan;
 
 
+
+public NhanVienDTO(String hoTen, String gioiTinh, Date ngaySinh, String sdt, String diaChi, String taiKhoan,
+		String matKhau, String loaiTaiKhoan) {
+	super();
+	this.hoTen = hoTen;
+	this.gioiTinh = gioiTinh;
+	this.ngaySinh = ngaySinh;
+	this.sdt = sdt;
+	this.diaChi = diaChi;
+	this.taiKhoan = taiKhoan;
+	this.matKhau = matKhau;
+	this.loaiTaiKhoan = loaiTaiKhoan;
+}
 public NhanVienDTO(String manv, String hoTen, String gioiTinh, Date ngaySinh, String sdt, String diaChi,
 		String taiKhoan, String matKhau, String loaiTaiKhoan) {
 	super();
