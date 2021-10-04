@@ -31,7 +31,6 @@ public class QLSachGUI {
 	private JTextField tfTacGia;
 	private JTextField tfTheLoai;
 	private JTextField tfNhaXuatBan;
-	private JTextField tfTriGia;
 	private JPanel pnTongQuanQLSach;
 	private JLabel lblMessage;
 	private JRadioButton rdbtnTrong;
@@ -66,7 +65,6 @@ public class QLSachGUI {
 	}
 	
 	private void clearField() {
-		tfMaDauSach.setText("");
 		tfNhaXuatBan.setText("");
 		dcNamXuatBan.setDate(null);
 		tfTacGia.setText("");
@@ -122,74 +120,55 @@ public class QLSachGUI {
 		pnThongTinSach.add(pnThongTinNhap);
 		pnThongTinNhap.setLayout(null);
 		
-		JLabel lblMaDauSach = new JLabel("Ma dau sach:*");
-		lblMaDauSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblMaDauSach.setBounds(24, 31, 90, 14);
-		pnThongTinNhap.add(lblMaDauSach);
-		
-		tfMaDauSach = new JTextField();
-		tfMaDauSach.setBounds(115, 26, 258, 32);
-		tfMaDauSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		pnThongTinNhap.add(tfMaDauSach);
-		tfMaDauSach.setColumns(10);
 		
 		JLabel lblTenSach = new JLabel("Ten sach:*");
 		lblTenSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblTenSach.setBounds(24, 83, 70, 14);
+		lblTenSach.setBounds(24, 31, 90, 14);
 		pnThongTinNhap.add(lblTenSach);
 		
 		tfTenSach = new JTextField();
-		tfTenSach.setBounds(115, 79, 258, 31);
+		tfTenSach.setBounds(115, 26, 258, 32);
 		tfTenSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnThongTinNhap.add(tfTenSach);
 		tfTenSach.setColumns(10);
 		
 		JLabel lblTacGia = new JLabel("Tac gia:");
 		lblTacGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblTacGia.setBounds(24, 135, 66, 14);
+		lblTacGia.setBounds(24, 83, 70, 14);
 		pnThongTinNhap.add(lblTacGia);
 		
 		tfTacGia = new JTextField();
-		tfTacGia.setBounds(115, 131, 258, 31);
+		tfTacGia.setBounds(115, 79, 258, 31);
 		tfTacGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnThongTinNhap.add(tfTacGia);
 		tfTacGia.setColumns(10);
 		
 		JLabel lblTheLoai = new JLabel("The loai:");
 		lblTheLoai.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblTheLoai.setBounds(455, 31, 74, 14);
+		lblTheLoai.setBounds(24, 135, 66, 14);
 		pnThongTinNhap.add(lblTheLoai);
 		
 		tfTheLoai = new JTextField();
-		tfTheLoai.setBounds(551, 26, 258, 31);
+		tfTheLoai.setBounds(115, 131, 258, 31);
 		tfTheLoai.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnThongTinNhap.add(tfTheLoai);
 		tfTheLoai.setColumns(10);
 		
-		JLabel lblTinhTrang = new JLabel("Trang thai:");
-		lblTinhTrang.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblTinhTrang.setBounds(24, 200, 74, 14);
-		pnThongTinNhap.add(lblTinhTrang);
-		
-		rdbtnTrong = new JRadioButton("Trong");
-		rdbtnTrong.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		rdbtnTrong.setBounds(115, 196, 92, 23);
-		pnThongTinNhap.add(rdbtnTrong);
 		
 		JLabel lblNhaXuatBan = new JLabel("Nha xuat ban:");
 		lblNhaXuatBan.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblNhaXuatBan.setBounds(455, 83, 90, 14);
+		lblNhaXuatBan.setBounds(455, 31, 74, 14);
 		pnThongTinNhap.add(lblNhaXuatBan);
 		
 		tfNhaXuatBan = new JTextField();
-		tfNhaXuatBan.setBounds(551, 79, 258, 31);
+		tfNhaXuatBan.setBounds(551, 26, 258, 31);
 		pnThongTinNhap.add(tfNhaXuatBan);
 		tfNhaXuatBan.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		tfNhaXuatBan.setColumns(10);
 		
 		JLabel lblNamXuatBan = new JLabel("Nam xuat ban:*");
 		lblNamXuatBan.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblNamXuatBan.setBounds(455, 135, 90, 14);
+		lblNamXuatBan.setBounds(455, 83, 90, 14);
 		pnThongTinNhap.add(lblNamXuatBan);
 		
 		lblMessage = new JLabel("");
@@ -209,7 +188,7 @@ public class QLSachGUI {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		dcNamXuatBan.setBounds(551, 131, 258, 31);
+		dcNamXuatBan.setBounds(551, 79, 258, 31);
 		dcNamXuatBan.setDateFormatString("yyyy-MM-dd");
 		pnThongTinNhap.add(dcNamXuatBan);
 		

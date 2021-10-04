@@ -94,7 +94,7 @@ public class QLDangNhapGUI {
 		pnTongQuanDangNhap.add(pnDangNhap);
 		pnDangNhap.setLayout(null);
 		
-		JLabel lblTaiKhoan = new JLabel("Tên tài khoản:*");
+		JLabel lblTaiKhoan = new JLabel("Ten tai khoan:*");
 		lblTaiKhoan.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		lblTaiKhoan.setBounds(10, 140, 102, 20);
 		pnDangNhap.add(lblTaiKhoan);
@@ -138,20 +138,20 @@ public class QLDangNhapGUI {
 		lblMatKhau.setBounds(10, 195, 76, 27);
 		pnDangNhap.add(lblMatKhau);
 		
-		lblMessage = new JLabel("(*) KhÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng");
+		lblMessage = new JLabel("(*)Khong duoc de trong");
 		lblMessage.setFont(new Font("Times New Roman", Font.ITALIC, 12));
 		lblMessage.setForeground(Color.RED);
 		lblMessage.setBounds(122, 243, 156, 27);
 		pnDangNhap.add(lblMessage);
 		
-		JButton btnDangNhap = new JButton("Ä�Ä‚NG NHáº¬P");
+		JButton btnDangNhap = new JButton("DANG NHAP");
 		btnDangNhap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println(pfMatKhau.getText());
 				if (DangNhapBLL.getInstance().dangNhap(tfTaiKhoan.getText(), pfMatKhau.getText()))
 					frame.setVisible(false);
 				else {
-					lblMessage.setText("Ä�Äƒng nháº­p khÃ´ng thÃ nh cÃ´ng! vui lÃ²ng kiá»ƒm tra láº¡i");
+					lblMessage.setText("Dang nhap khong thanh cong! Vui long kiem tra lai!");
 				}
 			}
 		});
@@ -181,14 +181,14 @@ public class QLDangNhapGUI {
 					if (DangNhapBLL.getInstance().dangNhap(tfTaiKhoan.getText(), pfMatKhau.getText()))
 						frame.setVisible(false);
 					else {
-						lblMessage.setText("Ä�Äƒng nháº­p khÃ´ng thÃ nh cÃ´ng! vui lÃ²ng kiá»ƒm tra láº¡i");
+						lblMessage.setText("Dang nhap khong thanh cong! Vui long kiem tra lai!");
 					}
 				}
 			}
 		});
 		pnDangNhap.add(btnDangNhap);
 		
-		JButton btnThoat = new JButton("THOÃ�T");
+		JButton btnThoat = new JButton("THOAT");
 		btnThoat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
@@ -227,13 +227,13 @@ public class QLDangNhapGUI {
 					if (DangNhapBLL.getInstance().dangNhap(tfTaiKhoan.getText(), pfMatKhau.getText()))
 						frame.setVisible(false);
 					else {
-						lblMessage.setText("Ä�Äƒng nháº­p khÃ´ng thÃ nh cÃ´ng! vui lÃ²ng kiá»ƒm tra láº¡i");
+						lblMessage.setText("Dang nhap khong thanh cong! Vui long kiem tra lai!");
 					}
 				}
 			}
 		});
 		
-		JLabel lblDangNhap = new JLabel("Ä�Ä‚NG NHáº¬P");
+		JLabel lblDangNhap = new JLabel("DANG NHAP");
 		lblDangNhap.setBounds(80, 57, 149, 35);
 		pnDangNhap.add(lblDangNhap);
 		lblDangNhap.setForeground(Color.BLUE);

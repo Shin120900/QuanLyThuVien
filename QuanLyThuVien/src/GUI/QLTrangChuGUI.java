@@ -49,7 +49,7 @@ public class QLTrangChuGUI {
 		lblLoGoTruong.setIcon(new ImageIcon("icon\\PTNKLogo.png"));
 		pnLoGoTruong.add(lblLoGoTruong);
 		
-		JLabel lblTenTruong = new JLabel("       TRÆ¯á»œNG Ä�áº I Há»ŒC XÃ‚Y Dá»°NG");
+		JLabel lblTenTruong = new JLabel("TRUONG DAI HOC XAY DUNG HA NOI");
 		lblTenTruong.setBounds(253, 39, 769, 86);
 		lblTenTruong.setForeground(Color.BLUE);
 		lblTenTruong.setFont(new Font("Times New Roman", Font.BOLD, 30));
@@ -65,7 +65,7 @@ public class QLTrangChuGUI {
 		calendar.setBounds(0, 25, 326, 359);
 		pnLich.add(calendar);
 		
-		JLabel lblNewLabel = new JLabel("Lá»‹ch nÄƒm");
+		JLabel lblNewLabel = new JLabel("Lich nam");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		lblNewLabel.setBounds(10, 0, 316, 25);
 		pnLich.add(lblNewLabel);
