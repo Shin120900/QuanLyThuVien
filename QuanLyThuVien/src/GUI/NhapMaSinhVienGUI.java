@@ -28,20 +28,20 @@ public class NhapMaSinhVienGUI {
 	}
 	
 	void init() {
-		frmMain = new JFrame("Quản lý thư viện");
+		frmMain = new JFrame("Thêm phiếu mượn");
 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMain.setBounds(500, 500, 400, 500);//595
+		frmMain.setBounds(500, 200, 400, 300);//595
 		frmMain.getContentPane().setLayout(null);
 		
 		JPanel pnNhapMSSV = new JPanel();
-		pnNhapMSSV.setBounds(0, 560, 1072, 50);
+		pnNhapMSSV.setBounds(0, 0, 400, 300);
 		frmMain.getContentPane().add(pnNhapMSSV);
 		pnNhapMSSV.setLayout(null);
 		
 		JButton btnThoat = new JButton("Thoát");
 		btnThoat.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnThoat.setIcon(new ImageIcon("icon//logout.png"));
-		btnThoat.setBounds(896, 5, 138, 41);
+		btnThoat.setBounds(50, 50, 138, 41);
 		btnThoat.addActionListener(new ActionListener() {
 			
 			@Override

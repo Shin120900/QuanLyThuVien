@@ -53,7 +53,7 @@ public class QLMuonTraGUI {
 	}
 
 	private void loadResources() {
-		//tbMuonTra.setModel(QLMuonTraBLL.getInstance().getResources());
+//		tbMuonTra.setModel(QLMuonTraBLL.getInstance().getResources());
 //		tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellRenderer(new ButtonRenderer());
 //		tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellEditor(new ButtonEditor(new JCheckBox()));
 	}
@@ -121,36 +121,7 @@ public class QLMuonTraGUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String msg = null;
-				MuonTraDTO mt = null;
-				try {
-					Calendar cal = dcNgayMuon.getCalendar();
-					java.util.Date date = cal.getTime();
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					String nm = sdf.format(date);
-					cal = dcNgayTra.getCalendar();
-					date = cal.getTime();
-					String nt = sdf.format(date);
-					mt = new MuonTraDTO(tfMaDocGia.getText(), tfMaSach.getText(), Date.valueOf(nm), Date.valueOf(nt), tfTrangThai.getText());
-				} catch (Exception e1) {
-					lblMessage.setText("Kiá»ƒm tra ngÃ y thÃ¡ng");
-				}
-				if (mt == null)
-					return;
-
-				try {
-					msg = QLMuonTraBLL.getInstance().addProcessing(mt);
-				} catch (MyException e1) {
-
-					e1.printStackTrace();
-				} catch (ContainException e1) {
-
-					e1.printStackTrace();
-				}
-				;
-				lblMessage.setText(msg);
-				TrangChuGUI.getInstance().initTitle();
-				loadResources();
+				NhapMaSinhVienGUI.getInstance().getFrmMain().setVisible(true);
 			}
 		});
 		pnDanhSachMuon.add(btnThem);
