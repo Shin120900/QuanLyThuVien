@@ -21,7 +21,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import BLL.QLSachBLL;
-import DTO.SachDTO;
+import DTO.DauSachDTO;
+
 import com.toedter.calendar.JDateChooser;
 
 public class QLSachGUI {
@@ -209,7 +210,6 @@ public class QLSachGUI {
 				tfTacGia.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 4).toString());
 				tfNhaXuatBan.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 5).toString());
 				dcNgayNhap.setDate(Date.valueOf(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 6).toString()));
-				tfTriGia.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 7).toString());
 				if (tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 8).toString().equals("Trá»‘ng"))
 					rdbtnTrong.setSelected(true);
 				else 
@@ -238,8 +238,7 @@ public class QLSachGUI {
 					cal = dcNgayNhap.getCalendar();
 					date = cal.getTime();
 					String nn = sdf.format(date);
-					SachDTO s = new SachDTO(tfMaDauSach.getText(), tfTacGia.getText(), tfTenSach.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), 
-						Date.valueOf(nn), tfTriGia.getText(), tinhTrang, Date.valueOf(nxb));
+					DauSachDTO s = new DauSachDTO(tfTenSach.getText(), tfTacGia.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), Date.valueOf(nn));
 					String result = QLSachBLL.getInstance().addProcessing(s);
 					lblMessage.setText(result);
 					TrangChuGUI.getInstance().initTitle();

@@ -21,22 +21,13 @@ public static QLSachBLL instance;
 			instance = new QLSachBLL();
 		return instance;
 	}
-	private boolean checkData(SachDTO s) throws MyNullException, MyException{
-		if (s.getMaSach().equals(""))
-			throw new MyNullException("Mã sách đang bị trống");
+	private boolean checkData(DauSachDTO s) throws MyNullException, MyException{
+		
 		if(s.getTenSach().toString().equals(""))
 			throw new MyNullException("Tên sách đang bị trống");
-		if(s.getGiaSach().equals(""))
-			throw new MyNullException("Giá sách đang bị bỏ trống");
-		if(s.getNgayNhap().compareTo(s.getNamXuatBan()) < 0)
-			throw new MyException("Ngày nhập phải lớn hơn năm xuất bản");
-		try {
-			if(Integer.parseInt(s.getGiaSach()) < 0)
-				throw new MyException("Giá sách phải lớn hơn 0");
-		}
-		catch(Exception e){
-			throw new MyException("Giá sách phải là số");
-		}	
+		if(s.getTenTG().equals(""))
+			throw new MyNullException("Tên tác giả đang bị bỏ trống");
+		
 		return true;
 	}
 	
@@ -44,7 +35,7 @@ public static QLSachBLL instance;
 		return SachDAL.getInstance().isTrong(maSach);
 	}
 	
-	public String addProcessing(SachDTO s) {
+	public String addProcessing(DauSachDTO s) {
 		try {
 			checkData(s);
 			String msg;
