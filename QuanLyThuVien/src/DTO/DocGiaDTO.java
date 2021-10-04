@@ -6,7 +6,6 @@ public class DocGiaDTO {
 	
 	private String maDocGia;
 	private String tenDocGia;
-	private LoaiDocGiaDTO loaiDocGia;
 	private String lopMon;
 	private Date ngaySinh;
 	private String sdt;
@@ -15,11 +14,10 @@ public class DocGiaDTO {
 	public DocGiaDTO() {
 		super();
 	}
-	public DocGiaDTO(String maDocGia, String tenDocGia, LoaiDocGiaDTO loaiDocGia, String lopMon, Date ngaySinh, String sdt, String email) {
+	public DocGiaDTO(String maDocGia, String tenDocGia, String lopMon, Date ngaySinh, String sdt, String email) {
 		super();
 		this.maDocGia = maDocGia;
 		this.tenDocGia = tenDocGia;
-		this.loaiDocGia = loaiDocGia;
 		this.lopMon = lopMon;
 		this.ngaySinh = ngaySinh;
 		this.sdt = sdt;
@@ -38,12 +36,7 @@ public class DocGiaDTO {
 	public void setTenDocGia(String tenDocGia) {
 		this.tenDocGia = tenDocGia;
 	}
-	public LoaiDocGiaDTO getLoaiDocGia() {
-		return loaiDocGia;
-	}
-	public void setLoaiDocGia(LoaiDocGiaDTO loaiDocGia) {
-		this.loaiDocGia = loaiDocGia;
-	}
+
 	public String getLopMon() {
 		return lopMon;
 	}
