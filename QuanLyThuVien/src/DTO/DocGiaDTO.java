@@ -4,65 +4,111 @@ import java.sql.Date;
 
 public class DocGiaDTO {
 	
-	private String maDocGia;
+	private int maDocGia;
 	private String tenDocGia;
-	private String lopMon;
+	private String gioiTinh;
+	private String lop;
+	private String khoa;
+	private String diaChi;
 	private Date ngaySinh;
-	private String sdt;
-	private String email;
+	
 	
 	public DocGiaDTO() {
 		super();
 	}
-	public DocGiaDTO(String maDocGia, String tenDocGia, String lopMon, Date ngaySinh, String sdt, String email) {
+
+
+	public DocGiaDTO(String tenDocGia, String gioiTinh, String lop, String khoa, String diaChi, Date ngaySinh) {
+		super();
+		this.tenDocGia = tenDocGia;
+		this.gioiTinh = gioiTinh;
+		this.lop = lop;
+		this.khoa = khoa;
+		this.diaChi = diaChi;
+		this.ngaySinh = ngaySinh;
+	}
+
+
+	public DocGiaDTO(int maDocGia, String tenDocGia, String gioiTinh, String lop, String khoa, String diaChi,
+			Date ngaySinh) {
 		super();
 		this.maDocGia = maDocGia;
 		this.tenDocGia = tenDocGia;
-		this.lopMon = lopMon;
+		this.gioiTinh = gioiTinh;
+		this.lop = lop;
+		this.khoa = khoa;
+		this.diaChi = diaChi;
 		this.ngaySinh = ngaySinh;
-		this.sdt = sdt;
-		this.email = email;
 	}
-	
-	public String getMaDocGia() {
+
+
+	public int getMaDocGia() {
 		return maDocGia;
 	}
-	public void setMaDocGia(String maDocGia) {
+
+
+	public void setMaDocGia(int maDocGia) {
 		this.maDocGia = maDocGia;
 	}
+
+
 	public String getTenDocGia() {
 		return tenDocGia;
 	}
+
+
 	public void setTenDocGia(String tenDocGia) {
 		this.tenDocGia = tenDocGia;
 	}
 
-	public String getLopMon() {
-		return lopMon;
+
+	public String getGioiTinh() {
+		return gioiTinh;
 	}
-	public void setLopMon(String lopMon) {
-		this.lopMon = lopMon;
+
+
+	public void setGioiTinh(String gioiTinh) {
+		this.gioiTinh = gioiTinh;
 	}
+
+
+	public String getLop() {
+		return lop;
+	}
+
+
+	public void setLop(String lop) {
+		this.lop = lop;
+	}
+
+
+	public String getKhoa() {
+		return khoa;
+	}
+
+
+	public void setKhoa(String khoa) {
+		this.khoa = khoa;
+	}
+
+
+	public String getDiaChi() {
+		return diaChi;
+	}
+
+
+	public void setDiaChi(String diaChi) {
+		this.diaChi = diaChi;
+	}
+
+
 	public Date getNgaySinh() {
 		return ngaySinh;
 	}
+
+
 	public void setNgaySinh(Date ngaySinh) {
 		this.ngaySinh = ngaySinh;
 	}
-	public String getSdt() {
-		return sdt;
-	}
-	public void setSdt(String sdt) {
-		this.sdt = sdt;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	@Override
-	public String toString() {
-		return tenDocGia;
-	}
+	
 }
