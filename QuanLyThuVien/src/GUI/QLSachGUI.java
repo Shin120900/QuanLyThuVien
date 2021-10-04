@@ -26,7 +26,7 @@ import com.toedter.calendar.JDateChooser;
 
 public class QLSachGUI {
 	private JTable tbQLSach;
-	private JTextField tfMaSach;
+	private JTextField tfMaDauSach;
 	private JTextField tfTenSach;
 	private JTextField tfTacGia;
 	private JTextField tfTheLoai;
@@ -66,19 +66,17 @@ public class QLSachGUI {
 	}
 	
 	private void clearField() {
-		tfMaSach.setText("");
+		tfMaDauSach.setText("");
 		tfNhaXuatBan.setText("");
 		dcNamXuatBan.setDate(null);
-		dcNgayNhap.setDate(null);
 		tfTacGia.setText("");
 		tfTenSach.setText("");
 		tfTheLoai.setText("");
-		tfTriGia.setText("");
 		rdbtnTrong.setSelected(true);
 	}
 	
 	private void setStateForTextfield() {
-			tfMaSach.setEditable(isChanging);
+			tfMaDauSach.setEditable(isChanging);
 	}
 	
 	private void initialize() {
@@ -94,7 +92,7 @@ public class QLSachGUI {
 		pnTongQuanQLSach.add(pnTieuDeQLSach);
 		pnTieuDeQLSach.setLayout(null);
 		
-		JLabel lblQLSach = new JLabel("QUẢN LÝ SÁCH");
+		JLabel lblQLSach = new JLabel("QUAN LY SACH");
 		lblQLSach.setForeground(Color.RED);
 		lblQLSach.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblQLSach.setBounds(448, 11, 219, 35);
@@ -113,7 +111,7 @@ public class QLSachGUI {
 		pnTongQuanQLSach.add(pnThongTinSach);
 		pnThongTinSach.setLayout(null);
 		
-		JLabel lblThongTinSach = new JLabel("THÔNG TIN SÁCH");
+		JLabel lblThongTinSach = new JLabel("THONG TIN SACH");
 		lblThongTinSach.setBounds(10, 5, 178, 28);
 		pnThongTinSach.add(lblThongTinSach);
 		lblThongTinSach.setFont(new Font("Times New Roman", Font.BOLD, 17));
@@ -124,91 +122,75 @@ public class QLSachGUI {
 		pnThongTinSach.add(pnThongTinNhap);
 		pnThongTinNhap.setLayout(null);
 		
-		JLabel lblMaSach = new JLabel("Mã sách:*");
-		lblMaSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblMaSach.setBounds(24, 31, 66, 14);
-		pnThongTinNhap.add(lblMaSach);
+		JLabel lblMaDauSach = new JLabel("Ma dau sach:*");
+		lblMaDauSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblMaDauSach.setBounds(24, 31, 90, 14);
+		pnThongTinNhap.add(lblMaDauSach);
 		
-		tfMaSach = new JTextField();
-		tfMaSach.setBounds(115, 26, 258, 32);
-		tfMaSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		pnThongTinNhap.add(tfMaSach);
-		tfMaSach.setColumns(10);
+		tfMaDauSach = new JTextField();
+		tfMaDauSach.setBounds(115, 26, 258, 32);
+		tfMaDauSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		pnThongTinNhap.add(tfMaDauSach);
+		tfMaDauSach.setColumns(10);
 		
-		JLabel lblTenSach = new JLabel("Tên sách:*");
+		JLabel lblTenSach = new JLabel("Ten sach:*");
 		lblTenSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblTenSach.setBounds(24, 73, 66, 14);
+		lblTenSach.setBounds(24, 83, 70, 14);
 		pnThongTinNhap.add(lblTenSach);
 		
 		tfTenSach = new JTextField();
-		tfTenSach.setBounds(115, 69, 258, 31);
+		tfTenSach.setBounds(115, 79, 258, 31);
 		tfTenSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnThongTinNhap.add(tfTenSach);
 		tfTenSach.setColumns(10);
 		
-		JLabel lblTacGia = new JLabel("Tác giả:");
+		JLabel lblTacGia = new JLabel("Tac gia:");
 		lblTacGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblTacGia.setBounds(24, 115, 66, 14);
+		lblTacGia.setBounds(24, 135, 66, 14);
 		pnThongTinNhap.add(lblTacGia);
 		
 		tfTacGia = new JTextField();
-		tfTacGia.setBounds(115, 111, 258, 31);
+		tfTacGia.setBounds(115, 131, 258, 31);
 		tfTacGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnThongTinNhap.add(tfTacGia);
 		tfTacGia.setColumns(10);
 		
-		JLabel lblTheLoai = new JLabel("Thể loại:");
+		JLabel lblTheLoai = new JLabel("The loai:");
 		lblTheLoai.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblTheLoai.setBounds(24, 155, 66, 23);
+		lblTheLoai.setBounds(455, 31, 74, 14);
 		pnThongTinNhap.add(lblTheLoai);
 		
-		JLabel lblTinhTrang = new JLabel("Tình trạng:");
-		lblTinhTrang.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblTinhTrang.setBounds(24, 200, 74, 14);
-		pnThongTinNhap.add(lblTinhTrang);
-		
 		tfTheLoai = new JTextField();
-		tfTheLoai.setBounds(115, 153, 258, 31);
+		tfTheLoai.setBounds(551, 26, 258, 31);
 		tfTheLoai.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnThongTinNhap.add(tfTheLoai);
 		tfTheLoai.setColumns(10);
 		
-		rdbtnTrong = new JRadioButton("Trống");
+		JLabel lblTinhTrang = new JLabel("Trang thai:");
+		lblTinhTrang.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblTinhTrang.setBounds(24, 200, 74, 14);
+		pnThongTinNhap.add(lblTinhTrang);
+		
+		rdbtnTrong = new JRadioButton("Trong");
 		rdbtnTrong.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		rdbtnTrong.setBounds(115, 196, 92, 23);
 		pnThongTinNhap.add(rdbtnTrong);
 		
-		JLabel lblNhaXuatBan = new JLabel("Nhà xuất bản:");
+		JLabel lblNhaXuatBan = new JLabel("Nha xuat ban:");
 		lblNhaXuatBan.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblNhaXuatBan.setBounds(455, 31, 74, 14);
+		lblNhaXuatBan.setBounds(455, 83, 90, 14);
 		pnThongTinNhap.add(lblNhaXuatBan);
 		
 		tfNhaXuatBan = new JTextField();
-		tfNhaXuatBan.setBounds(551, 26, 258, 31);
+		tfNhaXuatBan.setBounds(551, 79, 258, 31);
 		pnThongTinNhap.add(tfNhaXuatBan);
 		tfNhaXuatBan.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		tfNhaXuatBan.setColumns(10);
 		
-		JLabel lblNamXuatBan = new JLabel("Năm xuất bản:*");
+		JLabel lblNamXuatBan = new JLabel("Nam xuat ban:*");
 		lblNamXuatBan.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblNamXuatBan.setBounds(455, 73, 86, 14);
+		lblNamXuatBan.setBounds(455, 135, 90, 14);
 		pnThongTinNhap.add(lblNamXuatBan);
-		
-		JLabel lblNgayNhap = new JLabel("Ngày nhập:*");
-		lblNgayNhap.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblNgayNhap.setBounds(455, 115, 74, 14);
-		pnThongTinNhap.add(lblNgayNhap);
-		
-		JLabel lblTriGia = new JLabel("Giá sách:*");
-		lblTriGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblTriGia.setBounds(455, 158, 73, 14);
-		pnThongTinNhap.add(lblTriGia);
-		
-		tfTriGia = new JTextField();
-		tfTriGia.setBounds(551, 153, 258, 31);
-		pnThongTinNhap.add(tfTriGia);
-		tfTriGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		tfTriGia.setColumns(10);
 		
 		lblMessage = new JLabel("");
 		lblMessage.setForeground(Color.RED);
@@ -216,7 +198,7 @@ public class QLSachGUI {
 		lblMessage.setBounds(115, 4, 694, 23);
 		pnThongTinNhap.add(lblMessage);
 		
-		JLabel lblKhongBoTrong = new JLabel("(*) Không được bỏ trống");
+		JLabel lblKhongBoTrong = new JLabel("(*) Khong duoc bo trong");
 		lblKhongBoTrong.setForeground(Color.RED);
 		lblKhongBoTrong.setFont(new Font("Times New Roman", Font.ITALIC, 13));
 		lblKhongBoTrong.setBounds(455, 196, 222, 23);
@@ -227,14 +209,9 @@ public class QLSachGUI {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		dcNamXuatBan.setBounds(551, 69, 258, 31);
+		dcNamXuatBan.setBounds(551, 131, 258, 31);
 		dcNamXuatBan.setDateFormatString("yyyy-MM-dd");
 		pnThongTinNhap.add(dcNamXuatBan);
-		
-		dcNgayNhap = new JDateChooser();
-		dcNgayNhap.setBounds(551, 111, 258, 31);
-		dcNgayNhap.setDateFormatString("yyyy-MM-dd");
-		pnThongTinNhap.add(dcNgayNhap);
 		
 		tbQLSach = new JTable();
 		tbQLSach.setBounds(0, 0, 1050, 167);
@@ -247,14 +224,14 @@ public class QLSachGUI {
 					return;
 				isChanging = false;
 				setStateForTextfield();
-				tfMaSach.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 1).toString());
+				tfMaDauSach.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 1).toString());
 				tfTenSach.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 2).toString());
 				tfTheLoai.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 3).toString());
 				tfTacGia.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 4).toString());
 				tfNhaXuatBan.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 5).toString());
 				dcNgayNhap.setDate(Date.valueOf(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 6).toString()));
 				tfTriGia.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 7).toString());
-				if (tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 8).toString().equals("Trống"))
+				if (tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 8).toString().equals("Trá»‘ng"))
 					rdbtnTrong.setSelected(true);
 				else 
 					rdbtnTrong.setSelected(false);
@@ -262,7 +239,7 @@ public class QLSachGUI {
 			}
 		});
 		
-		JButton btnThem = new JButton("Thêm");
+		JButton btnThem = new JButton("Them");
 		btnThem.setIcon(new ImageIcon("icon\\new.png"));
 		btnThem.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnThem.setBounds(900, 34, 138, 41);
@@ -271,9 +248,9 @@ public class QLSachGUI {
 			public void actionPerformed(ActionEvent e) {
 				String tinhTrang;
 				if (rdbtnTrong.isSelected())
-					tinhTrang = "Trống";
+					tinhTrang = "Trong";
 				else
-					tinhTrang = "Đang được mượn";
+					tinhTrang = "Ä�ang Ä‘Æ°á»£c mÆ°á»£n";
 				try {
 					Calendar cal = dcNamXuatBan.getCalendar();
 					java.util.Date date = cal.getTime();
@@ -282,7 +259,7 @@ public class QLSachGUI {
 					cal = dcNgayNhap.getCalendar();
 					date = cal.getTime();
 					String nn = sdf.format(date);
-					SachDTO s = new SachDTO(tfMaSach.getText(), tfTacGia.getText(), tfTenSach.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), 
+					SachDTO s = new SachDTO(tfMaDauSach.getText(), tfTacGia.getText(), tfTenSach.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), 
 						Date.valueOf(nn), tfTriGia.getText(), tinhTrang, Date.valueOf(nxb));
 					String result = QLSachBLL.getInstance().addProcessing(s);
 					lblMessage.setText(result);
@@ -290,21 +267,21 @@ public class QLSachGUI {
 					reloadResources();
 				}
 				catch(Exception ex) {
-					lblMessage.setText("Kiểm tra lại ngày tháng");
+					lblMessage.setText("Kiem tra lai ngay thang");
 				}
 			}
 		});
 		pnThongTinSach.add(btnThem);
 		
-		JButton btnSua = new JButton("Sửa\r\n");
+		JButton btnSua = new JButton("Sua");
 		btnSua.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					String tinhTrang;
 					if (rdbtnTrong.isSelected())
-						tinhTrang = "Trống";
+						tinhTrang = "Trong";
 					else
-						tinhTrang = "Đang được mượn";
+						tinhTrang = "Ä�ang Ä‘Æ°á»£c mÆ°á»£n";
 					Calendar cal = dcNamXuatBan.getCalendar();
 					java.util.Date date = cal.getTime();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -312,14 +289,14 @@ public class QLSachGUI {
 					cal = dcNgayNhap.getCalendar();
 					date = cal.getTime();
 					String nn = sdf.format(date);
-					SachDTO s = new SachDTO(tfMaSach.getText(), tfTacGia.getText(), tfTenSach.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), 
+					SachDTO s = new SachDTO(tfMaDauSach.getText(), tfTacGia.getText(), tfTenSach.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), 
 							Date.valueOf(nn), tfTriGia.getText(), tinhTrang, Date.valueOf(nxb));
 					String result = QLSachBLL.getInstance().changeProcessing(s);
 					lblMessage.setText(result);
 					reloadResources();
 				}
 				catch(Exception ex) {
-					lblMessage.setText("Kiểm tra lại ngày tháng");
+					lblMessage.setText("Kiem tra lai ngay thang");
 				}
 			}
 		});
@@ -328,7 +305,7 @@ public class QLSachGUI {
 		btnSua.setBounds(900, 98, 138, 41);
 		pnThongTinSach.add(btnSua);
 		
-		JButton btnHuy = new JButton("Hủy");
+		JButton btnHuy = new JButton("Huy");
 		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
 		btnHuy.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnHuy.setBounds(900, 161, 138, 41);
@@ -344,14 +321,14 @@ public class QLSachGUI {
 			}
 		});
 		
-		JButton btnXoa = new JButton("Xóa");
+		JButton btnXoa = new JButton("Xoa");
 		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
 		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnXoa.setBounds(900, 226, 138, 41);
 		pnThongTinSach.add(btnXoa);
 		btnXoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String msg = QLSachBLL.getInstance().deleteProcessing(tfMaSach.getText());
+				String msg = QLSachBLL.getInstance().deleteProcessing(tfMaDauSach.getText());
 				lblMessage.setText(msg);
 				TrangChuGUI.getInstance().initTitle();
 				reloadResources();
@@ -365,13 +342,13 @@ public class QLSachGUI {
 		sc.setBounds(0, 44, 1055, 186);
 		
 		tfTimKiem = new JTextField();
-		tfTimKiem.setToolTipText("Nhập mã sách hoặc tên sách,...");
+		tfTimKiem.setToolTipText("Nhap ma sach hoac ten sach, ...");
 		tfTimKiem.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		tfTimKiem.setBounds(559, 5, 337, 30);
 		pnQLSach.add(tfTimKiem);
 		tfTimKiem.setColumns(10);
 		
-		JButton btnTimKiem = new JButton("Tìm kiếm");
+		JButton btnTimKiem = new JButton("Tim kiem");
 		btnTimKiem.setIcon(new ImageIcon("icon\\find.png"));
 		btnTimKiem.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnTimKiem.setBounds(919, 4, 134, 35);
@@ -380,7 +357,7 @@ public class QLSachGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(tfTimKiem.getText().length()==0)
-					JOptionPane.showMessageDialog(null, "Bạn chưa nhập từ khóa cần tìm!","Thông báo",1);
+					JOptionPane.showMessageDialog(null, "Ban chua nhap tu khoa can tim!","Thong bao",1);
 				else {
 					tbQLSach.setModel(QLSachBLL.getInstance().timKiem(tfTimKiem.getText()));
 				}
