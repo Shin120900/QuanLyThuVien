@@ -38,25 +38,16 @@ public class NhapMaSinhVienGUI {
 		frmMain.getContentPane().add(pnNhapMSSV);
 		pnNhapMSSV.setLayout(null);
 		
-		JButton btnOk = new JButton("Ok");
-		btnOk.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnOk.setBounds(50, 100, 138, 41);
-		btnOk.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				frmMain.setVisible(false);
-			}
-		});
-		
-		JButton btnThoat = new JButton("Cancel");
+		JButton btnThoat = new JButton("Thoát");
 		btnThoat.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		btnThoat.setIcon(new ImageIcon("icon//logout.png"));
 		btnThoat.setBounds(50, 50, 138, 41);
 		btnThoat.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frmMain.setVisible(false);
+				QLDangNhapGUI.getInstance().getFrame().setVisible(true);
 			}
 		});
 		pnNhapMSSV.add(btnThoat);
