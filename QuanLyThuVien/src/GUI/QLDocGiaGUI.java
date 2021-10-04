@@ -27,7 +27,6 @@ import BLL.QLMuonTraBLL;
 import CustomControl.ButtonEditor;
 import CustomControl.ButtonRenderer;
 import DTO.DocGiaDTO;
-import DTO.LoaiDocGiaDTO;
 
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
@@ -43,7 +42,6 @@ public class QLDocGiaGUI {
 	private JTextField tfSDT;
 	private JTextField tfLopChuyenMon;
 	private JTextField tfMaDocGia;
-	private JComboBox<LoaiDocGiaDTO> cbbLoaiDocGia;
 	private JLabel lblMessage;
 	private JDateChooser dcNgaySinh;
 
@@ -56,7 +54,7 @@ public class QLDocGiaGUI {
 	}
 
 	private void loadResources() {
-		tbDocGia.setModel(QLDocGiaBLL.getInstance().getResources(cbbLoaiDocGia));
+//		tbDocGia.setModel(QLDocGiaBLL.getInstance().getResources(cbbLoaiDocGia));
 	}
 
 	public static QLDocGiaGUI getInstance() {
@@ -87,7 +85,7 @@ public class QLDocGiaGUI {
 		tfMaDocGia.setText("");
 		dcNgaySinh.setDate(null);
 		tfSDT.setText("");
-		cbbLoaiDocGia.setSelectedItem(0);
+//		cbbLoaiDocGia.setSelectedItem(0);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -142,12 +140,12 @@ public class QLDocGiaGUI {
 				tfMaDocGia.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 1).toString());
 				tfHoTen.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 2).toString());
 
-				for (int i = 0; i < cbbLoaiDocGia.getItemCount(); i++) {
-					if (tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 3).toString()
-							.equals(cbbLoaiDocGia.getItemAt(i).toString())) {
-						cbbLoaiDocGia.setSelectedItem(cbbLoaiDocGia.getItemAt(i));
-					}
-				}
+//				for (int i = 0; i < cbbLoaiDocGia.getItemCount(); i++) {
+//					if (tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 3).toString()
+//							.equals(cbbLoaiDocGia.getItemAt(i).toString())) {
+//						cbbLoaiDocGia.setSelectedItem(cbbLoaiDocGia.getItemAt(i));
+//					}
+//				}
 
 				tfLopChuyenMon.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 4).toString());
 				dcNgaySinh.setDate(Date.valueOf(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 5).toString()));
@@ -221,9 +219,9 @@ public class QLDocGiaGUI {
 		lblLoaiDocGia.setBounds(10, 125, 89, 26);
 		pnThongTinNhap.add(lblLoaiDocGia);
 
-		cbbLoaiDocGia = new JComboBox<LoaiDocGiaDTO>();
-		cbbLoaiDocGia.setBounds(109, 125, 258, 30);
-		pnThongTinNhap.add(cbbLoaiDocGia);
+//		cbbLoaiDocGia = new JComboBox<LoaiDocGiaDTO>();
+//		cbbLoaiDocGia.setBounds(109, 125, 258, 30);
+//		pnThongTinNhap.add(cbbLoaiDocGia);
 
 		JLabel lblLopChuyenMon = new JLabel("Lớp:*");
 		lblLopChuyenMon.setFont(new Font("Times New Roman", Font.BOLD, 13));
@@ -270,12 +268,12 @@ public class QLDocGiaGUI {
 
 				DocGiaDTO dg = null;
 				try {
-					Calendar cal = dcNgaySinh.getCalendar();
-					java.util.Date date = cal.getTime();
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					dg = new DocGiaDTO(tfMaDocGia.getText(), tfHoTen.getText(),
-							(LoaiDocGiaDTO) cbbLoaiDocGia.getSelectedItem(), tfLopChuyenMon.getText(),
-							Date.valueOf(sdf.format(date)), tfSDT.getText(), tfEmail.getText());
+//					Calendar cal = dcNgaySinh.getCalendar();
+//					java.util.Date date = cal.getTime();
+//					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//					dg = new DocGiaDTO(tfMaDocGia.getText(), tfHoTen.getText(),
+//							(LoaiDocGiaDTO) cbbLoaiDocGia.getSelectedItem(), tfLopChuyenMon.getText(),
+//							Date.valueOf(sdf.format(date)), tfSDT.getText(), tfEmail.getText());
 				} catch (Exception e1) {
 					lblMessage.setText("Kiểm tra ngày tháng");
 				}
@@ -315,9 +313,9 @@ public class QLDocGiaGUI {
 					Calendar cal = dcNgaySinh.getCalendar();
 					java.util.Date date = cal.getTime();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					dg = new DocGiaDTO(tfMaDocGia.getText(), tfHoTen.getText(),
-							(LoaiDocGiaDTO) cbbLoaiDocGia.getSelectedItem(), tfLopChuyenMon.getText(),
-							Date.valueOf(sdf.format(date)), tfSDT.getText(), tfEmail.getText());
+//					dg = new DocGiaDTO(tfMaDocGia.getText(), tfHoTen.getText(),
+//							(LoaiDocGiaDTO) cbbLoaiDocGia.getSelectedItem(), tfLopChuyenMon.getText(),
+//							Date.valueOf(sdf.format(date)), tfSDT.getText(), tfEmail.getText());
 				} catch (Exception e1) {
 					lblMessage.setText("Kiểm tra ngày tháng");
 				}
@@ -347,8 +345,8 @@ public class QLDocGiaGUI {
 
 		// set tab key
 		tfHoTen.setNextFocusableComponent(tfMaDocGia);
-		tfMaDocGia.setNextFocusableComponent(cbbLoaiDocGia);
-		cbbLoaiDocGia.setNextFocusableComponent(tfLopChuyenMon);
+//		tfMaDocGia.setNextFocusableComponent(cbbLoaiDocGia);
+//		cbbLoaiDocGia.setNextFocusableComponent(tfLopChuyenMon);
 		tfSDT.setNextFocusableComponent(btnThem);
 		btnThem.setNextFocusableComponent(btnHuy);
 		btnHuy.setNextFocusableComponent(btnXoa);
