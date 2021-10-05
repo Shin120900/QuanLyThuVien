@@ -29,7 +29,7 @@ public class QuanTriHeThongGUI {
 	}
 	
 	void init() {
-		frmMain = new JFrame("Quản lý thư viện");
+		frmMain = new JFrame("Quan ly thu vien");
 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMain.setBounds(100, 100, 1072, 650);//595
 		//frmMain.getContentPane().add(QLNhanVienGUI.getInstance().getPnTongQuanQLNhanVien());
@@ -41,7 +41,7 @@ public class QuanTriHeThongGUI {
 		frmMain.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JButton btnThoat = new JButton("Thoát");
+		JButton btnThoat = new JButton("Thoat");
 		btnThoat.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnThoat.setIcon(new ImageIcon("icon//logout.png"));
 		btnThoat.setBounds(896, 5, 138, 41);

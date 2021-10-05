@@ -21,8 +21,8 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 import DAL.MuonTraDAL;
 import DAL.SachDAL;
-import DTO.MuonTraDTO;
-import DTO.SachDTO;
+import DTO.DauSachDTO;
+import DTO.PhieuMuonDTO;
 
 public class BaoCaoBLL {
 	
@@ -43,13 +43,13 @@ public class BaoCaoBLL {
 	@SuppressWarnings("deprecation")
 	public DefaultTableModel thongKe(int thang, int nam) {
 		dtm = new DefaultTableModel();
-		dtm.addColumn("Tên thể loại");
-		dtm.addColumn("Số lượt mượn");
-		dtm.addColumn("Tỉ lệ");
-		ArrayList<MuonTraDTO> dsMuonTra = MuonTraDAL.getInstance().getResources();
-		ArrayList<SachDTO> dsSach = SachDAL.getInstance().getResources();
+		dtm.addColumn("Ten the loai");
+		dtm.addColumn("So luot muon");
+		dtm.addColumn("Ti le");
+//		ArrayList<PhieuMuonDTO> dsPhieuMuon = MuonTraDAL.getInstance().getResources();
+		ArrayList<DauSachDTO> dsDauSach = SachDAL.getInstance().getResources();
 		ArrayList<String> dsTheLoai = new ArrayList<String>();
-		for (MuonTraDTO mt: dsMuonTra) {
+		/*for (MuonTraDTO mt: dsMuonTra) {
 			if (mt.getNgayMuon().getMonth() == thang && mt.getNgayMuon().getYear() + 1900 == nam) {
 				String maSach = mt.getMaSach();
 				for (SachDTO sach: dsSach) {
@@ -84,7 +84,7 @@ public class BaoCaoBLL {
 			dataRow.add(row);
 			dtm.addRow(row);
 		
-		}
+		}*/
 		
 		return dtm;
 		

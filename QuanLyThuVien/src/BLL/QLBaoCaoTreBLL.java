@@ -21,8 +21,9 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 import DAL.MuonTraDAL;
 import DAL.SachDAL;
-import DTO.MuonTraDTO;
-import DTO.SachDTO;
+import DTO.DauSachDTO;
+import DTO.PhieuMuonDTO;
+
 
 public class QLBaoCaoTreBLL {
 
@@ -41,17 +42,17 @@ public class QLBaoCaoTreBLL {
 	
 	
 
-	public DefaultTableModel thongke() {
+	/*public DefaultTableModel thongke() {
 		dtm=new DefaultTableModel();
 		dtm.addColumn("Mã sách");
 		dtm.addColumn("Tên sách");
 		dtm.addColumn("Ngày mượn");
 		dtm.addColumn("Số ngày trễ");
-		ArrayList<MuonTraDTO> dsMuonTra=MuonTraDAL.getInstance().getResources();
-		ArrayList<SachDTO> dsSach=SachDAL.getInstance().getResources();
+		ArrayList<PhieuMuonDTO> dsMuonTra=MuonTraDAL.getInstance().getResources();
+		ArrayList<DauSachDTO> dsSach=SachDAL.getInstance().getResources();
 		
 		Date date=new Date();
-		for(MuonTraDTO mt: dsMuonTra) {
+		for(PhieuMuonDTO mt: dsMuonTra) {
 			if(mt.getNgayTra().compareTo(date) < 0) {
 				String maSach=mt.getMaSach();
 				String tenSach = null;
@@ -160,5 +161,5 @@ public class QLBaoCaoTreBLL {
 		catch(IOException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 }

@@ -10,10 +10,10 @@ import MyException.MyException;
 
 public class MuonTraDAL {
 	private static MuonTraDAL instance;
-	private ArrayList<MuonTraDTO> dsMuonTra;
+	private ArrayList<PhieuMuonDTO> dsMuonTra;
 	
 	private MuonTraDAL() {
-		dsMuonTra = new ArrayList<MuonTraDTO>();
+		dsMuonTra = new ArrayList<PhieuMuonDTO>();
 		loadResources();
 	}
 	
@@ -29,12 +29,12 @@ public class MuonTraDAL {
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);
 			
 			while(resultSet.next()) {
-				dsMuonTra.add(new MuonTraDTO(
+				/*dsMuonTra.add(new MuonTraDTO(
 						resultSet.getObject(1).toString(), 
 						resultSet.getObject(2).toString(), 
 						Date.valueOf(resultSet.getObject(3).toString()), 
 						Date.valueOf(resultSet.getObject(4).toString()),
-						resultSet.getObject(5).toString()));
+						resultSet.getObject(5).toString()));*/
 			}
 		}
 		catch(Exception ex){
@@ -44,35 +44,35 @@ public class MuonTraDAL {
 	
 	public int soSachDangMuon(String maDocGia) {
 		int count = 0;
-		for (MuonTraDTO item: dsMuonTra) {
-			if (item.getMaDocGia().equals(maDocGia) && Integer.parseInt(item.getTrangThai())>= 0)
-				count++;
+		for (PhieuMuonDTO item: dsMuonTra) {
+			/*if (item.getMaDocGia().equals(maDocGia) && Integer.parseInt(item.getTrangThai())>= 0)
+				count++;*/
 		}
 		return count;
 	}
 	
-	public ArrayList<MuonTraDTO> getResources() {
+	public ArrayList<PhieuMuonDTO> getResources() {
 		return dsMuonTra;
 	}
 
-	public int addProcessing(MuonTraDTO mt) throws ContainException{
-		try {
-			String query = "insert into quanlymuonsach values(\"" + mt.getMaDocGia() + "\", \"" + mt.getMaSach()
-			+ "\", \"" + mt.getNgayMuon() + "\", \"" + mt.getNgayTra()+"\", \"Đang được mượn\")";
-			int result = DAL.getInstance().executeQueryUpdate(query);
-			
-			if(result > 0) {
-				SachDAL.getInstance().changeTrangThai(mt.getMaSach(), "Đang được mượn");
-				dsMuonTra.add(new MuonTraDTO(mt.getMaDocGia(), mt.getMaSach(), mt.getNgayMuon(), mt.getNgayTra(), mt.getTrangThai()));
-			}
-			return result;
-		}catch(MyException e) {
+	public int addProcessing(PhieuMuonDTO pm) throws ContainException{
+//		try {
+//			String query = "insert into quanlymuonsach values(\"" + pm.getMaDocGia() + "\", \"" + pm.getMaSach()
+//			+ "\", \"" + pm.getNgayMuon() + "\", \"" + pm.getNgayTra()+"\", \"Đang được mượn\")";
+//			int result = DAL.getInstance().executeQueryUpdate(query);
+//			
+//			if(result > 0) {
+//				SachDAL.getInstance().changeTrangThai(pm.getMaSach(), "Đang được mượn");
+//				dsMuonTra.add(new MuonTraDTO(pm.getMaDocGia(), pm.getMaSach(), pm.getNgayMuon(), mt.getNgayTra(), mt.getTrangThai()));
+//			}
+//			return result;
+//		}catch(MyException e) {
 			return 0;
-		}
+//		}
 	}
 
-	public int changeProcessing(MuonTraDTO mt) {
-		int result;
+	public int changeProcessing(PhieuMuonDTO pm) {
+		/*int result;
 		String query = "update quanlymuonsach set NgayMuon=\""+mt.getNgayMuon()+"\", NgayTra=\""+mt.getNgayTra()
 		+"\" where MaSach=\""+mt.getMaSach()+"\" and MaDocGia=\""+mt.getMaDocGia()+"\"";
 		System.out.println("update quanlymuonsach set NgayMuon=\""+mt.getNgayMuon()+"\", NgayTra=\""+mt.getNgayTra()
@@ -107,11 +107,12 @@ public class MuonTraDAL {
 			}
 			SachDAL.getInstance().changeTrangThai(maSach, "Trống");
 		}
-		return result;
+		return result;*/
+		return 1; //face
 		
 	}
 
-	public ArrayList<MuonTraDTO> reloadResources() {
+	public ArrayList<PhieuMuonDTO> reloadResources() {
 		// TODO Auto-generated method stub
 		return dsMuonTra;
 	}

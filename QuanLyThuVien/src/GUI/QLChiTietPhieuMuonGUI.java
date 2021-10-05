@@ -6,10 +6,6 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,15 +21,9 @@ import javax.swing.SwingConstants;
 import BLL.QLMuonTraBLL;
 import CustomControl.ButtonEditor;
 import CustomControl.ButtonRenderer;
-import MyException.ContainException;
-import MyException.MyException;
-import event.IClickOk;
 
-import com.toedter.calendar.JDateChooser;
-
-public class QLMuonTraGUI {
-
-	static QLMuonTraGUI instance = null;
+public class QLChiTietPhieuMuonGUI {
+	static QLChiTietPhieuMuonGUI instance = null;
 	private JPanel pnMain;
 	private JTable tbMuonTra;
 	private JTextField tfTimKiem;
@@ -41,20 +31,18 @@ public class QLMuonTraGUI {
 
 	private boolean isEdit = true;
 
-	private QLMuonTraGUI() {
+	private QLChiTietPhieuMuonGUI() {
 		initialize();
 		loadResources();
 	}
 
 	private void loadResources() {
-//		tbMuonTra.setModel(QLMuonTraBLL.getInstance().getResources());
-//		tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellRenderer(new ButtonRenderer());
-//		tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellEditor(new ButtonEditor(new JCheckBox()));
+
 	}
 
-	public static QLMuonTraGUI getInstance() {
+	public static QLChiTietPhieuMuonGUI getInstance() {
 		if (instance == null)
-			instance = new QLMuonTraGUI();
+			instance = new QLChiTietPhieuMuonGUI();
 		return instance;
 	}
 
@@ -86,14 +74,8 @@ public class QLMuonTraGUI {
 		pnDanhSachMuon.setBounds(0, 73	, 1065, 487);
 		pnMain.add(pnDanhSachMuon);
 
-//		JPanel pnThongTinMuonTra = new JPanel();
-//		pnThongTinMuonTra.setLayout(null);
-//		pnThongTinMuonTra.setBackground(SystemColor.activeCaption);
-//		pnThongTinMuonTra.setBounds(0, 304, 1065, 256);
-//		pnMain.add(pnThongTinMuonTra);
 
-		// them tieu de
-		JLabel lblTitle = new JLabel("QUAN LY MUON TRA SACH");
+		JLabel lblTitle = new JLabel("QUAN LY CHI TIET PHIEU MUON");
 		lblTitle.setForeground(Color.RED);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -109,23 +91,12 @@ public class QLMuonTraGUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				NhapMaSinhVienGUI.getInstance(new IClickOk() {
-					
-					@Override
-					public void clickOk() {
-						// TODO Auto-generated method stub
-						pnMain.removeAll();
-						QLChiTietPhieuMuonGUI qlChiTietPhieuMuonGUI = QLChiTietPhieuMuonGUI.getInstance();	
-						pnMain.add(qlChiTietPhieuMuonGUI.getPnMain());
-						pnMain.revalidate();
-						pnMain.repaint();
-					}
-				}).getFrmMain().setVisible(true);
+//				NhapMaSinhVienGUI.getInstance().getFrmMain().setVisible(true);
 			}
 		});
 		pnDanhSachMuon.add(btnThem);
 		
-		tfTimKiem = new JTextField();
+		/*tfTimKiem = new JTextField();
 		tfTimKiem.setToolTipText("NHAP MA PHIEU MUON HOAC HO TEN SINH VIEN ...");
 		tfTimKiem.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		tfTimKiem.setBounds(559, 15, 337, 30);
@@ -152,7 +123,7 @@ public class QLMuonTraGUI {
 					tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellEditor(new ButtonEditor(new JCheckBox()));
 				}
 			}
-		});
+		});*/
 
 		tbMuonTra = new JTable();
 		tbMuonTra.setBounds(0, 0, 1060, 230);
@@ -203,9 +174,5 @@ public class QLMuonTraGUI {
 //			}
 //		});
 		pnDanhSachMuon.add(sc, BorderLayout.CENTER);
-
-		
 	}
-	
 }
-

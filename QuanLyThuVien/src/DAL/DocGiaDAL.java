@@ -13,47 +13,16 @@ public class DocGiaDAL {
 
 	private static DocGiaDAL instance;
 	private ArrayList<DocGiaDTO> dsDocGia;
-	private ArrayList<LoaiDocGiaDTO> dsLoaiDocGia;
 	private DocGiaDAL() {
-		dsDocGia = new ArrayList<DocGiaDTO>();
-		dsLoaiDocGia = new ArrayList<LoaiDocGiaDTO>();
 		loadResources();
 	}
 	
 	private void loadResources(){
 		try {	
-			
-			String query = new String("select * from loaidocgia");
+			String query = new String("select * from docgia");
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);
-			while(resultSet.next()) {
-				LoaiDocGiaDTO item = new LoaiDocGiaDTO(resultSet.getObject(1).toString(), resultSet.getObject(2).toString());
-				dsLoaiDocGia.add(item);
-			}
-			query = new String("select * from docgia");
-			resultSet = DAL.getInstance().executeQueryToGetData(query);
 			while (resultSet.next()) {
-				String maLoaiDocGia = resultSet.getObject(3).toString();
-				LoaiDocGiaDTO ldg = null;
 				
-				for(LoaiDocGiaDTO item: dsLoaiDocGia) {
-					if (item.getMaLoaiDocGia().equals(maLoaiDocGia)){
-						ldg = item;
-						break;
-					}
-				}
-				String tmpEmail;
-				try{
-					tmpEmail = resultSet.getObject(7).toString();
-				}catch(NullPointerException e) {
-					tmpEmail = "";
-				}
-				dsDocGia.add(new DocGiaDTO(resultSet.getObject(1).toString(), 
-						resultSet.getObject(2).toString(), 
-						ldg, 
-						resultSet.getObject(4).toString(), 
-						Date.valueOf(resultSet.getObject(5).toString()),
-						resultSet.getObject(6).toString(),
-						tmpEmail));
 			}
 		}
 		catch(Exception ex){
@@ -61,9 +30,9 @@ public class DocGiaDAL {
 		}
 	}
 	
-	public String getTenDocGia(String maDocGia) {
+	/*public String getTenDocGia(int maDocGia) {
 		for (DocGiaDTO item: dsDocGia) {
-			if (item.getMaDocGia().equals(maDocGia))
+			if (item.getMaDocGia() == maDocGia)
 				return item.getTenDocGia();
 		}
 		return "";
@@ -83,7 +52,7 @@ public class DocGiaDAL {
 		return instance;
 	}
 	
-	public boolean isContain(DocGiaDTO dg) {
+	/*public boolean isContain(DocGiaDTO dg) {
 		for (DocGiaDTO item: dsDocGia)
 			if (item.getMaDocGia().equals(dg.getMaDocGia()))
 				return true;
@@ -138,14 +107,8 @@ public class DocGiaDAL {
 					dsDocGia.remove(i);
 			}
 		return result;
-	}
-	public ArrayList<DocGiaDTO> getResources(JComboBox<LoaiDocGiaDTO> cbbLoaiDocGia){
-		
-		cbbLoaiDocGia.addItem(new LoaiDocGiaDTO("", ""));
-			
-		for(LoaiDocGiaDTO item: dsLoaiDocGia)
-			cbbLoaiDocGia.addItem(item);
-			
+	}*/
+	public ArrayList<DocGiaDTO> getResources(){
 		return dsDocGia;
 	}
 	
@@ -153,9 +116,9 @@ public class DocGiaDAL {
 		return dsDocGia;
 	}
 
-	public String thongTin(String maDocGia) {
+	public String thongTin(int maDocGia) {
 		for (DocGiaDTO dg:dsDocGia) {
-			if(maDocGia.equalsIgnoreCase(dg.getMaDocGia()))
+			if(dg.getMaDocGia() == maDocGia)
 				return dg.getMaDocGia()+dg.getTenDocGia();
 		}
 		return "";

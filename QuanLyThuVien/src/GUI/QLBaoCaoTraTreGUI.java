@@ -58,13 +58,13 @@ public class QLBaoCaoTraTreGUI {
 		pnTongQuanTKSach.add(pnTieuDeTK);
 		pnTieuDeTK.setLayout(null);
 		
-		JLabel lblTieuDe = new JLabel("QUẢN LÝ THỐNG KÊ SÁCH TRẢ TRỄ");
+		JLabel lblTieuDe = new JLabel("QUAN LY THONG KE SACH TRA TRE");
 		lblTieuDe.setForeground(Color.RED);
 		lblTieuDe.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblTieuDe.setBounds(350, 5, 439, 28);
 		pnTieuDeTK.add(lblTieuDe);
 		
-		JLabel lblNgay = new JLabel("Ngày:");
+		JLabel lblNgay = new JLabel("Ngay:");
 		lblNgay.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		lblNgay.setBounds(172, 50, 46, 23);
 		pnTieuDeTK.add(lblNgay);
@@ -78,7 +78,7 @@ public class QLBaoCaoTraTreGUI {
 		pnTieuDeTK.add(txtfNgay);
 		txtfNgay.setColumns(10);
 		
-		JButton btnThongKe = new JButton("Thống kê");
+		JButton btnThongKe = new JButton("Thong ke");
 		btnThongKe.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnThongKe.setIcon(new ImageIcon("icon\\edit.png"));
 		btnThongKe.setBounds(507, 40, 157, 41);
@@ -87,13 +87,13 @@ public class QLBaoCaoTraTreGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				DefaultTableModel dtm=QLBaoCaoTreBLL.getInstance().thongke();
-				tbThongKe.setModel(dtm);
+//				DefaultTableModel dtm=QLBaoCaoTreBLL.getInstance().thongke();
+//				tbThongKe.setModel(dtm);
 			}
 		});
 		pnTieuDeTK.add(btnThongKe);
 		
-		JButton btnLapBaoCao = new JButton("Lập báo cáo");
+		JButton btnLapBaoCao = new JButton("Lap bao cao");
 		btnLapBaoCao.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnLapBaoCao.setIcon(new ImageIcon("icon\\print.png"));
 		btnLapBaoCao.setBounds(755, 40, 157, 41);
@@ -102,7 +102,7 @@ public class QLBaoCaoTraTreGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				QLBaoCaoTreBLL.getInstance().lapBaoCaoTre();
+//				QLBaoCaoTreBLL.getInstance().lapBaoCaoTre();
 			}
 		});
 		pnTieuDeTK.add(btnLapBaoCao);

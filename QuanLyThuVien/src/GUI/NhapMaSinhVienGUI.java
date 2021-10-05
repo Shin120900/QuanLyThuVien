@@ -10,16 +10,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import event.IClickOk;
+
 public class NhapMaSinhVienGUI {
+	private IClickOk iClickOk;
 	private JFrame frmMain;
 	private static NhapMaSinhVienGUI instance = null;
-	private NhapMaSinhVienGUI(){
+	private NhapMaSinhVienGUI(IClickOk iClickOk){
+		this.iClickOk = iClickOk;
 		init();
 	}
 	
-	public static NhapMaSinhVienGUI getInstance() {
+	public static NhapMaSinhVienGUI getInstance(IClickOk iClickOk) {
 		if (instance == null)
-			instance = new NhapMaSinhVienGUI();
+			instance = new NhapMaSinhVienGUI(iClickOk);
 		return instance;
 	}
 	
@@ -28,9 +32,9 @@ public class NhapMaSinhVienGUI {
 	}
 	
 	void init() {
-		frmMain = new JFrame("Thêm phiếu mượn");
+		frmMain = new JFrame("");
 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMain.setBounds(500, 200, 400, 300);//595
+		frmMain.setBounds(500, 300, 400, 300);//595
 		frmMain.getContentPane().setLayout(null);
 		
 		JPanel pnNhapMSSV = new JPanel();
@@ -38,16 +42,27 @@ public class NhapMaSinhVienGUI {
 		frmMain.getContentPane().add(pnNhapMSSV);
 		pnNhapMSSV.setLayout(null);
 		
-		JButton btnThoat = new JButton("Thoát");
+		JButton btnOk = new JButton("Ok");
+		btnOk.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		btnOk.setBounds(0, 0, 138, 41);
+		btnOk.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frmMain.setVisible(false);
+				iClickOk.clickOk();
+			}
+		});
+		pnNhapMSSV.add(btnOk);
+		
+		JButton btnThoat = new JButton("Cancel");
 		btnThoat.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnThoat.setIcon(new ImageIcon("icon//logout.png"));
 		btnThoat.setBounds(50, 50, 138, 41);
 		btnThoat.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frmMain.setVisible(false);
-				QLDangNhapGUI.getInstance().getFrame().setVisible(true);
 			}
 		});
 		pnNhapMSSV.add(btnThoat);

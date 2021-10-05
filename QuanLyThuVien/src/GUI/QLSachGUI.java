@@ -48,7 +48,7 @@ public class QLSachGUI {
 	}
 	
 	private void loadResources() {
-		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
+//		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
 	}
 	
 	public static QLSachGUI getInstance() {
@@ -62,7 +62,7 @@ public class QLSachGUI {
 	}
 	
 	public void reloadResources() {
-		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
+//		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
 	}
 	
 	private void clearField() {
@@ -259,7 +259,7 @@ public class QLSachGUI {
 					if (rdbtnTrong.isSelected())
 						tinhTrang = "Trong";
 					else
-						tinhTrang = "Ä�ang Ä‘Æ°á»£c mÆ°á»£n";
+						tinhTrang = "Dang duoc muon";
 					Calendar cal = dcNamXuatBan.getCalendar();
 					java.util.Date date = cal.getTime();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -267,10 +267,10 @@ public class QLSachGUI {
 					cal = dcNgayNhap.getCalendar();
 					date = cal.getTime();
 					String nn = sdf.format(date);
-					SachDTO s = new SachDTO(tfMaDauSach.getText(), tfTacGia.getText(), tfTenSach.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), 
+					/*SachDTO s = new SachDTO(tfMaDauSach.getText(), tfTacGia.getText(), tfTenSach.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), 
 							Date.valueOf(nn), tfTriGia.getText(), tinhTrang, Date.valueOf(nxb));
 					String result = QLSachBLL.getInstance().changeProcessing(s);
-					lblMessage.setText(result);
+					lblMessage.setText(result);*/
 					reloadResources();
 				}
 				catch(Exception ex) {

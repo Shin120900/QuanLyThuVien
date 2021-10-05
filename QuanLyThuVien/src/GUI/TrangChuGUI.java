@@ -117,7 +117,7 @@ public class TrangChuGUI {
 	 */
 	private void initialize() {
 		//init the container
-		frmTrangChu = new JFrame("QUAN LY THE LOAI");
+		frmTrangChu = new JFrame("QUAN LY THU VIEN");
 		frmTrangChu.setBounds(10, 10, 1341, 720);//x,y,r,d
 		frmTrangChu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTrangChu.getContentPane().setLayout(null);
@@ -359,45 +359,6 @@ public class TrangChuGUI {
 			}
 		});
 		
-		/*JMenuItem mnThanhLy=new JMenuItem("THANH LÃ�");
-		mnThanhLy.setIcon(new ImageIcon("icon\\System.png"));
-		mnThanhLy.setHorizontalAlignment(SwingConstants.LEFT);
-		mnThanhLy.setBackground(SystemColor.textHighlight);
-		mnThanhLy.setForeground(Color.BLACK);
-		mnThanhLy.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		mbMenu.add(mnThanhLy);
-		mnThanhLy.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				pnMain.removeAll();
-				QLThanhLyGUI qlThanhLy = QLThanhLyGUI.getInstance();
-				pnMain.add(qlThanhLy.getPnMain());
-				pnMain.revalidate();
-				pnMain.repaint();
-			}
-		});*/
-		
-		/*JMenuItem mnHeThong = new JMenuItem("Há»† THá»�NG");
-		mnHeThong.setIcon(new ImageIcon("icon\\thaydoiquydinh.png"));
-		mnHeThong.setHorizontalAlignment(SwingConstants.LEFT);
-		mnHeThong.setBackground(SystemColor.textHighlight);
-		mnHeThong.setForeground(Color.BLACK);
-		mnHeThong.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		mbMenu.add(mnHeThong);
-		mnHeThong.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				pnMain.removeAll();
-				QLHeThongGUI qlHeThong = QLHeThongGUI.getInstance();
-				pnMain.add(qlHeThong.getPnTongQuanQLHeThong());
-				pnMain.revalidate();
-				pnMain.repaint();
-			}
-		});*/
 		
 		
 		

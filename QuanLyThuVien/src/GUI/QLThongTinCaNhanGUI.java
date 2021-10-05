@@ -180,7 +180,7 @@ public class QLThongTinCaNhanGUI {
 		pnTongQuanQLChaoMung.add(pnMatKhau);
 		pnMatKhau.setLayout(null);
 		
-		JLabel lblNewLabel_7 = new JLabel("Ä�á»”I Máº¬T KHáº¨U");
+		JLabel lblNewLabel_7 = new JLabel("DOI MAT KHAU");
 		lblNewLabel_7.setIcon(new ImageIcon("icon\\changpass.png"));
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblNewLabel_7.setBounds(10, 5, 174, 24);
@@ -191,17 +191,17 @@ public class QLThongTinCaNhanGUI {
 		pnMatKhau.add(pnQLMatKhau);
 		pnQLMatKhau.setLayout(null);
 		
-		JLabel lblMatKhau = new JLabel("Máº­t kháº©u:");
+		JLabel lblMatKhau = new JLabel("Mat khau cu:");
 		lblMatKhau.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblMatKhau.setBounds(289, 27, 109, 14);
 		pnQLMatKhau.add(lblMatKhau);
 		
-		JLabel lblMatKhauMoi = new JLabel("Máº­t kháº©u má»›i:");
+		JLabel lblMatKhauMoi = new JLabel("Mat khau moi:");
 		lblMatKhauMoi.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblMatKhauMoi.setBounds(289, 71, 123, 14);
 		pnQLMatKhau.add(lblMatKhauMoi);
 		
-		JLabel lblNhapLaiMatKhauMoi = new JLabel("Nháº­p láº¡i máº­t kháº©u má»›i:");
+		JLabel lblNhapLaiMatKhauMoi = new JLabel("Xac nhan mat khau moi:");
 		lblNhapLaiMatKhauMoi.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblNhapLaiMatKhauMoi.setBounds(289, 116, 137, 14);
 		pnQLMatKhau.add(lblNhapLaiMatKhauMoi);
@@ -224,7 +224,7 @@ public class QLThongTinCaNhanGUI {
 		pnQLMatKhau.add(tfNhapLaiMatKhauMoi);
 		tfNhapLaiMatKhauMoi.setColumns(10);
 		
-		JButton btnLuu = new JButton("LÆ°u");
+		JButton btnLuu = new JButton("Luu");
 		btnLuu.setIcon(new ImageIcon("icon\\save.png"));
 		btnLuu.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnLuu.setBounds(289, 154, 168, 41);
@@ -238,7 +238,7 @@ public class QLThongTinCaNhanGUI {
 		});
 		pnQLMatKhau.add(btnLuu);
 		
-		JButton btnHuy = new JButton("Há»§y");
+		JButton btnHuy = new JButton("Huy");
 		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
 		btnHuy.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnHuy.setBounds(576, 154, 168, 41);
@@ -251,7 +251,7 @@ public class QLThongTinCaNhanGUI {
 		});
 		pnQLMatKhau.add(btnHuy);
 		
-		JButton btnDangXuat = new JButton("Ä�Äƒng xuáº¥t");
+		JButton btnDangXuat = new JButton("Dang Xuat");
 		btnDangXuat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TrangChuGUI.getInstance().getFrmTrangChu().setVisible(false);

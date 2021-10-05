@@ -51,7 +51,7 @@ public class QLNhanVienGUI {
 	}
 	
 	private void loadResources() {
-		tbQLNhanVien.setModel(QLNhanVienBLL.getInstance().getResources());
+//		tbQLNhanVien.setModel(QLNhanVienBLL.getInstance().getResources());
 	}
 	
 //	private void reloadResources() {
@@ -94,7 +94,7 @@ public class QLNhanVienGUI {
 		pnTongQuanQLNhanVien.add(pnTieuDeQLNhanVien);
 		pnTieuDeQLNhanVien.setLayout(null);
 		
-		JLabel lblQLNhanVien = new JLabel("QUáº¢N LÃ� TÃ€I KHOáº¢N");
+		JLabel lblQLNhanVien = new JLabel("QUAN LY TAI KHOAN");
 		lblQLNhanVien.setForeground(Color.RED);
 		lblQLNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblQLNhanVien.setBounds(394, 11, 291, 31);
@@ -130,7 +130,7 @@ public class QLNhanVienGUI {
 		pnTongQuanQLNhanVien.add(pnThongTinNhanVien);
 		pnThongTinNhanVien.setLayout(null);
 		
-		JLabel lblThongTinNhanVien = new JLabel("THÃ”NG TIN TÃ€I KHOáº¢N");
+		JLabel lblThongTinNhanVien = new JLabel("THONG TIN TAI KHOAN");
 		lblThongTinNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 17));
 		lblThongTinNhanVien.setBounds(10, 5, 208, 22);
 		pnThongTinNhanVien.add(lblThongTinNhanVien);
@@ -141,13 +141,13 @@ public class QLNhanVienGUI {
 		pnThongTinNhanVien.add(pnThongTinNhap);
 		pnThongTinNhap.setLayout(null);
 		
-		JLabel lblMessage = new JLabel("(*) KhÃ´ng Ä‘Æ°á»£c bá»� trá»‘ng");
+		JLabel lblMessage = new JLabel("(*) Khong duoc de trong");
 		lblMessage.setForeground(Color.RED);
 		lblMessage.setFont(new Font("Times New Roman", Font.ITALIC, 14));
 		lblMessage.setBounds(125, 11, 654, 34);
 		pnThongTinNhap.add(lblMessage);
 		
-		JLabel lblTenNhanVien = new JLabel("TÃªn nhÃ¢n viÃªn:*");
+		JLabel lblTenNhanVien = new JLabel("Ten nhan vien:*");
 		lblTenNhanVien.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblTenNhanVien.setBounds(24, 116, 91, 30);
 		pnThongTinNhap.add(lblTenNhanVien);
@@ -157,7 +157,7 @@ public class QLNhanVienGUI {
 		pnThongTinNhap.add(tfTenNhanVien);
 		tfTenNhanVien.setColumns(10);
 		
-		JLabel lblLoaiTaiKhoan = new JLabel("Chá»©c vá»¥:*");
+		JLabel lblLoaiTaiKhoan = new JLabel("Chuc vu:*");
 		lblLoaiTaiKhoan.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblLoaiTaiKhoan.setBounds(420, 116, 91, 30);
 		pnThongTinNhap.add(lblLoaiTaiKhoan);
@@ -165,12 +165,12 @@ public class QLNhanVienGUI {
 		cbbLoaiTaiKhoan = new JComboBox<String>();
 		cbbLoaiTaiKhoan.setBounds(521,  116, 258, 31);
 		cbbLoaiTaiKhoan.addItem("");
-		cbbLoaiTaiKhoan.addItem("Thá»§ thÆ°");
-		cbbLoaiTaiKhoan.addItem("Quáº£n trá»‹ há»‡ thá»‘ng");
+		cbbLoaiTaiKhoan.addItem("Thu thu");
+		cbbLoaiTaiKhoan.addItem("Quan ly");
 		pnThongTinNhap.add(cbbLoaiTaiKhoan);
 		
 		
-		JLabel lblTaiKhoan = new JLabel("TÃªn tÃ i khoáº£n:*");
+		JLabel lblTaiKhoan = new JLabel("Ten tai khoan:*");
 		lblTaiKhoan.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblTaiKhoan.setBounds(24, 56, 91, 30);
 		pnThongTinNhap.add(lblTaiKhoan);
@@ -180,7 +180,7 @@ public class QLNhanVienGUI {
 		pnThongTinNhap.add(tfTenTaiKhoan);
 		tfTenTaiKhoan.setColumns(10);
 		
-		JLabel lblMatKhau = new JLabel("Máº­t kháº©u:*");
+		JLabel lblMatKhau = new JLabel("Mat khau:*");
 		lblMatKhau.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblMatKhau.setBounds(420, 56, 91, 30);
 		pnThongTinNhap.add(lblMatKhau);
@@ -217,7 +217,7 @@ public class QLNhanVienGUI {
 			}
 		});
 		
-		JButton btnThem = new JButton("ThÃªm");
+		JButton btnThem = new JButton("Them");
 		btnThem.setIcon(new ImageIcon("icon\\new.png"));
 		btnThem.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnThem.setBounds(896, 26, 138, 41);
@@ -239,7 +239,7 @@ public class QLNhanVienGUI {
 //		});
 		pnThongTinNhanVien.add(btnThem);
 		
-		JButton btnSua = new JButton("Sá»­a");
+		JButton btnSua = new JButton("Sua");
 		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
 		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnSua.setBounds(896, 85, 138, 41);
@@ -262,7 +262,7 @@ public class QLNhanVienGUI {
 //		});
 		pnThongTinNhanVien.add(btnSua);
 		
-		JButton btnHuy = new JButton("Há»§y");
+		JButton btnHuy = new JButton("Huy");
 		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
 		btnHuy.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnHuy.setBounds(896, 143, 138, 41);
@@ -276,7 +276,7 @@ public class QLNhanVienGUI {
 		});
 		pnThongTinNhanVien.add(btnHuy);
 		
-		JButton btnXoa = new JButton("XÃ³a");
+		JButton btnXoa = new JButton("Xoa");
 		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
 		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnXoa.setBounds(896, 204, 138, 41);

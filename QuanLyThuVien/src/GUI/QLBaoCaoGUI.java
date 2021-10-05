@@ -64,13 +64,13 @@ public class QLBaoCaoGUI {
 		pnTongQuanQLTK.add(panelTieuDeQLTK);
 		panelTieuDeQLTK.setLayout(null);
 		
-		JLabel lblTieuDe = new JLabel("THỐNG KÊ MƯỢN SÁCH THEO THỂ LOẠI TỪNG THÁNG");
+		JLabel lblTieuDe = new JLabel("THONG KE MUON SACH THEO THE LOAI TUNG THANG");
 		lblTieuDe.setForeground(Color.RED);
 		lblTieuDe.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblTieuDe.setBounds(158, 11, 748, 28);
 		panelTieuDeQLTK.add(lblTieuDe);
 		
-		JLabel lblThang = new JLabel("Tháng:");
+		JLabel lblThang = new JLabel("Thang:");
 		lblThang.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		lblThang.setBounds(81, 44, 46, 31);
 		panelTieuDeQLTK.add(lblThang);
@@ -95,7 +95,7 @@ public class QLBaoCaoGUI {
 		txtfNam.setText(yearFormat.format(date));
 		txtfNam.setColumns(10);
 		
-		JButton btnThongKe = new JButton("Thống kê");
+		JButton btnThongKe = new JButton("Thong ke");
 		btnThongKe.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnThongKe.setIcon(new ImageIcon("icon\\edit.png"));
 		btnThongKe.addActionListener(new ActionListener() {
@@ -109,7 +109,7 @@ public class QLBaoCaoGUI {
 		btnThongKe.setBounds(505, 38, 157, 41);
 		panelTieuDeQLTK.add(btnThongKe);
 		
-		JButton btnLapBaoCao = new JButton("Lập báo cáo");
+		JButton btnLapBaoCao = new JButton("Lap bao cao");
 		btnLapBaoCao.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnLapBaoCao.setIcon(new ImageIcon("icon\\print.png"));
 		btnLapBaoCao.setBounds(752, 38, 157, 41);

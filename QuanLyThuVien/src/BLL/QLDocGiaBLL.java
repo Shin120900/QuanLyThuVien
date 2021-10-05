@@ -25,7 +25,7 @@ public class QLDocGiaBLL {
 	}
 	
 	private boolean checkData(DocGiaDTO dg) throws MyNullException{
-		if (dg.getMaDocGia().equals("")) {
+		/*if (dg.getMaDocGia().equals("")) {
 			throw new MyNullException("Mã đọc giả đang bị trống");
 		} else if(dg.getLoaiDocGia().toString().equals("")) {
 			throw new MyNullException("Loại đọc giả đang bị trống");
@@ -39,7 +39,7 @@ public class QLDocGiaBLL {
 			}catch(NullPointerException e) {
 				throw new MyNullException("Ngày sinh đang bị bỏ trống");
 			}
-		}
+		}*/
 		return true;
 	}
 	
@@ -102,9 +102,9 @@ public class QLDocGiaBLL {
 			dtm.addColumn("Email");
 			int i = 1;
 			for(DocGiaDTO dg : dsDocGia) {
-				Object[] row = {i++, dg.getMaDocGia(), dg.getTenDocGia(),dg.getLoaiDocGia().toString(),
+				/*Object[] row = {i++, dg.getMaDocGia(), dg.getTenDocGia(),dg.getLoaiDocGia().toString(),
 						dg.getLopMon(), dg.getNgaySinh(), dg.getSdt(), dg.getEmail()};
-				dtm.addRow(row);
+				dtm.addRow(row);*/
 			}
 			
 		}
@@ -128,9 +128,9 @@ public class QLDocGiaBLL {
 			return "Xóa không thành công! Vui lòng thử lại";
 	}
 	
-	public DefaultTableModel getResources(JComboBox<LoaiDocGiaDTO> cbbLoaiDocGia) {
+	public DefaultTableModel getResources() {
 		ArrayList<DocGiaDTO> dsDocGia = new ArrayList<DocGiaDTO>();
-		dsDocGia = DocGiaDAL.getInstance().getResources(cbbLoaiDocGia);
+		dsDocGia = DocGiaDAL.getInstance().getResources();
 		DefaultTableModel dtm = new DefaultTableModel();
 		try {
 			dtm.addColumn("STT");
@@ -143,9 +143,9 @@ public class QLDocGiaBLL {
 			dtm.addColumn("Email");
 			int i = 1;
 			for(DocGiaDTO dg : dsDocGia) {
-				Object[] row = {i++, dg.getMaDocGia(), dg.getTenDocGia(),dg.getLoaiDocGia().toString(),
+				/*Object[] row = {i++, dg.getMaDocGia(), dg.getTenDocGia(),dg.getLoaiDocGia().toString(),
 						dg.getLopMon(), dg.getNgaySinh(), dg.getSdt(), dg.getEmail()};
-				dtm.addRow(row);
+				dtm.addRow(row);*/
 			}
 		}
 		catch(Exception ex) {
@@ -176,18 +176,18 @@ public class QLDocGiaBLL {
 		int i=0;
 		System.out.println(key);
 		for(DocGiaDTO dg:dsDocGia) {
-			String thongTin=DocGiaDAL.getInstance().thongTin(dg.getMaDocGia());
+			String thongTin=DocGiaDAL.getInstance().thongTin(String.valueOf(dg.getMaDocGia()));
 			thongTin=thongTin.toLowerCase();
 			key=key.toLowerCase();
 			if(thongTin.contains(key)) {
-				Object[] row= {i++,dg.getMaDocGia(),
+				/*Object[] row= {i++,dg.getMaDocGia(),
 						dg.getTenDocGia(),
 						dg.getLoaiDocGia(),
 						dg.getLopMon(),
 						dg.getNgaySinh(),
 						dg.getSdt(),
 						dg.getEmail()};
-				dtm.addRow(row);
+				dtm.addRow(row);*/
 				}
 			}
 		return dtm;

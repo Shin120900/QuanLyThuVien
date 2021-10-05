@@ -1,4 +1,7 @@
-/GUI/
 /BLL/
+/CustomControl/
 /DAL/
 /DTO/
+/GUI/
+/MyException/
+/event/

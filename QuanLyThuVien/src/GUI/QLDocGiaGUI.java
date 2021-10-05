@@ -115,7 +115,7 @@ public class QLDocGiaGUI {
 
 		// add control
 		// control of Title
-		JLabel lblTitle = new JLabel("QUẢN LÝ ĐỘC GIẢ");
+		JLabel lblTitle = new JLabel("QUAN LY ĐOC GIA");
 		lblTitle.setForeground(Color.RED);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -157,12 +157,12 @@ public class QLDocGiaGUI {
 		pnDanhSachDocGia.add(sc, BorderLayout.CENTER);
 
 		tfTimKiem = new JTextField();
-		tfTimKiem.setToolTipText("Nhập mã độc giả hoặc họ tên,...");
+		tfTimKiem.setToolTipText("Nhap ma đoc gia hoac ho ten,...");
 		tfTimKiem.setBounds(559, 5, 337, 30);
 		pnDanhSachDocGia.add(tfTimKiem);
 		tfTimKiem.setColumns(10);
 
-		JButton btnTimKiem = new JButton("Tìm kiếm");
+		JButton btnTimKiem = new JButton("Tim kiem");
 		btnTimKiem.setIcon(new ImageIcon("icon\\find.png"));
 		btnTimKiem.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnTimKiem.setBounds(919, 4, 134, 35);
@@ -171,7 +171,7 @@ public class QLDocGiaGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (tfTimKiem.getText().length() == 0)
-					JOptionPane.showMessageDialog(null, "Bạn chưa nhập từ khóa cần tìm!", "Thông báo", 1);
+					JOptionPane.showMessageDialog(null, "Ban chua nhap tu khoa can tim!", "Thong bao", 1);
 				else {
 					tbDocGia.setModel(QLDocGiaBLL.getInstance().timKiem(tfTimKiem.getText()));
 				}
@@ -180,7 +180,7 @@ public class QLDocGiaGUI {
 		});
 		pnDanhSachDocGia.add(btnTimKiem);
 
-		JLabel lblThongTinDocGia = new JLabel("THÔNG TIN ĐỘC GIẢ");
+		JLabel lblThongTinDocGia = new JLabel("THONG TIN ĐOC GIA");
 		lblThongTinDocGia.setBounds(10, 0, 186, 28);
 		pnThongTinDocGia.add(lblThongTinDocGia);
 		lblThongTinDocGia.setFont(new Font("Times New Roman", Font.BOLD, 17));
@@ -192,7 +192,7 @@ public class QLDocGiaGUI {
 		pnThongTinDocGia.add(pnThongTinNhap);
 		pnThongTinNhap.setLayout(null);
 
-		JLabel lblHoTen = new JLabel("Họ Tên:*");
+		JLabel lblHoTen = new JLabel("Ho Ten:*");
 		lblHoTen.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblHoTen.setBounds(10, 82, 89, 26);
 		pnThongTinNhap.add(lblHoTen);
@@ -203,7 +203,7 @@ public class QLDocGiaGUI {
 		pnThongTinNhap.add(tfHoTen);
 		tfHoTen.setColumns(10);
 
-		JLabel lblMaDocGia = new JLabel("Mã độc giả:*");
+		JLabel lblMaDocGia = new JLabel("Ma đoc gia:*");
 		lblMaDocGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblMaDocGia.setBounds(10, 39, 89, 26);
 		pnThongTinNhap.add(lblMaDocGia);
@@ -214,7 +214,7 @@ public class QLDocGiaGUI {
 		pnThongTinNhap.add(tfMaDocGia);
 		tfMaDocGia.setColumns(10);
 
-		JLabel lblLoaiDocGia = new JLabel("Loại độc giả:*");
+		JLabel lblLoaiDocGia = new JLabel("Loai đoc gia:*");
 		lblLoaiDocGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblLoaiDocGia.setBounds(10, 125, 89, 26);
 		pnThongTinNhap.add(lblLoaiDocGia);
@@ -223,7 +223,7 @@ public class QLDocGiaGUI {
 //		cbbLoaiDocGia.setBounds(109, 125, 258, 30);
 //		pnThongTinNhap.add(cbbLoaiDocGia);
 
-		JLabel lblLopChuyenMon = new JLabel("Lớp:*");
+		JLabel lblLopChuyenMon = new JLabel("Lop:*");
 		lblLopChuyenMon.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblLopChuyenMon.setBounds(428, 39, 133, 26);
 		pnThongTinNhap.add(lblLopChuyenMon);
@@ -234,12 +234,12 @@ public class QLDocGiaGUI {
 		pnThongTinNhap.add(tfLopChuyenMon);
 		tfLopChuyenMon.setColumns(10);
 
-		JLabel lblNgaySinh = new JLabel("Ngày sinh:*");
+		JLabel lblNgaySinh = new JLabel("Ngay sinh:*");
 		lblNgaySinh.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblNgaySinh.setBounds(428, 82, 113, 26);
 		pnThongTinNhap.add(lblNgaySinh);
 
-		JLabel lblSDT = new JLabel("Số điện thoại:");
+		JLabel lblSDT = new JLabel("So dien thoai:");
 		lblSDT.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblSDT.setBounds(428, 125, 119, 26);
 		pnThongTinNhap.add(lblSDT);
@@ -251,7 +251,7 @@ public class QLDocGiaGUI {
 		tfSDT.setColumns(10);
 
 		// Cac chuc nang them sua xoa
-		JButton btnThem = new JButton("Thêm");
+		JButton btnThem = new JButton("Them");
 		btnThem.setIcon(new ImageIcon("icon\\new.png"));
 		btnThem.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnThem.setBounds(911, 39, 138, 41);
@@ -262,7 +262,7 @@ public class QLDocGiaGUI {
 			public void actionPerformed(ActionEvent arg0) {
 
 				if (dcNgaySinh.getDate() == null) {
-					lblMessage.setText("Ngày sinh đang bị trống");
+					lblMessage.setText("Ngay sinh dang bi trong");
 					return;
 				}
 
@@ -275,7 +275,7 @@ public class QLDocGiaGUI {
 //							(LoaiDocGiaDTO) cbbLoaiDocGia.getSelectedItem(), tfLopChuyenMon.getText(),
 //							Date.valueOf(sdf.format(date)), tfSDT.getText(), tfEmail.getText());
 				} catch (Exception e1) {
-					lblMessage.setText("Kiểm tra ngày tháng");
+					lblMessage.setText("Kiem tra ngay thang");
 				}
 				String result = QLDocGiaBLL.getInstance().addProcessing(dg);
 				lblMessage.setText(result);
@@ -284,7 +284,7 @@ public class QLDocGiaGUI {
 			}
 		});
 
-		JButton btnHuy = new JButton("Hủy");
+		JButton btnHuy = new JButton("Huy");
 		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
 		btnHuy.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnHuy.setBounds(911, 149, 138, 41);
@@ -300,7 +300,7 @@ public class QLDocGiaGUI {
 		});
 		pnThongTinDocGia.add(btnHuy);
 
-		JButton btnSua = new JButton("Sửa");
+		JButton btnSua = new JButton("Sua");
 		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
 		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnSua.setBounds(911, 94, 138, 41);
@@ -317,7 +317,7 @@ public class QLDocGiaGUI {
 //							(LoaiDocGiaDTO) cbbLoaiDocGia.getSelectedItem(), tfLopChuyenMon.getText(),
 //							Date.valueOf(sdf.format(date)), tfSDT.getText(), tfEmail.getText());
 				} catch (Exception e1) {
-					lblMessage.setText("Kiểm tra ngày tháng");
+					lblMessage.setText("Kiem tra ngay thang");
 				}
 				String result = QLDocGiaBLL.getInstance().changeProcessing(dg);
 				lblMessage.setText(result);
@@ -326,7 +326,7 @@ public class QLDocGiaGUI {
 		});
 		pnThongTinDocGia.add(btnSua);
 
-		JButton btnXoa = new JButton("Xóa");
+		JButton btnXoa = new JButton("Xoa");
 		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
 		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnXoa.setBounds(911, 204, 138, 41);
@@ -370,7 +370,7 @@ public class QLDocGiaGUI {
 		lblMessage.setBounds(109, 5, 713, 26);
 		pnThongTinNhap.add(lblMessage);
 
-		JLabel lblKhongBoTrong = new JLabel("(*) Không được bỏ trống");
+		JLabel lblKhongBoTrong = new JLabel("(*) Khong đuoc bo trong");
 		lblKhongBoTrong.setFont(new Font("Times New Roman", Font.ITALIC, 13));
 		lblKhongBoTrong.setForeground(Color.red);
 		lblKhongBoTrong.setBounds(429, 173, 393, 26);

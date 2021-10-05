@@ -22,7 +22,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import BLL.QLPhatTienBLL;
-import DTO.PhatTienDTO;
+import DTO.BienBanXuLyDTO;
 
 import javax.swing.ScrollPaneConstants;
 import com.toedter.calendar.JDateChooser;
@@ -46,7 +46,7 @@ public class QLPhatTienGUI {
 	}
 
 	private void loadResources() {
-		tbQLViPham.setModel(QLPhatTienBLL.getInstance().getResources());
+//		tbQLViPham.setModel(QLPhatTienBLL.getInstance().getResources());
 	}
 
 	public static QLPhatTienGUI getInstance() {
@@ -89,7 +89,7 @@ public class QLPhatTienGUI {
 		pnTongQuanQLViPham.add(pnTieuDeQLViPham);
 		pnTieuDeQLViPham.setLayout(null);
 
-		JLabel lblQLViPham = new JLabel("QUẢN LÝ VI PHẠM");
+		JLabel lblQLViPham = new JLabel("QUAN LY VI PHAM");
 		lblQLViPham.setForeground(Color.RED);
 		lblQLViPham.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblQLViPham.setBounds(434, 13, 221, 33);
@@ -128,7 +128,7 @@ public class QLPhatTienGUI {
 		pnTongQuanQLViPham.add(pnThongTinDocGia);
 		pnThongTinDocGia.setLayout(null);
 
-		JLabel lblThongTinDocGia = new JLabel("THÔNG TIN VI PHẠM");
+		JLabel lblThongTinDocGia = new JLabel("THONG TIN VI PHAM");
 		lblThongTinDocGia.setBounds(10, 5, 187, 22);
 		lblThongTinDocGia.setFont(new Font("Times New Roman", Font.BOLD, 17));
 		pnThongTinDocGia.add(lblThongTinDocGia);
@@ -139,17 +139,17 @@ public class QLPhatTienGUI {
 		pnThongTinDocGia.add(pnThongTinNhap);
 		pnThongTinNhap.setLayout(null);
 
-		JLabel lblMaDocGia = new JLabel("Mã độc giả:*");
+		JLabel lblMaDocGia = new JLabel("Ma đoc gia:*");
 		lblMaDocGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblMaDocGia.setBounds(30, 52, 80, 30);
 		pnThongTinNhap.add(lblMaDocGia);
 
-		JLabel lblSoTien = new JLabel("Số tiền:*");
+		JLabel lblSoTien = new JLabel("So tien:*");
 		lblSoTien.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblSoTien.setBounds(30, 109, 72, 30);
 		pnThongTinNhap.add(lblSoTien);
 
-		JLabel lblNgayPhat = new JLabel("Ngày phạt:*");
+		JLabel lblNgayPhat = new JLabel("Ngay phat:*");
 		lblNgayPhat.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblNgayPhat.setBounds(30, 167, 72, 30);
 		pnThongTinNhap.add(lblNgayPhat);
@@ -160,7 +160,7 @@ public class QLPhatTienGUI {
 		pnThongTinNhap.add(tfSoTien);
 		tfSoTien.setColumns(10);
 
-		JLabel lblLyDo = new JLabel("Lý do:");
+		JLabel lblLyDo = new JLabel("Ly do:");
 		lblLyDo.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblLyDo.setBounds(441, 52, 59, 30);
 		pnThongTinNhap.add(lblLyDo);
@@ -190,7 +190,7 @@ public class QLPhatTienGUI {
 		taLyDo.setLineWrap(true);
 		pnThongTinNhap.add(taLyDo);
 
-		JButton btnThem = new JButton("Th\u00EAm");
+		JButton btnThem = new JButton("Them");
 		btnThem.setBounds(897, 37, 138, 41);
 		pnThongTinDocGia.add(btnThem);
 		btnThem.setIcon(new ImageIcon("icon\\new.png"));
@@ -212,10 +212,10 @@ public class QLPhatTienGUI {
 						maLanPhat = "P" + (1 + Integer.parseInt(
 								tbQLViPham.getValueAt(tbQLViPham.getRowCount() - 1, 1).toString().substring(1)));
 					}
-					PhatTienDTO pt = new PhatTienDTO(maLanPhat, tfSoTien.getText(), tfMaDocGia.getText(),
+					/*BienBanXuLyDTO pt = new BienBanXuLyDTO(maLanPhat, tfSoTien.getText(), tfMaDocGia.getText(),
 							Date.valueOf(ngayPhat), taLyDo.getText());
 					String result = QLPhatTienBLL.getInstance().addProcessing(pt);
-					lblMessage.setText(result);
+					lblMessage.setText(result);*/
 					reloadResources();
 				} catch (Exception ex) {
 					lblMessage.setText("Ngày phạt phải đúng định dạng ngày");
@@ -224,7 +224,7 @@ public class QLPhatTienGUI {
 			}
 		});
 
-		JButton btnHuy = new JButton("Hủy");
+		JButton btnHuy = new JButton("Huy");
 		btnHuy.setBounds(897, 148, 138, 41);
 		pnThongTinDocGia.add(btnHuy);
 		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
@@ -241,7 +241,7 @@ public class QLPhatTienGUI {
 			}
 		});
 
-		JButton btnXoa = new JButton("Xóa");
+		JButton btnXoa = new JButton("Xoa");
 		btnXoa.setBounds(897, 201, 138, 41);
 		pnThongTinDocGia.add(btnXoa);
 		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
@@ -258,7 +258,7 @@ public class QLPhatTienGUI {
 			}
 		});
 
-		JButton btnSua = new JButton("Sửa");
+		JButton btnSua = new JButton("Sua");
 		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
 		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnSua.setBounds(897, 93, 138, 41);
