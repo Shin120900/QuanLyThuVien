@@ -148,8 +148,8 @@ public class QLMuonTraGUI {
 					JOptionPane.showMessageDialog(null, "Ban chua nhap tu khoa can tim!", "Thong bao", 1);
 				else {
 					tbMuonTra.setModel(QLMuonTraBLL.getInstance().timKiem(tfTimKiem.getText()));
-					tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellRenderer(new ButtonRenderer());
-					tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellEditor(new ButtonEditor(new JCheckBox()));
+					tbMuonTra.getColumn("Tra sach").setCellRenderer(new ButtonRenderer());
+					tbMuonTra.getColumn("Tra sach").setCellEditor(new ButtonEditor(new JCheckBox()));
 				}
 			}
 		});

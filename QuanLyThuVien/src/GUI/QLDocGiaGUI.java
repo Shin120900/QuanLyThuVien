@@ -38,12 +38,14 @@ public class QLDocGiaGUI {
 	private JPanel pnMain;
 	private JTable tbDocGia;
 	private JTextField tfHoTen;
-	private JTextField tfEmail;
-	private JTextField tfSDT;
-	private JTextField tfLopChuyenMon;
+	private JTextField tfLop;
+	private JTextField tfKhoa;
 	private JTextField tfMaDocGia;
 	private JLabel lblMessage;
+	private JTextField tfGioiTinh;
 	private JDateChooser dcNgaySinh;
+	private JTextField tfDiaChi;
+	
 
 	private boolean isEdit = true;
 	private JTextField tfTimKiem;
@@ -79,12 +81,15 @@ public class QLDocGiaGUI {
 	}
 
 	private void clearField() {
-		tfEmail.setText("");
+		
 		tfHoTen.setText("");
-		tfLopChuyenMon.setText("");
+		tfLop.setText("");
+		tfKhoa.setText("");
 		tfMaDocGia.setText("");
+		tfGioiTinh.setText("");
 		dcNgaySinh.setDate(null);
-		tfSDT.setText("");
+		tfDiaChi.setText("");
+		
 //		cbbLoaiDocGia.setSelectedItem(0);
 	}
 
@@ -115,7 +120,7 @@ public class QLDocGiaGUI {
 
 		// add control
 		// control of Title
-		JLabel lblTitle = new JLabel("QUAN LY ĐOC GIA");
+		JLabel lblTitle = new JLabel("QUAN LY DOC GIA");
 		lblTitle.setForeground(Color.RED);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -147,17 +152,18 @@ public class QLDocGiaGUI {
 //					}
 //				}
 
-				tfLopChuyenMon.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 4).toString());
+				tfLop.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 4).toString());
 				dcNgaySinh.setDate(Date.valueOf(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 5).toString()));
-				tfSDT.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 6).toString());
-				tfEmail.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 7).toString());
+				tfKhoa.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 6).toString());
+				tfGioiTinh.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 7).toString());
+				tfDiaChi.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 8).toString());
 			}
 
 		});
 		pnDanhSachDocGia.add(sc, BorderLayout.CENTER);
 
 		tfTimKiem = new JTextField();
-		tfTimKiem.setToolTipText("Nhap ma đoc gia hoac ho ten,...");
+		tfTimKiem.setToolTipText("Nhap ma doc gia hoac ho ten,...");
 		tfTimKiem.setBounds(559, 5, 337, 30);
 		pnDanhSachDocGia.add(tfTimKiem);
 		tfTimKiem.setColumns(10);
@@ -180,7 +186,7 @@ public class QLDocGiaGUI {
 		});
 		pnDanhSachDocGia.add(btnTimKiem);
 
-		JLabel lblThongTinDocGia = new JLabel("THONG TIN ĐOC GIA");
+		JLabel lblThongTinDocGia = new JLabel("THONG TIN DOC GIA");
 		lblThongTinDocGia.setBounds(10, 0, 186, 28);
 		pnThongTinDocGia.add(lblThongTinDocGia);
 		lblThongTinDocGia.setFont(new Font("Times New Roman", Font.BOLD, 17));
@@ -194,61 +200,68 @@ public class QLDocGiaGUI {
 
 		JLabel lblHoTen = new JLabel("Ho Ten:*");
 		lblHoTen.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblHoTen.setBounds(10, 82, 89, 26);
+		lblHoTen.setBounds(10, 39, 89, 26);
 		pnThongTinNhap.add(lblHoTen);
 
 		tfHoTen = new JTextField();
-		tfHoTen.setBounds(109, 81, 258, 30);
+		tfHoTen.setBounds(109, 37, 258, 30);
 		tfHoTen.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		pnThongTinNhap.add(tfHoTen);
 		tfHoTen.setColumns(10);
 
-		JLabel lblMaDocGia = new JLabel("Ma đoc gia:*");
-		lblMaDocGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblMaDocGia.setBounds(10, 39, 89, 26);
-		pnThongTinNhap.add(lblMaDocGia);
+		JLabel lblLop = new JLabel("Lop:*");
+		lblLop.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblLop.setBounds(10, 82, 89, 26);
+		pnThongTinNhap.add(lblLop);
 
-		tfMaDocGia = new JTextField();
-		tfMaDocGia.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		tfMaDocGia.setBounds(109, 37, 258, 30);
-		pnThongTinNhap.add(tfMaDocGia);
-		tfMaDocGia.setColumns(10);
+		tfLop = new JTextField();
+		tfLop.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		tfLop.setBounds(109, 81, 258, 30);
+		pnThongTinNhap.add(tfLop);
+		tfLop.setColumns(10);
+		
+		JLabel lblKhoa = new JLabel("Khoa:*");
+		lblKhoa.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblKhoa.setBounds(10, 125, 89, 26);
+		pnThongTinNhap.add(lblKhoa);
 
-		JLabel lblLoaiDocGia = new JLabel("Loai đoc gia:*");
-		lblLoaiDocGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblLoaiDocGia.setBounds(10, 125, 89, 26);
-		pnThongTinNhap.add(lblLoaiDocGia);
+		tfKhoa = new JTextField();
+		tfKhoa.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		tfKhoa.setBounds(109, 125, 258, 30);
+		pnThongTinNhap.add(tfKhoa);
+		tfKhoa.setColumns(10);
 
-//		cbbLoaiDocGia = new JComboBox<LoaiDocGiaDTO>();
-//		cbbLoaiDocGia.setBounds(109, 125, 258, 30);
-//		pnThongTinNhap.add(cbbLoaiDocGia);
+		JLabel lblGioiTinh = new JLabel("Gioi tinh:*");
+		lblGioiTinh.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblGioiTinh.setBounds(428, 39, 89, 26);
+		pnThongTinNhap.add(lblGioiTinh);
 
-		JLabel lblLopChuyenMon = new JLabel("Lop:*");
-		lblLopChuyenMon.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblLopChuyenMon.setBounds(428, 39, 133, 26);
-		pnThongTinNhap.add(lblLopChuyenMon);
-
-		tfLopChuyenMon = new JTextField();
-		tfLopChuyenMon.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		tfLopChuyenMon.setBounds(564, 37, 258, 30);
-		pnThongTinNhap.add(tfLopChuyenMon);
-		tfLopChuyenMon.setColumns(10);
+		tfGioiTinh = new JTextField();
+		tfGioiTinh.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		tfGioiTinh.setBounds(564, 37, 258, 30);
+		pnThongTinNhap.add(tfGioiTinh);
+		tfGioiTinh.setColumns(10);
 
 		JLabel lblNgaySinh = new JLabel("Ngay sinh:*");
 		lblNgaySinh.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblNgaySinh.setBounds(428, 82, 113, 26);
 		pnThongTinNhap.add(lblNgaySinh);
+		
+		dcNgaySinh = new JDateChooser();
+		dcNgaySinh.setBounds(564, 82, 258, 30);
+		dcNgaySinh.setDateFormatString("yyyy-MM-dd");
+		pnThongTinNhap.add(dcNgaySinh);
+		
+		JLabel lblDiaChi = new JLabel("Dia chi:*");
+		lblDiaChi.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblDiaChi.setBounds(428, 125, 119, 26);
+		pnThongTinNhap.add(lblDiaChi);
 
-		JLabel lblSDT = new JLabel("So dien thoai:");
-		lblSDT.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblSDT.setBounds(428, 125, 119, 26);
-		pnThongTinNhap.add(lblSDT);
-
-		tfSDT = new JTextField();
-		tfSDT.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		tfSDT.setBounds(564, 125, 258, 30);
-		pnThongTinNhap.add(tfSDT);
-		tfSDT.setColumns(10);
+		tfDiaChi = new JTextField();
+		tfDiaChi.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		tfDiaChi.setBounds(564, 125, 258, 30);
+		pnThongTinNhap.add(tfDiaChi);
+		tfDiaChi.setColumns(10);
 
 		// Cac chuc nang them sua xoa
 		JButton btnThem = new JButton("Them");
@@ -347,22 +360,22 @@ public class QLDocGiaGUI {
 		tfHoTen.setNextFocusableComponent(tfMaDocGia);
 //		tfMaDocGia.setNextFocusableComponent(cbbLoaiDocGia);
 //		cbbLoaiDocGia.setNextFocusableComponent(tfLopChuyenMon);
-		tfSDT.setNextFocusableComponent(btnThem);
+//		tfSDT.setNextFocusableComponent(btnThem);
 		btnThem.setNextFocusableComponent(btnHuy);
 		btnHuy.setNextFocusableComponent(btnXoa);
 		btnXoa.setNextFocusableComponent(btnSua);
 		btnSua.setNextFocusableComponent(tfHoTen);
 
-		tfEmail = new JTextField();
-		tfEmail.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		tfEmail.setColumns(10);
-		tfEmail.setBounds(109, 168, 258, 30);
-		pnThongTinNhap.add(tfEmail);
-
-		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblEmail.setBounds(10, 171, 81, 26);
-		pnThongTinNhap.add(lblEmail);
+//		tfEmail = new JTextField();
+//		tfEmail.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+//		tfEmail.setColumns(10);
+//		tfEmail.setBounds(109, 168, 258, 30);
+//		pnThongTinNhap.add(tfEmail);
+//
+//		JLabel lblEmail = new JLabel("Email:");
+//		lblEmail.setFont(new Font("Times New Roman", Font.BOLD, 13));
+//		lblEmail.setBounds(10, 171, 81, 26);
+//		pnThongTinNhap.add(lblEmail);
 
 		lblMessage = new JLabel();
 		lblMessage.setFont(new Font("Times New Roman", Font.ITALIC, 13));
@@ -370,15 +383,12 @@ public class QLDocGiaGUI {
 		lblMessage.setBounds(109, 5, 713, 26);
 		pnThongTinNhap.add(lblMessage);
 
-		JLabel lblKhongBoTrong = new JLabel("(*) Khong đuoc bo trong");
+		JLabel lblKhongBoTrong = new JLabel("(*) Khong duoc bo trong");
 		lblKhongBoTrong.setFont(new Font("Times New Roman", Font.ITALIC, 13));
 		lblKhongBoTrong.setForeground(Color.red);
 		lblKhongBoTrong.setBounds(429, 173, 393, 26);
 		pnThongTinNhap.add(lblKhongBoTrong);
 
-		dcNgaySinh = new JDateChooser();
-		dcNgaySinh.setBounds(564, 82, 258, 30);
-		dcNgaySinh.setDateFormatString("yyyy-MM-dd");
-		pnThongTinNhap.add(dcNgaySinh);
+		
 	}
 }

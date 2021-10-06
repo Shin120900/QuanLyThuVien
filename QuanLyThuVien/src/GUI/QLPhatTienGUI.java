@@ -139,7 +139,7 @@ public class QLPhatTienGUI {
 		pnThongTinDocGia.add(pnThongTinNhap);
 		pnThongTinNhap.setLayout(null);
 
-		JLabel lblMaDocGia = new JLabel("Ma đoc gia:*");
+		JLabel lblMaDocGia = new JLabel("Ma doc gia:*");
 		lblMaDocGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblMaDocGia.setBounds(30, 52, 80, 30);
 		pnThongTinNhap.add(lblMaDocGia);
@@ -160,7 +160,7 @@ public class QLPhatTienGUI {
 		pnThongTinNhap.add(tfSoTien);
 		tfSoTien.setColumns(10);
 
-		JLabel lblLyDo = new JLabel("Ly do:");
+		JLabel lblLyDo = new JLabel("Loi vi pham:");
 		lblLyDo.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblLyDo.setBounds(441, 52, 59, 30);
 		pnThongTinNhap.add(lblLyDo);
@@ -171,7 +171,7 @@ public class QLPhatTienGUI {
 		pnThongTinNhap.add(tfMaDocGia);
 		tfMaDocGia.setColumns(10);
 
-		JLabel lblMessage = new JLabel("(*) Không được để trống");
+		JLabel lblMessage = new JLabel("(*)Khong duoc de trong");
 		lblMessage.setFont(new Font("Times New Roman", Font.ITALIC, 13));
 		lblMessage.setForeground(Color.RED);
 		lblMessage.setBounds(112, 11, 683, 30);

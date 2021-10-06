@@ -8,13 +8,16 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import event.IClickOk;
 
 public class NhapMaSinhVienGUI {
 	private IClickOk iClickOk;
 	private JFrame frmMain;
+	private JTextField tfMaDg;
 	private static NhapMaSinhVienGUI instance = null;
 	private NhapMaSinhVienGUI(IClickOk iClickOk){
 		this.iClickOk = iClickOk;
@@ -42,9 +45,21 @@ public class NhapMaSinhVienGUI {
 		frmMain.getContentPane().add(pnNhapMSSV);
 		pnNhapMSSV.setLayout(null);
 		
+
+		JLabel lblMaDg = new JLabel("Nhap ma doc gia:*");
+		lblMaDg.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		lblMaDg.setBounds(100, 30, 170, 50);
+		pnNhapMSSV.add(lblMaDg);
+		
+		tfMaDg = new JTextField();
+		tfMaDg.setBounds(50, 100, 300, 40);
+		tfMaDg.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		pnNhapMSSV.add(tfMaDg);
+		tfMaDg.setColumns(10);
+
 		JButton btnOk = new JButton("Ok");
 		btnOk.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnOk.setBounds(0, 0, 138, 41);
+		btnOk.setBounds(70, 200, 100, 40);
 		btnOk.addActionListener(new ActionListener() {
 			
 			@Override
@@ -57,7 +72,7 @@ public class NhapMaSinhVienGUI {
 		
 		JButton btnThoat = new JButton("Cancel");
 		btnThoat.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnThoat.setBounds(50, 50, 138, 41);
+		btnThoat.setBounds(230, 200, 100, 40);
 		btnThoat.addActionListener(new ActionListener() {
 			
 			@Override
