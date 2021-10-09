@@ -48,18 +48,18 @@ public class BienBanBLL {
 //		return true;
 //	}
 
-	public String addProcessing(String maPhieuMuon,String manv,String loivipham,String xuly) {
+	public String addProcessing(String maPhieuMuon,String maQuyenSach,String manv,String loivipham,String xuly) {
 		try {
 //			checkData(pt);
 			String msg;
-			int result = BienBanDAL.getInstance().addProcessing(maPhieuMuon,manv,loivipham,xuly);
+			int result = BienBanDAL.getInstance().addProcessing(maPhieuMuon,maQuyenSach,manv,loivipham,xuly);
 			switch (result) {
 			case -1:
 			case 0:
-				msg = "ThÃªm khÃ´ng thÃ nh cÃ´ng! Vui lÃ²ng thá»­ láº¡i";
+				msg = "Them khong thanh cong";
 				break;
 			default:
-				msg = "Ä�Ã£ thÃªm";
+				msg = "Them thanh cong";
 			}
 			return msg;
 //		} catch (MyNullException ex1) {
@@ -111,13 +111,14 @@ public class BienBanBLL {
 		try {
 			dtm.addColumn("Ma bien ban");
 			dtm.addColumn("Ma phieu muon");
+			dtm.addColumn("Ma quyen sach");
 			dtm.addColumn("Ten nhan vien");
 			dtm.addColumn("Ten sinh vien");
 			dtm.addColumn("Ngay lap");
 			dtm.addColumn("Loi vi pham");
 			dtm.addColumn("Xu ly");
 			for (BienBanXuLyDTO bb : dsBienBan) {
-				Object[] row = { bb.getMaBienBan(),bb.getMaPhieuMuon(),bb.getTenNV(),bb.getTenSV(),bb.getNgayLap(),bb.getLoiViPham(),bb.getXuLy()};
+				Object[] row = { bb.getMaBienBan(),bb.getMaPhieuMuon(),bb.getMaQuyenSach(),bb.getTenNV(),bb.getTenSV(),bb.getNgayLap(),bb.getLoiViPham(),bb.getXuLy()};
 				dtm.addRow(row);
 			}
 

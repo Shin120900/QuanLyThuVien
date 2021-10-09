@@ -5,6 +5,7 @@ import java.sql.Date;
 public class BienBanXuLyDTO {
 	private String maBienBan;
 	private String maPhieuMuon;
+	private String maQuyenSach;
 	private String tenNV;
 	private String tenSV;
 	private Date ngayLap;
@@ -14,25 +15,33 @@ public class BienBanXuLyDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public BienBanXuLyDTO(String maPhieuMuon, String tenNV, String tenSV, Date ngayLap, String loiViPham, String xuLy) {
+	public BienBanXuLyDTO(String maPhieuMuon,String maQuyenSach, String tenNV, String tenSV, Date ngayLap, String loiViPham, String xuLy) {
 		super();
 		this.maPhieuMuon = maPhieuMuon;
+		this.maQuyenSach=maQuyenSach;
 		this.tenNV = tenNV;
 		this.tenSV = tenSV;
 		this.ngayLap = ngayLap;
 		this.loiViPham = loiViPham;
 		this.xuLy = xuLy;
 	}
-	public BienBanXuLyDTO(String maBienBan, String maPhieuMuon, String tenNV, String tenSV, Date ngayLap, String loiViPham,
+	public BienBanXuLyDTO(String maBienBan, String maPhieuMuon,String maQuyenSach, String tenNV, String tenSV, Date ngayLap, String loiViPham,
 			String xuLy) {
 		super();
 		this.maBienBan = maBienBan;
 		this.maPhieuMuon = maPhieuMuon;
+		this.maQuyenSach=maQuyenSach;
 		this.tenNV = tenNV;
 		this.tenSV = tenSV;
 		this.ngayLap = ngayLap;
 		this.loiViPham = loiViPham;
 		this.xuLy = xuLy;
+	}
+	public String getMaQuyenSach() {
+		return maQuyenSach;
+	}
+	public void setMaQuyenSach(String maQuyenSach) {
+		this.maQuyenSach = maQuyenSach;
 	}
 	public String getMaBienBan() {
 		return maBienBan;
