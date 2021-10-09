@@ -80,16 +80,16 @@ public static QLSachBLL instance;
 		return dtm;
 	}
 //
-	public String deleteProcessing(String s) {
-		if(s.equals("")) 
-			return "KhÃ´ng cÃ³ tÃ i khoáº£n nÃ o Ä‘Æ°á»£c chá»�n";
-		
-		int result = SachDAL.getInstance().deleteProcessing(s);
-		if (result > 0)
-			return "XÃ³a thÃ nh cÃ´ng";
-		else
-			return "XÃ³a khÃ´ng thÃ nh cÃ´ng! Vui lÃ²ng thá»­ láº¡i";
-	}
+//	public String deleteProcessing(String s) {
+//		if(s.equals("")) 
+//			return "KhÃ´ng cÃ³ tÃ i khoáº£n nÃ o Ä‘Æ°á»£c chá»�n";
+//		
+//		int result = SachDAL.getInstance().deleteProcessing(s);
+//		if (result > 0)
+//			return "XÃ³a thÃ nh cÃ´ng";
+//		else
+//			return "XÃ³a khÃ´ng thÃ nh cÃ´ng! Vui lÃ²ng thá»­ láº¡i";
+//	}
 //
 	public String changeProcessing(DauSachDTO s) {
 		try {

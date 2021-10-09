@@ -69,28 +69,7 @@ public class ChiTietMuonDAL {
 		}
 		return result;
 	}
-// Bo chuc nang sua chi tiet phieu muon
-//	public int changeProcessing(PhieuMuonDTO pm) {
-//		int result;
-//		String query ="UPDATE";
-//		result = DAL.getInstance().executeQueryUpdate(query);
-//		if (result > 0)
-//			try {
-//				SachDAL.getInstance().changeTrangThai(mt.getMaSach(), "Trá»‘ng");
-//			} catch (MyException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			for (MuonTraDTO item:dsMuonTra) {
-//				if (item.getMaDocGia().equals(mt.getMaDocGia()) && item.getMaSach().equals(mt.getMaSach()))
-//					{
-//						item.setNgayMuon(mt.getNgayMuon());
-//						item.setNgayTra(mt.getNgayTra());
-//						break;
-//					}
-//			}
-//		return result;
-//	}
+
 
 	public int traSach(String maPhieuMuon, String maQuyenSach) throws MyException {
 		int result=0;

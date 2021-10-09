@@ -60,14 +60,13 @@ public class PhieuMuonDAL {
 //			ex.printStackTrace();
 //		}
 //	}
-//	public int soSachDangMuon(String maDocGia) {
-//		int count = 0;
-//		for (PhieuMuonDTO item: dsMuonTra) {
-//			/*if (item.getMaDocGia().equals(maDocGia) && Integer.parseInt(item.getTrangThai())>= 0)
-//				count++;*/
-//		}
-//		return count;
-//	}
+	public int soPhieuMuon() {
+		int count = 0;
+		for (PhieuMuonDTO item: dsPhieuMuon) {
+			count++;
+		}
+		return count;
+	}
 	
 	public ArrayList<PhieuMuonDTO> getResources() {
 		return dsPhieuMuon;
@@ -79,7 +78,7 @@ public class PhieuMuonDAL {
 			String query = "INSERT INTO PHIEUMUON(MANV,MSSV) VALUES ('"+manv+"','"+mssv+"')";
 			 result = DAL.getInstance().executeQueryUpdate(query);
 			if(result > 0) loadResources();
-			//{
+//			{
 //				SachDAL.getInstance().changeTrangThai(pm.getMaSach(), "Ä�ang Ä‘Æ°á»£c mÆ°á»£n");
 //				dsMuonTra.add(new MuonTraDTO(pm.getMaDocGia(), pm.getMaSach(), pm.getNgayMuon(), mt.getNgayTra(), mt.getTrangThai()));
 //			}

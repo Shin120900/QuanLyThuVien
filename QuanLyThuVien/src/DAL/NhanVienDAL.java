@@ -67,17 +67,17 @@ public class NhanVienDAL {
 				+nv.getDiaChi()+"',TAIKHOAN='"+nv.getTaiKhoan()+"',MATKHAU='"+nv.getMatKhau()+"',LOAITAIKHOAN=N'"+nv.getLoaiTaiKhoan()+"' WHERE MANV="+nv.getManv();
 		result = DAL.getInstance().executeQueryUpdate(query);		
 		if (result > 0) {
-			loadResource();
+			for (int i = 0; i<dsNhanVien.size(); i++) {
+				NhanVienDTO e = dsNhanVien.get(i);
+				if (e.getTaiKhoan().equals(nv.getTaiKhoan()))
+				{
+					dsNhanVien.set(i, nv);
+					break;
+				}
+			}
+
 		}
-//			for (int i = 0; i<dsNhanVien.size(); i++) {
-//				NhanVienDTO e = dsNhanVien.get(i);
-//				if (e.getMaTaiKhoan().equals(nv.getMaTaiKhoan()))
-//				{
-//					dsNhanVien.set(i, nv);
-//					break;
-//				}
-//			}
-		return result;
+					return result;
 	}
 	
 	public ArrayList<NhanVienDTO> getResources(){
@@ -86,11 +86,11 @@ public class NhanVienDAL {
 	
 	public int deleteProcessing(String manv) {
 		int result = DAL.getInstance().executeQueryUpdate("delete from v_NHANVIEN where MANV=" +manv);
-		if (result > 0) loadResource();
-//			for (int i=0; i< dsNhanVien.size(); i++) {
-//			if (dsNhanVien.get(i).getMaTaiKhoan().equals(matk))
-//				dsNhanVien.remove(i);
-//		}
+		if (result > 0) 
+			for (int i=0; i< dsNhanVien.size(); i++) {
+			if (dsNhanVien.get(i).getManv().equals(manv))
+				dsNhanVien.remove(i);
+		}
 		return result;
 	}
 	

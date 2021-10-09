@@ -66,21 +66,15 @@ public class DocGiaDAL {
 //		return false;
 //	}
 //	
-//	public boolean isContain(String maDocGia) {
-//		for (DocGiaDTO item: dsDocGia)
-//			if (item.getMaDocGia().equals(maDocGia))
-//				return true;
-//		return false;
-//	}
-	
+
 	public int addProcessing(DocGiaDTO dg) throws ContainException{
 //		if (isContain(dg))
 //			throw new ContainException("Ä�á»™c giáº£ Ä‘Ã£ tá»“n táº¡i, hoáº·c MÃ£ Ä‘á»™c giáº£ bá»‹ trÃ¹ng!");
 		String query ="INSERT INTO v_SINHVIEN(HOTEN,GIOITINH,LOP,KHOA,DIACHI,NGAYSINH) VALUES (N'"+dg.getTenDocGia()+"',N'"+dg.getGioiTinh()+"','"+dg.getLop()
 		+"',N'"+dg.getKhoa()+"',N'"+dg.getDiaChi()+"','"+dg.getNgaySinh()+"')";
 		int result = DAL.getInstance().executeQueryUpdate(query);
-		if (result>0) loadResources();
-//			dsDocGia.add(dg);
+		if (result>0)
+			dsDocGia.add(dg);
 		return result;
 	}
 	
@@ -90,34 +84,34 @@ public class DocGiaDAL {
 				+dg.getDiaChi()+"',NGAYSINH='"+dg.getNgaySinh()+"' WHERE MSSV=" + dg.getMaDocGia();
 		result = DAL.getInstance().executeQueryUpdate(query);
 		
-		if (result > 0) loadResources();
-//			for (int i = 0; i<dsDocGia.size(); i++) {
-//				DocGiaDTO e = dsDocGia.get(i);
-//				if (e.getMaDocGia().equals(dg.getMaDocGia()))
-//				{
-//					dsDocGia.set(i, dg);
-//					break;
-//				}
-//			}
+		if (result > 0)
+			for (int i = 0; i<dsDocGia.size(); i++) {
+				DocGiaDTO e = dsDocGia.get(i);
+				if (e.getMaDocGia().equals(dg.getMaDocGia()))
+				{
+					dsDocGia.set(i, dg);
+					break;
+				}
+			}
 		return result;
 	}
 	
 	public int deleteProcessing(String madg) {
 		int result = DAL.getInstance().executeQueryUpdate("delete from v_SINHVIEN where MSSV="+ madg );
-		if (result > 0) loadResources();
-//			for (int i = 0; i <dsDocGia.size(); i++) {
-//				if (dsDocGia.get(i).getMaDocGia().equals(madg))
-//					dsDocGia.remove(i);
-//			}
+		if (result > 0) 
+			for (int i = 0; i <dsDocGia.size(); i++) {
+				if (dsDocGia.get(i).getMaDocGia().equals(madg))
+					dsDocGia.remove(i);
+			}
 		return result;
 	}
 	public ArrayList<DocGiaDTO> getResources(){
 		return dsDocGia;
 	}
 	
-//	public ArrayList<DocGiaDTO> reloadResources(){
-//		return dsDocGia;
-//	}
+	public ArrayList<DocGiaDTO> reloadResources(){
+		return dsDocGia;
+	}
 
 	public String thongTin(String maDocGia) {
 		for (DocGiaDTO dg:dsDocGia) {
@@ -128,8 +122,7 @@ public class DocGiaDAL {
 		return "";
 	}
 	
-	public int getSodocgia() {
-		
+	public int getSodocgia() {	
 		return dsDocGia.size();
 	}
 }

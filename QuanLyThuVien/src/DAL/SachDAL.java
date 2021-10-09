@@ -73,15 +73,15 @@ public class SachDAL {
 		return  dsSach;
 	}
 //	Xoa can tao them GUI de xem tung quyen sach de xoa
-	public int deleteProcessing(String maQuyenSach) {
-		int result = DAL.getInstance().executeQueryUpdate("delete from dbo.QUYENSACH where MAQUYENSACH="+ maQuyenSach);
-		if (result > 0) loadResources();
+//	public int deleteProcessing(String maQuyenSach) {
+//		int result = DAL.getInstance().executeQueryUpdate("delete from dbo.QUYENSACH where MAQUYENSACH="+ maQuyenSach);
+//		if (result > 0) 
 //			for (int i = 0; i <dsSach.size(); i++) {
-//				if (dsSach.get(i).getMaSach().equals(s))
+//				if (dsSach.get(i).getMaDauSach().equals(ma))
 //					dsSach.remove(i);
 //			}
-		return result;
-	}
+//		return result;
+//	}
 
 	public String getThongTin(String maSach) {
 		for (DauSachDTO s: dsSach) {
@@ -97,15 +97,15 @@ public class SachDAL {
 		//System.out.println("Query = "+ query);
 		result = DAL.getInstance().executeQueryUpdate(query);
 		
-		if (result > 0) loadResources();
-//			for (int i = 0; i<dsSach.size(); i++) {
-//				SachDTO e = dsSach.get(i);
-//				if (e.getMaSach().equals(s.getMaSach()))
-//				{
-//					dsSach.set(i, s);
-//					break;
-//				}
-//			}
+		if (result > 0) 
+			for (int i = 0; i<dsSach.size(); i++) {
+				DauSachDTO e = dsSach.get(i);
+				if (e.getMaDauSach().equals(s.getMaDauSach()))
+				{
+					dsSach.set(i, s);
+					break;
+				}
+			}
 		return result;
 	}
 }
