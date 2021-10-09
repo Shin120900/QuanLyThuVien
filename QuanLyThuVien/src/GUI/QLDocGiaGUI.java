@@ -179,7 +179,7 @@ public class QLDocGiaGUI {
 				if (tfTimKiem.getText().length() == 0)
 					JOptionPane.showMessageDialog(null, "Ban chua nhap tu khoa can tim!", "Thong bao", 1);
 				else {
-					tbDocGia.setModel(QLDocGiaBLL.getInstance().timKiem(tfTimKiem.getText()));
+//					tbDocGia.setModel(QLDocGiaBLL.getInstance().timKiem(tfTimKiem.getText()));
 				}
 
 			}

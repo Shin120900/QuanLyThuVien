@@ -47,51 +47,52 @@ public class QLNhanVienBLL {
 		return instance;
 	}
 //	
-//	public String addProcessing(NhanVienDTO nv) {
-//		try{
+	public String addProcessing(NhanVienDTO nv) {
+		try{
 //			checkData(nv);
 //			ArrayList<NhanVienDTO> dsNhanVien = NhanVienDAL.getInstance().getResource();
 //			for(NhanVienDTO item: dsNhanVien) {
-//				if(item.getTenTaiKhoan().equals(nv.getTenTaiKhoan()))
+//				if(item.getTaiKhoan().equals(nv.getTaiKhoan()))
 //					return "TÃªn tÃ i khoáº£n Ä‘Ã£ tá»“n táº¡i";
 //			}
-//			String msg;
-//			int result = NhanVienDAL.getInstance().addProcessing(nv);
-//			switch(result)
-//			{
-//			case -1:
-//				//msg = "Error";
-//			case 0:
-//				msg = "ThÃªm khÃ´ng thÃ nh cÃ´ng! Vui lÃ²ng thá»­ láº¡i";
-//				break;
-//				default:
-//					msg = "Ä�Ã£ thÃªm";
-//			}
-//			return msg;
-//		}
+			String msg;
+			int result = NhanVienDAL.getInstance().addProcessing(nv);
+			switch(result)
+			{
+			case -1:
+				//msg = "Error";
+			case 0:
+				msg = "ThÃªm khÃ´ng thÃ nh cÃ´ng! Vui lÃ²ng thá»­ láº¡i";
+				break;
+				default:
+					msg = "Ä�Ã£ thÃªm";
+			}
+			return msg;
+		}
 //		catch(MyNullException ex1) {
 //			return ex1.getMessage();
 //		}
-//		catch(ContainException ex2) {
-//			return ex2.getMessage();
-//		}
-//	}
-	
+		catch(ContainException ex2) {
+			return ex2.getMessage();
+		}
+	}
+//	
 //	public DefaultTableModel reloadResources() {
 //		ArrayList<NhanVienDTO> dsNhanVien = new ArrayList<NhanVienDTO>();
 //		dsNhanVien = NhanVienDAL.getInstance().getResource();
 //		DefaultTableModel dtm = new DefaultTableModel();
 //		try {
-//			dtm.addColumn("STT");
-//			dtm.addColumn("MÃ£ tÃ i khoáº£n");
-//			dtm.addColumn("TÃªn tÃ i khoáº£n");
-//			dtm.addColumn("Máº­t kháº©u");
-//			dtm.addColumn("TÃªn nhÃ¢n viÃªn");
-//			dtm.addColumn("Loáº¡i tÃ i khoáº£n");
-//			dtm.addColumn("Email");
-//			int i = 1;
+//			dtm.addColumn("MANV");
+//			dtm.addColumn("Ho va ten");
+//			dtm.addColumn("Gioi tinh");
+//			dtm.addColumn("Ngay Sinh");
+//			dtm.addColumn("SDT");
+//			dtm.addColumn("Dia Chi");
+//			dtm.addColumn("Tai Khoan");
+//			dtm.addColumn("Mat Khau");
+//			dtm.addColumn("Loai Tai Khoan");
 //			for(NhanVienDTO nv : dsNhanVien) {
-//				Object[] row = {i++,nv.getMaTaiKhoan(),nv.getTenTaiKhoan(),nv.getMatKhau(),nv.getTenNhanVien(),nv.getLoaiTaiKhoan(),nv.getEmail() };
+//				Object[] row = {nv.getManv(),nv.getHoTen(),nv.getGioiTinh(),nv.getNgaySinh(),nv.getSdt(),nv.getDiaChi(),nv.getTaiKhoan(),nv.getMatKhau(),nv.getLoaiTaiKhoan()};
 //				dtm.addRow(row);
 //			}
 //		}
@@ -104,36 +105,35 @@ public class QLNhanVienBLL {
 //		return dtm;
 //	}
 	
-//	public DefaultTableModel getResources() {
-//		ArrayList<NhanVienDTO> dsNhanVien = new ArrayList<NhanVienDTO>();
-//		dsNhanVien = NhanVienDAL.getInstance().getResource();
-//		DefaultTableModel dtm = new DefaultTableModel();
-//		try {
-//			dtm.addColumn("STT");
-//			dtm.addColumn("MÃ£ tÃ i khoáº£n");
-//			dtm.addColumn("TÃªn tÃ i khoáº£n");
-//			dtm.addColumn("Máº­t kháº©u");
-//			dtm.addColumn("TÃªn nhÃ¢n viÃªn");
-//			dtm.addColumn("Loáº¡i "
-//					+ "tÃ i khoáº£n");
-//			dtm.addColumn("Email");
-//			int i = 1;
-//			for(NhanVienDTO nv : dsNhanVien) {
-//				Object[] row = {i++,nv.getMaTaiKhoan(),nv.getTenTaiKhoan(),nv.getMatKhau(),nv.getTenNhanVien(),nv.getLoaiTaiKhoan(),nv.getEmail() };
-//				dtm.addRow(row);
-//			}
-//		}
-//		catch(Exception ex) {
-//			ex.printStackTrace();
-//		}
-//		finally {
-//			
-//		}
-//		return dtm;
-//	}
+	public DefaultTableModel getResources() {
+		ArrayList<NhanVienDTO> dsNhanVien = new ArrayList<NhanVienDTO>();
+		dsNhanVien = NhanVienDAL.getInstance().getResource();
+		DefaultTableModel dtm = new DefaultTableModel();
+		try {
+			dtm.addColumn("MANV");
+			dtm.addColumn("Ho va ten");
+			dtm.addColumn("Gioi tinh");
+			dtm.addColumn("Ngay Sinh");
+			dtm.addColumn("SDT");
+			dtm.addColumn("Dia Chi");
+			dtm.addColumn("Tai Khoan");
+			dtm.addColumn("Mat Khau");
+			dtm.addColumn("Loai Tai Khoan");
+			for(NhanVienDTO nv : dsNhanVien) {
+				Object[] row = {nv.getManv(),nv.getHoTen(),nv.getGioiTinh(),nv.getNgaySinh(),nv.getSdt(),nv.getDiaChi(),nv.getTaiKhoan(),nv.getMatKhau(),nv.getLoaiTaiKhoan()};
+				dtm.addRow(row);
+			}
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			
+		}
+		return dtm;	}
 //	
-//	public String changeProcessing(NhanVienDTO nv) {
-//		String msg;
+	public String changeProcessing(NhanVienDTO nv) {
+		String msg;
 //		ArrayList<NhanVienDTO> dsNhanVien = NhanVienDAL.getInstance().getResource();
 //		boolean check = false;
 //		for (NhanVienDTO item: dsNhanVien) {
@@ -145,35 +145,38 @@ public class QLNhanVienBLL {
 //		}
 //		if (check && nv.getLoaiTaiKhoan().equalsIgnoreCase("Thá»§ thÆ°") && NhanVienDAL.getInstance().countAdminAcount() == 1)
 //			return "Há»‡ thá»‘ng cáº§n cÃ³ Ã­t nháº¥t 1 Quáº£n trá»‹ há»‡ thá»‘ng";
-//		try {
+		try {
 //			checkData(nv);
-//			int result = NhanVienDAL.getInstance().changeProcessing(nv);
-//			switch(result)
-//			{
-//			case -1:
-//			case 0:
-//				msg = "Sá»­a khÃ´ng thÃ nh cÃ´ng! Vui lÃ²ng thá»­ láº¡i";
-//				break;
-//				default:
-//					msg = "Ä�Ã£ chá»‰nh sá»­a";
-//			}
-//			return msg;
-//		}
+			int result = NhanVienDAL.getInstance().changeProcessing(nv);
+			switch(result)
+			{
+			case -1:
+			case 0:
+				msg = "Sá»­a khÃ´ng thÃ nh cÃ´ng! Vui lÃ²ng thá»­ láº¡i";
+				break;
+				default:
+					msg = "Ä�Ã£ chá»‰nh sá»­a";
+			}
+			return msg;
+		}
 //		catch(MyNullException e) {
 //			return e.toString();
 //		}
-//	}
+		catch (Exception e) {
+			return e.toString();
+		}
+	}
 //	
-//	public String deleteProcessing(String matk, String loaiTaiKhoan) {
-//		
-//		if (matk.equals(""))
-//			return "KhÃ´ng cÃ³ tÃ i khoáº£n nÃ o Ä‘Æ°á»£c chá»�n Ä‘á»ƒ xÃ³a";
-//		if (loaiTaiKhoan.equalsIgnoreCase("Quáº£n trá»‹ há»‡ thá»‘ng") && NhanVienDAL.getInstance().countAdminAcount() == 1)
-//			return "Há»‡ thá»‘ng cáº§n cÃ³ Ã­t nháº¥t 1 Quáº£n trá»‹ há»‡ thá»‘ng";
-//		int result = NhanVienDAL.getInstance().deleteProcessing(matk);
-//		if (result > 0)
-//			return "XÃ³a thÃ nh cÃ´ng";
-//		else
-//			return "XÃ³a khÃ´ng thÃ nh cÃ´ng! Vui lÃ²ng kiá»ƒm tra láº¡i";
-//	}
+	public String deleteProcessing(String manv, String loaiTaiKhoan) {
+		
+		if (manv.equals(""))
+			return "KhÃ´ng cÃ³ tÃ i khoáº£n nÃ o Ä‘Æ°á»£c chá»�n Ä‘á»ƒ xÃ³a";
+		if (loaiTaiKhoan.equalsIgnoreCase("Quáº£n trá»‹ há»‡ thá»‘ng") && NhanVienDAL.getInstance().countAdminAcount() == 1)
+			return "Há»‡ thá»‘ng cáº§n cÃ³ Ã­t nháº¥t 1 Quáº£n trá»‹ há»‡ thá»‘ng";
+		int result = NhanVienDAL.getInstance().deleteProcessing(manv);
+		if (result > 0)
+			return "XÃ³a thÃ nh cÃ´ng";
+		else
+			return "XÃ³a khÃ´ng thÃ nh cÃ´ng! Vui lÃ²ng kiá»ƒm tra láº¡i";
+	}
 }

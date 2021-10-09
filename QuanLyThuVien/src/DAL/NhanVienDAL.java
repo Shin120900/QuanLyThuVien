@@ -13,6 +13,15 @@ public class NhanVienDAL {
 	
 	private NhanVienDAL() {
 		dsNhanVien=new ArrayList<NhanVienDTO>();
+		loadResource();
+	}
+	
+	public static NhanVienDAL getInstance() {
+		if(instance==null)
+			instance=new NhanVienDAL();
+		return instance;
+	}
+	public void loadResource() {
 		try {
 			String query=new String("select * from dbo.v_NhanVien");
 			ResultSet resultSet=DAL.getInstance().executeQueryToGetData(query);
@@ -33,13 +42,6 @@ public class NhanVienDAL {
 			ex.printStackTrace();
 		}
 	}
-	
-	public static NhanVienDAL getInstance() {
-		if(instance==null)
-			instance=new NhanVienDAL();
-		return instance;
-	}
-//	
 //	public boolean isContain(NhanVienDTO nv) {
 //		for (NhanVienDTO e: dsNhanVien)
 //			if (e.getMaTaiKhoan().equals(nv.getMaTaiKhoan()))
@@ -47,24 +49,26 @@ public class NhanVienDAL {
 //		return false;
 //	}
 //	
-//	public int addProcessing(NhanVienDTO nv) throws ContainException{
+	public int addProcessing(NhanVienDTO nv) throws ContainException{
 //		if (isContain(nv))
 //			throw new ContainException("NhÃ¢n viÃªn Ä‘Ã£ tá»“n táº¡i");
-//		String query = "insert into taikhoan values(\"" + nv.getMaTaiKhoan()+"\", \""+ nv.getTenTaiKhoan()+"\", \""+ nv.getMatKhau()+"\", \""+ 
-//				nv.getTenNhanVien()+ "\", \""+ nv.getLoaiTaiKhoan()+"\", \""+ nv.getEmail()+"\")";
-//		int result = DAL.getInstance().executeQueryUpdate(query);
-//		if (result>0)
-//			dsNhanVien.add(nv);
-//		return result;
-//	}
+		String query = "insert into v_NHANVIEN (HOTEN,GIOITINH,NGAYSINH,SDT,DIACHI,TAIKHOAN,MATKHAU,LOAITAIKHOAN) values(N'"+nv.getHoTen()
+		+"',N'"+nv.getGioiTinh()+"','"+nv.getNgaySinh()+"','"+nv.getSdt()+"',N'"+nv.getDiaChi()+"','"+nv.getTaiKhoan()+"','"
+		+nv.getMatKhau()+"',N'"+nv.getLoaiTaiKhoan()+"')";
+		int result = DAL.getInstance().executeQueryUpdate(query);
+		if (result>0)
+			dsNhanVien.add(nv);
+		return result;
+	}
 //	
-//	public int changeProcessing(NhanVienDTO nv) {
-//		int result;
-//		String query = "update taikhoan set TenTaiKhoan=\"" + nv.getTenTaiKhoan()+"\", LoaiTaiKhoan=\"" + nv.getLoaiTaiKhoan()+"\", Email=\""
-//				+nv.getEmail()+"\",  MatKhau=\""+nv.getMatKhau()+"\", TenNhanVien=\"" +nv.getTenNhanVien()+"\" where MaTaiKhoan=\"" +nv.getMaTaiKhoan()+"\"";
-//		result = DAL.getInstance().executeQueryUpdate(query);
-//		
-//		if (result > 0)
+	public int changeProcessing(NhanVienDTO nv) {
+		int result;
+		String query = "update v_NHANVIEN set HOTEN=N'"+nv.getHoTen()+"',GIOITINH=N'"+nv.getGioiTinh()+"',NGAYSINH='"+nv.getNgaySinh()+"',SDT='"+nv.getSdt()+"',DIACHI=N'"
+				+nv.getDiaChi()+"',TAIKHOAN='"+nv.getTaiKhoan()+"',MATKHAU='"+nv.getMatKhau()+"',LOAITAIKHOAN=N'"+nv.getLoaiTaiKhoan()+"' WHERE MANV="+nv.getManv();
+		result = DAL.getInstance().executeQueryUpdate(query);		
+		if (result > 0) {
+			loadResource();
+		}
 //			for (int i = 0; i<dsNhanVien.size(); i++) {
 //				NhanVienDTO e = dsNhanVien.get(i);
 //				if (e.getMaTaiKhoan().equals(nv.getMaTaiKhoan()))
@@ -73,22 +77,22 @@ public class NhanVienDAL {
 //					break;
 //				}
 //			}
-//		return result;
-//	}
+		return result;
+	}
 	
 	public ArrayList<NhanVienDTO> getResources(){
 		return dsNhanVien;
 	}
 	
-//	public int deleteProcessing(String matk) {
-//		int result = DAL.getInstance().executeQueryUpdate("delete from taikhoan where MaTaiKhoan=\"" +matk+"\"");
-//		if (result > 0)
-//		for (int i=0; i< dsNhanVien.size(); i++) {
+	public int deleteProcessing(String manv) {
+		int result = DAL.getInstance().executeQueryUpdate("delete from v_NHANVIEN where MANV=" +manv);
+		if (result > 0) loadResource();
+//			for (int i=0; i< dsNhanVien.size(); i++) {
 //			if (dsNhanVien.get(i).getMaTaiKhoan().equals(matk))
 //				dsNhanVien.remove(i);
 //		}
-//		return result;
-//	}
+		return result;
+	}
 	
 	public ArrayList<NhanVienDTO> getResource(){
 		return dsNhanVien;

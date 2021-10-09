@@ -1,23 +1,23 @@
 package DTO;
 
 public class QuyenSachDTO {
-	private int maQuyenSach;
-	private int maDauSach;
-	public QuyenSachDTO(int maQuyenSach, int maDauSach) {
+	private String maQuyenSach;
+	private String maDauSach;
+	public QuyenSachDTO(String maQuyenSach, String maDauSach) {
 		super();
 		this.maQuyenSach = maQuyenSach;
 		this.maDauSach = maDauSach;
 	}
-	public int getMaQuyenSach() {
+	public String getMaQuyenSach() {
 		return maQuyenSach;
 	}
-	public void setMaQuyenSach(int maQuyenSach) {
+	public void setMaQuyenSach(String maQuyenSach) {
 		this.maQuyenSach = maQuyenSach;
 	}
-	public int getMaDauSach() {
+	public String getMaDauSach() {
 		return maDauSach;
 	}
-	public void setMaDauSach(int maDauSach) {
+	public void setMaDauSach(String maDauSach) {
 		this.maDauSach = maDauSach;
 	}
 	

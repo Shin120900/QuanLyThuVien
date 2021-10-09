@@ -21,62 +21,54 @@ public static QLSachBLL instance;
 			instance = new QLSachBLL();
 		return instance;
 	}
-	private boolean checkData(DauSachDTO s) throws MyNullException, MyException{
-		
-		if(s.getTenSach().toString().equals(""))
-			throw new MyNullException("Tên sách đang bị trống");
-		if(s.getTenTG().equals(""))
-			throw new MyNullException("Tên tác giả đang bị bỏ trống");
-		
-		return true;
-	}
-	
-	public boolean isTrong(String maSach) throws MyException{
-		return SachDAL.getInstance().isTrong(maSach);
-	}
-	
+//	private boolean checkData(DauSachDTO s) throws MyNullException, MyException{
+//		
+//		if(s.getTenSach().toString().equals(""))
+//			throw new MyNullException("Ten sach khong duoc");
+//		if(s.getTenTG().equals(""))
+//			throw new MyNullException("TÃªn tÃ¡c giáº£ Ä‘ang bá»‹ bá»� trá»‘ng");
+//		
+//		return true;
+//	}
+//	
+
 	public String addProcessing(DauSachDTO s) {
 		try {
-			checkData(s);
+//			checkData(s);
 			String msg;
 			int result = SachDAL.getInstance().addProcessing(s);
 			if (result > 0)
-				msg = "Đã thêm thành công";
+				msg = "Ä�Ã£ thÃªm thÃ nh cÃ´ng";
 			else
-				msg = "Thêm lỗi! Vui lòng thử lại";
+				msg = "ThÃªm lá»—i! Vui lÃ²ng thá»­ láº¡i";
 			return msg;
 		}
-		catch(MyNullException e1) {
-			return e1.getMessage();
-		}
+//		catch(MyNullException e1) {
+//			return e1.getMessage();
+//		}
 		catch(ContainException e2) {
 			return e2.getMessage();
 		}
-		catch(MyException e3) {
-			return e3.getMessage();
-		}
+//		catch(MyException e3) {
+//			return e3.getMessage();
+//		}
 	}
 	
 	public DefaultTableModel getResources() {
-		ArrayList<SachDTO> dsSach = new ArrayList<SachDTO>();
+		ArrayList<DauSachDTO> dsSach = new ArrayList<DauSachDTO>();
 		dsSach = SachDAL.getInstance().getResources();
 		DefaultTableModel dtm = new DefaultTableModel();
 		try {
-			dtm.addColumn("STT");
-			dtm.addColumn("Mã sách");
-			dtm.addColumn("Tên sách");
-			dtm.addColumn("Thể loại");
-			dtm.addColumn("Tác giả");
-			dtm.addColumn("Nhà xuất bản");
-			dtm.addColumn("Ngày nhập");
-			dtm.addColumn("Giá sách");
-			dtm.addColumn("Trạng thái");
-			dtm.addColumn("Năm xuất bản");
-			
-			int i = 1;
-			for(SachDTO sach : dsSach) {
-				Object[] row = {i++, sach.getMaSach(),sach.getTenSach(),sach.getTheLoai(),sach.getTacGia(),
-						sach.getNhaXuatBan(), sach.getNgayNhap(), sach.getGiaSach(),sach.getTrangThai(),sach.getNamXuatBan()};
+			dtm.addColumn("Ma dau sach");
+			dtm.addColumn("Ten sach");
+			dtm.addColumn("Ten tac gia");
+			dtm.addColumn("Ten the loai");
+			dtm.addColumn("Ten nha xuat ban");
+			dtm.addColumn("Nam xuat ban");
+
+			for(DauSachDTO sach : dsSach) {
+				Object[] row = { sach.getMaDauSach(),sach.getTenSach(),sach.getTenTG(),sach.getTenTL(),
+						sach.getTenNXB(), sach.getNamXB()};
 				dtm.addRow(row);
 			}
 		}
@@ -87,22 +79,22 @@ public static QLSachBLL instance;
 		}
 		return dtm;
 	}
-
+//
 	public String deleteProcessing(String s) {
 		if(s.equals("")) 
-			return "Không có tài khoản nào được chọn";
+			return "KhÃ´ng cÃ³ tÃ i khoáº£n nÃ o Ä‘Æ°á»£c chá»�n";
 		
 		int result = SachDAL.getInstance().deleteProcessing(s);
 		if (result > 0)
-			return "Xóa thành công";
+			return "XÃ³a thÃ nh cÃ´ng";
 		else
-			return "Xóa không thành công! Vui lòng thử lại";
+			return "XÃ³a khÃ´ng thÃ nh cÃ´ng! Vui lÃ²ng thá»­ láº¡i";
 	}
-
-	public String changeProcessing(SachDTO s) {
+//
+	public String changeProcessing(DauSachDTO s) {
 		try {
 			String msg;
-			checkData(s);
+//			checkData(s);
 			
 			int result = SachDAL.getInstance().changeProcessing(s);
 			switch(result)
@@ -110,70 +102,70 @@ public static QLSachBLL instance;
 			case -1:
 				//msg = "Error";
 			case 0:
-				msg = "Sửa không thành công! Vui lòng thử lại";
+				msg = "Sá»­a khÃ´ng thÃ nh cÃ´ng! Vui lÃ²ng thá»­ láº¡i";
 				break;
 				default:
-					msg = "Đã chỉnh sửa";
+					msg = "Ä�Ã£ chá»‰nh sá»­a";
 			}
 			return msg;
 		}
-		catch(MyNullException e) {
-			return e.toString();
-		}
+//		catch(MyNullException e) {
+//			return e.toString();
+//		}
 		catch (Exception e) {
 			return e.getMessage();
 		}
 	}
-
+//
 	public int SoCuonSach() {
 		// TODO Auto-generated method stub
 		return SachDAL.getInstance().getResources().size();
 	}
 
 	public int SoTheLoai() {
-		ArrayList<SachDTO> dsSach = SachDAL.getInstance().getResources();
+		ArrayList<DauSachDTO> dsSach = SachDAL.getInstance().getResources();
 		ArrayList<String> theLoai = new ArrayList<String>();
-		for(SachDTO s: dsSach) {
-			if (!theLoai.contains(s.getTheLoai()))
-				theLoai.add(s.getTheLoai());
+		for(DauSachDTO s: dsSach) {
+			if (!theLoai.contains(s.getTenTL()))
+				theLoai.add(s.getTenTL());
 		}
 		return theLoai.size();
 	}
-	public TableModel timKiem(String key) {
-		DefaultTableModel dtm=new DefaultTableModel();
-		ArrayList<SachDTO> dsSach = new ArrayList<SachDTO>();
-		dsSach = SachDAL.getInstance().getResources();
-			dtm.addColumn("STT");
-			dtm.addColumn("Mã sách");
-			dtm.addColumn("Tên sách");
-			dtm.addColumn("Thể loại");
-			dtm.addColumn("Tác giả");
-			dtm.addColumn("Nhà xuất bản");
-			dtm.addColumn("Ngày nhập");
-			dtm.addColumn("Giá sách");
-			dtm.addColumn("Trạng thái");
-			dtm.addColumn("Năm xuất bản");
-			int i=0;
-			System.out.println(key);
-			for(SachDTO sach:dsSach) {
-				String thongTin=SachDAL.getInstance().getThongTin(sach.getMaSach());
-				thongTin=thongTin.toLowerCase();
-				key=key.toLowerCase();
-				if(thongTin.contains(key)) {
-					Object[] row= {i++,sach.getMaSach(),
-							sach.getTenSach(),
-							sach.getTheLoai(),
-							sach.getTacGia(),
-							sach.getNhaXuatBan(),
-							sach.getNgayNhap(),
-							sach.getGiaSach(),
-							sach.getTrangThai(),
-							sach.getNamXuatBan()};
-					dtm.addRow(row);
-					}
-				}
-			return dtm;
-			}
+//	public TableModel timKiem(String key) {
+//		DefaultTableModel dtm=new DefaultTableModel();
+//		ArrayList<SachDTO> dsSach = new ArrayList<SachDTO>();
+//		dsSach = SachDAL.getInstance().getResources();
+//			dtm.addColumn("STT");
+//			dtm.addColumn("MÃ£ sÃ¡ch");
+//			dtm.addColumn("TÃªn sÃ¡ch");
+//			dtm.addColumn("Thá»ƒ loáº¡i");
+//			dtm.addColumn("TÃ¡c giáº£");
+//			dtm.addColumn("NhÃ  xuáº¥t báº£n");
+//			dtm.addColumn("NgÃ y nháº­p");
+//			dtm.addColumn("GiÃ¡ sÃ¡ch");
+//			dtm.addColumn("Tráº¡ng thÃ¡i");
+//			dtm.addColumn("NÄƒm xuáº¥t báº£n");
+//			int i=0;
+//			System.out.println(key);
+//			for(SachDTO sach:dsSach) {
+//				String thongTin=SachDAL.getInstance().getThongTin(sach.getMaSach());
+//				thongTin=thongTin.toLowerCase();
+//				key=key.toLowerCase();
+//				if(thongTin.contains(key)) {
+//					Object[] row= {i++,sach.getMaSach(),
+//							sach.getTenSach(),
+//							sach.getTheLoai(),
+//							sach.getTacGia(),
+//							sach.getNhaXuatBan(),
+//							sach.getNgayNhap(),
+//							sach.getGiaSach(),
+//							sach.getTrangThai(),
+//							sach.getNamXuatBan()};
+//					dtm.addRow(row);
+//					}
+//				}
+//			return dtm;
+//			}
 	}
 	
 

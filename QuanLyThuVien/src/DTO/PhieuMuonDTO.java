@@ -3,7 +3,7 @@ package DTO;
 import java.sql.Date;
 
 public class PhieuMuonDTO {
-	private int maPhieuMuon;
+	private String maPhieuMuon;
 	private String tenNV;
 	private String tenSV;
 	private int soLuong;
@@ -21,7 +21,7 @@ public class PhieuMuonDTO {
 		this.ngayMuon = ngayMuon;
 		this.ngayHenTra = ngayHenTra;
 	}
-	public PhieuMuonDTO(int maPhieuMuon, String tenNV, String tenSV, int soLuong, Date ngayMuon, Date ngayHenTra) {
+	public PhieuMuonDTO(String maPhieuMuon, String tenNV, String tenSV, int soLuong, Date ngayMuon, Date ngayHenTra) {
 		super();
 		this.maPhieuMuon = maPhieuMuon;
 		this.tenNV = tenNV;
@@ -30,10 +30,10 @@ public class PhieuMuonDTO {
 		this.ngayMuon = ngayMuon;
 		this.ngayHenTra = ngayHenTra;
 	}
-	public int getMaPhieuMuon() {
+	public String getMaPhieuMuon() {
 		return maPhieuMuon;
 	}
-	public void setMaPhieuMuon(int maPhieuMuon) {
+	public void setMaPhieuMuon(String maPhieuMuon) {
 		this.maPhieuMuon = maPhieuMuon;
 	}
 	public String getTenNV() {

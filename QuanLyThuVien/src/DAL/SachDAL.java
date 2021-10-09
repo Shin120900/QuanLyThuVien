@@ -29,7 +29,7 @@ public class SachDAL {
 			
 			while(resultSet.next()) {
 				dsSach.add(new DauSachDTO(
-						Integer.parseInt( resultSet.getObject(1).toString()), 
+						resultSet.getObject(1).toString(), 
 						resultSet.getObject(2).toString(), 
 						resultSet.getObject(3).toString(), 
 						resultSet.getObject(4).toString(),
@@ -43,8 +43,8 @@ public class SachDAL {
 	}
 
 	public int addProcessing(DauSachDTO s) throws ContainException{
-		String query="INSERT INTO v_Sach(TENSACH,TENTG,TENTL,TENNXB,NAMXB) values("+s.getTenSach()+","+s.getTenTG()+","+
-				s.getTenTL()+","+s.getTenNXB()+","+s.getNamXB()+")";
+		String query="INSERT INTO v_Sach(TENSACH,TENTG,TENTL,TENNXB,NAMXB) values(N'"+s.getTenSach()+"',N'"+s.getTenTG()+"',N'"+
+				s.getTenTL()+"',N'"+s.getTenNXB()+"','"+s.getNamXB()+"')";
 		int result = DAL.getInstance().executeQueryUpdate(query);
 		System.out.println(result);
 		if (result>0)
@@ -53,18 +53,18 @@ public class SachDAL {
 	}
 	
 	
-	public DauSachDTO getSach(int maDauSach) {
+	public DauSachDTO getSach(String maDauSach) {
 		for (DauSachDTO item:dsSach) {
 			
-			if (item.getMaDauSach()==maDauSach)
+			if (item.getMaDauSach().equals(maDauSach))
 				return item;
 		}
 		return null;
 	}
 	
-	public String getTenSach(int maSach) {
+	public String getTenSach(String maSach) {
 		for (DauSachDTO s: dsSach) {
-			if (maSach==s.getMaDauSach())
+			if (maSach.equals(s.getMaDauSach()))
 				return s.getTenSach();
 		}
 		return "";
@@ -72,40 +72,32 @@ public class SachDAL {
 	public ArrayList<DauSachDTO> getResources(){
 		return  dsSach;
 	}
-
-//	public int deleteProcessing(String s) {
-//		int result = DAL.getInstance().executeQueryUpdate("delete from sach where MaSach=\""+ s +"\"");
-//		if (result > 0)
+//	Xoa can tao them GUI de xem tung quyen sach de xoa
+	public int deleteProcessing(String maQuyenSach) {
+		int result = DAL.getInstance().executeQueryUpdate("delete from dbo.QUYENSACH where MAQUYENSACH="+ maQuyenSach);
+		if (result > 0) loadResources();
 //			for (int i = 0; i <dsSach.size(); i++) {
 //				if (dsSach.get(i).getMaSach().equals(s))
 //					dsSach.remove(i);
 //			}
-//		return result;
-//	}
-//
-//	public String getThongTin(String maSach) {
-//		for (SachDTO s: dsSach) {
-//			if (s.getMaSach().equals(maSach))
-//				return s.getMaSach()+s.getTenSach() + s.getTacGia();
-//		}
-//		return "";
-//	}
+		return result;
+	}
+
+	public String getThongTin(String maSach) {
+		for (DauSachDTO s: dsSach) {
+			if (s.getMaDauSach().equals(maSach))
+				return s.getMaDauSach()+s.getTenSach() + s.getTenTG()+s.getTenTL();
+		}
+		return "";
+	}
 //	
-//	public int changeProcessing(SachDTO s) {
-//		int result;
-//		String query = "update sach set TenSach=\"" + s.getTenSach() 
-//		+"\", GiaSach=\""  + s.getGiaSach() 
-//		+"\", TacGia=\"" + s.getTacGia() 
-//		+"\",  TheLoai=\"" + s.getTheLoai()
-//		+"\", NhaXuatBan=\"" + s.getNhaXuatBan() 
-//		+"\",  NgayNhap=\"" + s.getNgayNhap()
-//		+ "\", TrangThai=\"" + s.getTrangThai() 
-//		+ "\", NamXuatBan=\"" + s.getNamXuatBan() 
-//		+ "\" where MaSach=\"" + s.getMaSach()+"\"";
-//		//System.out.println("Query = "+ query);
-//		result = DAL.getInstance().executeQueryUpdate(query);
-//		
-//		if (result > 0)
+	public int changeProcessing(DauSachDTO s) {
+		int result;
+		String query = "UPDATE v_SACH SET TENSACH=N'"+s.getTenSach()+"',TENTG=N'"+s.getTenTG()+"',TENTL=N'"+s.getTenTL()+"',TENNXB=N'"+s.getTenNXB()+"',NAMXB='"+s.getNamXB()+"' WHERE MADAUSACH="+s.getMaDauSach();
+		//System.out.println("Query = "+ query);
+		result = DAL.getInstance().executeQueryUpdate(query);
+		
+		if (result > 0) loadResources();
 //			for (int i = 0; i<dsSach.size(); i++) {
 //				SachDTO e = dsSach.get(i);
 //				if (e.getMaSach().equals(s.getMaSach()))
@@ -114,6 +106,6 @@ public class SachDAL {
 //					break;
 //				}
 //			}
-//		return result;
-//	}
+		return result;
+	}
 }

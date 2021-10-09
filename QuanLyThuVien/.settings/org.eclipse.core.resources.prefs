@@ -1,8 +1,17 @@
 eclipse.preferences.version=1
+encoding//src/BLL/BienBanBLL.java=UTF-8
+encoding//src/BLL/ChiTietMuonBLL.java=UTF-8
 encoding//src/BLL/DangNhapBLL.java=UTF-8
+encoding//src/BLL/MuonBLL.java=UTF-8
+encoding//src/BLL/QLDocGiaBLL.java=UTF-8
 encoding//src/BLL/QLNhanVienBLL.java=UTF-8
+encoding//src/BLL/QLSachBLL.java=UTF-8
+encoding//src/BLL/QLThongTinCaNhanBLL.java=UTF-8
+encoding//src/DAL/ChiTietMuonDAL.java=UTF-8
 encoding//src/DAL/DAL.java=UTF-8
+encoding//src/DAL/DocGiaDAL.java=UTF-8
 encoding//src/DAL/NhanVienDAL.java=UTF-8
+encoding//src/DAL/PhieuMuonDAL.java=UTF-8
 encoding//src/GUI/QLDangNhapGUI.java=UTF-8
 encoding//src/GUI/QLMuonTraGUI.java=UTF-8
 encoding//src/GUI/QLNhanVienGUI.java=UTF-8

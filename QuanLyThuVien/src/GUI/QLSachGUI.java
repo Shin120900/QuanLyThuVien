@@ -48,7 +48,7 @@ public class QLSachGUI {
 	}
 	
 	private void loadResources() {
-//		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
+		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
 	}
 	
 	public static QLSachGUI getInstance() {
@@ -62,7 +62,7 @@ public class QLSachGUI {
 	}
 	
 	public void reloadResources() {
-//		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
+		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
 	}
 	
 	private void clearField() {
@@ -225,20 +225,16 @@ public class QLSachGUI {
 		btnThem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String tinhTrang;
-				if (rdbtnTrong.isSelected())
-					tinhTrang = "Trong";
-				else
-					tinhTrang = "Ä�ang Ä‘Æ°á»£c mÆ°á»£n";
+
 				try {
 					Calendar cal = dcNamXuatBan.getCalendar();
 					java.util.Date date = cal.getTime();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					String nxb = sdf.format(date);
-					cal = dcNgayNhap.getCalendar();
-					date = cal.getTime();
-					String nn = sdf.format(date);
-					DauSachDTO s = new DauSachDTO(tfTenSach.getText(), tfTacGia.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), Date.valueOf(nn));
+//					cal = dcNgayNhap.getCalendar();
+//					date = cal.getTime();
+//					String nn = sdf.format(date);
+					DauSachDTO s = new DauSachDTO(tfTenSach.getText(), tfTacGia.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), Date.valueOf(nxb));
 					String result = QLSachBLL.getInstance().addProcessing(s);
 					lblMessage.setText(result);
 					TrangChuGUI.getInstance().initTitle();
@@ -306,14 +302,14 @@ public class QLSachGUI {
 		pnThongTinSach.add(btnXoa);
 		btnXoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String msg = QLSachBLL.getInstance().deleteProcessing(tfMaDauSach.getText());
-				lblMessage.setText(msg);
-				TrangChuGUI.getInstance().initTitle();
-				reloadResources();
-				clearField();
+//				String msg = QLSachBLL.getInstance().deleteProcessing(tfMaDauSach.getText());
+//				lblMessage.setText(msg);
+//				TrangChuGUI.getInstance().initTitle();
+//				reloadResources();
+//				clearField();
 			}
 		});
-		
+//		
 		
 	
 		pnQLSach.add(sc);
@@ -334,12 +330,12 @@ public class QLSachGUI {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(tfTimKiem.getText().length()==0)
-					JOptionPane.showMessageDialog(null, "Ban chua nhap tu khoa can tim!","Thong bao",1);
-				else {
-					tbQLSach.setModel(QLSachBLL.getInstance().timKiem(tfTimKiem.getText()));
-				}
-				
+//				if(tfTimKiem.getText().length()==0)
+//					JOptionPane.showMessageDialog(null, "Ban chua nhap tu khoa can tim!","Thong bao",1);
+//				else {
+//					tbQLSach.setModel(QLSachBLL.getInstance().timKiem(tfTimKiem.getText()));
+//				}
+//				
 			}
 		});
 		pnQLSach.add(btnTimKiem);

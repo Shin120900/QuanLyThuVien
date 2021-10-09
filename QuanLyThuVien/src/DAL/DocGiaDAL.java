@@ -19,10 +19,17 @@ public class DocGiaDAL {
 	
 	private void loadResources(){
 		try {	
-			String query = new String("select * from docgia");
+			String query = new String("select * from v_SINHVIEN");
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);
 			while (resultSet.next()) {
-				
+				dsDocGia.add(new DocGiaDTO(resultSet.getObject(1).toString(),
+						resultSet.getObject(2).toString(),
+						resultSet.getObject(3).toString(),
+						resultSet.getObject(4).toString(),
+						resultSet.getObject(5).toString(),
+						resultSet.getObject(6).toString(),
+						Date.valueOf(resultSet.getObject(7).toString())
+						));
 			}
 		}
 		catch(Exception ex){
@@ -30,7 +37,7 @@ public class DocGiaDAL {
 		}
 	}
 	
-	/*public String getTenDocGia(int maDocGia) {
+	public String getTenDocGia(String maDocGia) {
 		for (DocGiaDTO item: dsDocGia) {
 			if (item.getMaDocGia() == maDocGia)
 				return item.getTenDocGia();
@@ -52,74 +59,71 @@ public class DocGiaDAL {
 		return instance;
 	}
 	
-	/*public boolean isContain(DocGiaDTO dg) {
-		for (DocGiaDTO item: dsDocGia)
-			if (item.getMaDocGia().equals(dg.getMaDocGia()))
-				return true;
-		return false;
-	}
-	
-	public boolean isContain(String maDocGia) {
-		for (DocGiaDTO item: dsDocGia)
-			if (item.getMaDocGia().equals(maDocGia))
-				return true;
-		return false;
-	}
+//	public boolean isContain(DocGiaDTO dg) {
+//		for (DocGiaDTO item: dsDocGia)
+//			if (item.getMaDocGia().equals(dg.getMaDocGia()))
+//				return true;
+//		return false;
+//	}
+//	
+//	public boolean isContain(String maDocGia) {
+//		for (DocGiaDTO item: dsDocGia)
+//			if (item.getMaDocGia().equals(maDocGia))
+//				return true;
+//		return false;
+//	}
 	
 	public int addProcessing(DocGiaDTO dg) throws ContainException{
-		if (isContain(dg))
-			throw new ContainException("Độc giả đã tồn tại, hoặc Mã độc giả bị trùng!");
-		String query = "insert into docgia values(\"" + dg.getMaDocGia()+"\", \""+ dg.getTenDocGia()+"\", "
-				+ "\""+ dg.getLoaiDocGia().getMaLoaiDocGia()+"\", \""+ 
-				dg.getLopMon()+ "\", \""+ dg.getNgaySinh()+"\", \"" + dg.getSdt() +"\", \""+ dg.getEmail()+"\")";
+//		if (isContain(dg))
+//			throw new ContainException("Ä�á»™c giáº£ Ä‘Ã£ tá»“n táº¡i, hoáº·c MÃ£ Ä‘á»™c giáº£ bá»‹ trÃ¹ng!");
+		String query ="INSERT INTO v_SINHVIEN(HOTEN,GIOITINH,LOP,KHOA,DIACHI,NGAYSINH) VALUES (N'"+dg.getTenDocGia()+"',N'"+dg.getGioiTinh()+"','"+dg.getLop()
+		+"',N'"+dg.getKhoa()+"',N'"+dg.getDiaChi()+"','"+dg.getNgaySinh()+"')";
 		int result = DAL.getInstance().executeQueryUpdate(query);
-		if (result>0)
-			dsDocGia.add(dg);
+		if (result>0) loadResources();
+//			dsDocGia.add(dg);
 		return result;
 	}
 	
 	public int changeProcessing(DocGiaDTO dg) {
 		int result;
-		String query = "update docgia set LopMon=\"" + dg.getLopMon()+"\", LoaiDocGia=\"" + dg.getLoaiDocGia().getMaLoaiDocGia()
-				+"\", Email=\""
-				+dg.getEmail()+"\",  sdt=\""+dg.getSdt()+"\", TenDocGia=\""+dg.getTenDocGia() +"\",  NgaySinh=\""+dg.getNgaySinh()
-				+"\" where MaDocGia=\"" +dg.getMaDocGia()+"\"";
-		
+		String query ="UPDATE v_SINHVIEN SET HOTEN=N'"+dg.getTenDocGia()+"',GIOITINH=N'"+dg.getGioiTinh()+"',LOP='"+dg.getLop()+"',KHOA=N'"+dg.getKhoa()+"',DIACHI=N'"
+				+dg.getDiaChi()+"',NGAYSINH='"+dg.getNgaySinh()+"' WHERE MSSV=" + dg.getMaDocGia();
 		result = DAL.getInstance().executeQueryUpdate(query);
 		
-		if (result > 0)
-			for (int i = 0; i<dsDocGia.size(); i++) {
-				DocGiaDTO e = dsDocGia.get(i);
-				if (e.getMaDocGia().equals(dg.getMaDocGia()))
-				{
-					dsDocGia.set(i, dg);
-					break;
-				}
-			}
+		if (result > 0) loadResources();
+//			for (int i = 0; i<dsDocGia.size(); i++) {
+//				DocGiaDTO e = dsDocGia.get(i);
+//				if (e.getMaDocGia().equals(dg.getMaDocGia()))
+//				{
+//					dsDocGia.set(i, dg);
+//					break;
+//				}
+//			}
 		return result;
 	}
 	
 	public int deleteProcessing(String madg) {
-		int result = DAL.getInstance().executeQueryUpdate("delete from docgia where MaDocGia=\""+ madg +"\"");
-		if (result > 0)
-			for (int i = 0; i <dsDocGia.size(); i++) {
-				if (dsDocGia.get(i).getMaDocGia().equals(madg))
-					dsDocGia.remove(i);
-			}
+		int result = DAL.getInstance().executeQueryUpdate("delete from v_SINHVIEN where MSSV="+ madg );
+		if (result > 0) loadResources();
+//			for (int i = 0; i <dsDocGia.size(); i++) {
+//				if (dsDocGia.get(i).getMaDocGia().equals(madg))
+//					dsDocGia.remove(i);
+//			}
 		return result;
-	}*/
+	}
 	public ArrayList<DocGiaDTO> getResources(){
 		return dsDocGia;
 	}
 	
-	public ArrayList<DocGiaDTO> reloadResources(){
-		return dsDocGia;
-	}
+//	public ArrayList<DocGiaDTO> reloadResources(){
+//		return dsDocGia;
+//	}
 
-	public String thongTin(int maDocGia) {
+	public String thongTin(String maDocGia) {
 		for (DocGiaDTO dg:dsDocGia) {
-			if(dg.getMaDocGia() == maDocGia)
-				return dg.getMaDocGia()+dg.getTenDocGia();
+			if(dg.getMaDocGia().equals(maDocGia)){
+				return dg.getMaDocGia()+dg.getTenDocGia()+dg.getGioiTinh();
+		}
 		}
 		return "";
 	}

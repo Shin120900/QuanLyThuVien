@@ -3,7 +3,7 @@ package DTO;
 import java.sql.Date;
 
 public class DauSachDTO {
-	private int maDauSach;
+	private String maDauSach;
 	private String tenSach;
 	private String tenTG;
 	private String tenTL;
@@ -21,7 +21,7 @@ public class DauSachDTO {
 		this.tenNXB = tenNXB;
 		this.namXB = namXB;
 	}
-	public DauSachDTO(int maDauSach, String tenSach, String tenTG, String tenTL, String tenNXB, Date namXB) {
+	public DauSachDTO(String maDauSach, String tenSach, String tenTG, String tenTL, String tenNXB, Date namXB) {
 		super();
 		this.maDauSach = maDauSach;
 		this.tenSach = tenSach;
@@ -30,10 +30,10 @@ public class DauSachDTO {
 		this.tenNXB = tenNXB;
 		this.namXB = namXB;
 	}
-	public int getMaDauSach() {
+	public String getMaDauSach() {
 		return maDauSach;
 	}
-	public void setMaDauSach(int maDauSach) {
+	public void setMaDauSach(String maDauSach) {
 		this.maDauSach = maDauSach;
 	}
 	public String getTenSach() {

@@ -33,5 +33,6 @@
 	<classpathentry exported="true" kind="lib" path="poi-bin-5.0.0-20210120/poi-5.0.0/ooxml-lib/dom4j-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="poi-bin-5.0.0-20210120/poi-5.0.0/ooxml-lib/stax-api-1.0.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="poi-bin-5.0.0-20210120/poi-5.0.0/ooxml-lib/xmlbeans-4.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="mssql-jdbc-9.2.1.jre8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

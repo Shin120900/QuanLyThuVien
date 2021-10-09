@@ -46,7 +46,7 @@ public class DAL {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = (Connection) DriverManager.getConnection(connect);
 			st=con.createStatement();
-			System.out.println("Thanh cong");
+			System.out.println("Thành công");
 			return true;
 		}
 		catch(Exception ex) {

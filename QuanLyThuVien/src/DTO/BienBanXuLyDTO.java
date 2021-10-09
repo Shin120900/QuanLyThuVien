@@ -3,8 +3,8 @@ package DTO;
 import java.sql.Date;
 
 public class BienBanXuLyDTO {
-	private int maBienBan;
-	private int maPhieuMuon;
+	private String maBienBan;
+	private String maPhieuMuon;
 	private String tenNV;
 	private String tenSV;
 	private Date ngayLap;
@@ -14,7 +14,7 @@ public class BienBanXuLyDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public BienBanXuLyDTO(int maPhieuMuon, String tenNV, String tenSV, Date ngayLap, String loiViPham, String xuLy) {
+	public BienBanXuLyDTO(String maPhieuMuon, String tenNV, String tenSV, Date ngayLap, String loiViPham, String xuLy) {
 		super();
 		this.maPhieuMuon = maPhieuMuon;
 		this.tenNV = tenNV;
@@ -23,7 +23,7 @@ public class BienBanXuLyDTO {
 		this.loiViPham = loiViPham;
 		this.xuLy = xuLy;
 	}
-	public BienBanXuLyDTO(int maBienBan, int maPhieuMuon, String tenNV, String tenSV, Date ngayLap, String loiViPham,
+	public BienBanXuLyDTO(String maBienBan, String maPhieuMuon, String tenNV, String tenSV, Date ngayLap, String loiViPham,
 			String xuLy) {
 		super();
 		this.maBienBan = maBienBan;
@@ -34,16 +34,16 @@ public class BienBanXuLyDTO {
 		this.loiViPham = loiViPham;
 		this.xuLy = xuLy;
 	}
-	public int getMaBienBan() {
+	public String getMaBienBan() {
 		return maBienBan;
 	}
-	public void setMaBienBan(int maBienBan) {
+	public void setMaBienBan(String maBienBan) {
 		this.maBienBan = maBienBan;
 	}
-	public int getMaPhieuMuon() {
+	public String getMaPhieuMuon() {
 		return maPhieuMuon;
 	}
-	public void setMaPhieuMuon(int maPhieuMuon) {
+	public void setMaPhieuMuon(String maPhieuMuon) {
 		this.maPhieuMuon = maPhieuMuon;
 	}
 	public String getTenNV() {

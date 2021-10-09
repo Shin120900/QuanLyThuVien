@@ -4,8 +4,8 @@ import java.sql.Date;
 
 public class DocGiaDTO {
 	
-	private int maDocGia;
-	private String tenDocGia;
+	private String maDocGia;
+	private String hoTen;
 	private String gioiTinh;
 	private String lop;
 	private String khoa;
@@ -18,9 +18,9 @@ public class DocGiaDTO {
 	}
 
 
-	public DocGiaDTO(String tenDocGia, String gioiTinh, String lop, String khoa, String diaChi, Date ngaySinh) {
+	public DocGiaDTO(String hoTen, String gioiTinh, String lop, String khoa, String diaChi, Date ngaySinh) {
 		super();
-		this.tenDocGia = tenDocGia;
+		this.hoTen = hoTen;
 		this.gioiTinh = gioiTinh;
 		this.lop = lop;
 		this.khoa = khoa;
@@ -29,11 +29,11 @@ public class DocGiaDTO {
 	}
 
 
-	public DocGiaDTO(int maDocGia, String tenDocGia, String gioiTinh, String lop, String khoa, String diaChi,
+	public DocGiaDTO(String maDocGia, String hoTen, String gioiTinh, String lop, String khoa, String diaChi,
 			Date ngaySinh) {
 		super();
 		this.maDocGia = maDocGia;
-		this.tenDocGia = tenDocGia;
+		this.hoTen = hoTen;
 		this.gioiTinh = gioiTinh;
 		this.lop = lop;
 		this.khoa = khoa;
@@ -42,23 +42,23 @@ public class DocGiaDTO {
 	}
 
 
-	public int getMaDocGia() {
+	public String getMaDocGia() {
 		return maDocGia;
 	}
 
 
-	public void setMaDocGia(int maDocGia) {
+	public void setMaDocGia(String maDocGia) {
 		this.maDocGia = maDocGia;
 	}
 
 
 	public String getTenDocGia() {
-		return tenDocGia;
+		return hoTen;
 	}
 
 
-	public void setTenDocGia(String tenDocGia) {
-		this.tenDocGia = tenDocGia;
+	public void setTenDocGia(String hoTen) {
+		this.hoTen = hoTen;
 	}
 
 
