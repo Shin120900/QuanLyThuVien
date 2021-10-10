@@ -22,7 +22,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import BLL.QLMuonTraBLL;
 import CustomControl.ButtonEditor;
 import CustomControl.ButtonRenderer;
 import MyException.ContainException;
@@ -147,7 +146,7 @@ public class QLMuonTraGUI {
 				if (tfTimKiem.getText().length() == 0)
 					JOptionPane.showMessageDialog(null, "Ban chua nhap tu khoa can tim!", "Thong bao", 1);
 				else {
-					tbMuonTra.setModel(QLMuonTraBLL.getInstance().timKiem(tfTimKiem.getText()));
+	//				tbMuonTra.setModel(QLMuonTraBLL.getInstance().timKiem(tfTimKiem.getText()));
 					tbMuonTra.getColumn("Tra sach").setCellRenderer(new ButtonRenderer());
 					tbMuonTra.getColumn("Tra sach").setCellEditor(new ButtonEditor(new JCheckBox()));
 				}

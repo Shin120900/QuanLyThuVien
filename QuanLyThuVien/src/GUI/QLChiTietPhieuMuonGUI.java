@@ -21,7 +21,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import BLL.QLMuonTraBLL;
 import BLL.QLSachBLL;
 import CustomControl.ButtonEditor;
 import CustomControl.ButtonRenderer;
@@ -185,7 +184,7 @@ public class QLChiTietPhieuMuonGUI {
 		JButton btnThem = new JButton("Them");
 		btnThem.setIcon(new ImageIcon("icon\\new.png"));
 		btnThem.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnThem.setBounds(900, 135, 138, 40);
+		btnThem.setBounds(900, 200, 138, 40);
 		btnThem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -200,31 +199,31 @@ public class QLChiTietPhieuMuonGUI {
 				
 			}
 		});
-		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
-		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnSua.setBounds(900, 200, 138, 40);
-		pnDanhSachMuon.add(btnSua);
+//		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
+//		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
+//		btnSua.setBounds(900, 200, 138, 40);
+//		pnDanhSachMuon.add(btnSua);
 		
-		JButton btnHuy = new JButton("Huy");
-		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
-		btnHuy.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnHuy.setBounds(900, 265, 138, 40);
-		pnDanhSachMuon.add(btnHuy);
-		btnHuy.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
+//		JButton btnHuy = new JButton("Huy");
+//		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
+//		btnHuy.setFont(new Font("Times New Roman", Font.BOLD, 15));
+//		btnHuy.setBounds(900, 265, 138, 40);
+//		pnDanhSachMuon.add(btnHuy);
+//		btnHuy.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
 //				clearField();
 //				isChanging = true;
 //				setStateForTextfield();
 //				
-			}
-		});
+//			}
+//		});
 		
 		JButton btnXoa = new JButton("Xoa");
 		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
 		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnXoa.setBounds(900, 325, 138, 40);
+		btnXoa.setBounds(900, 265, 138, 40);
 		pnDanhSachMuon.add(btnXoa);
 		btnXoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

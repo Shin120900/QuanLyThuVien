@@ -21,7 +21,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-import BLL.QLPhatTienBLL;
 import DTO.BienBanXuLyDTO;
 
 import javax.swing.ScrollPaneConstants;
@@ -30,12 +29,12 @@ import javax.swing.JTextArea;
 
 public class QLPhatTienGUI {
 	private JTable tbQLViPham;
-	private JTextField tfSoTien;
 	private JPanel pnTongQuanQLViPham;
 
 	static QLPhatTienGUI instance = null;
-	private JTextField tfMaDocGia;
-	private JDateChooser dcNgayPhat;
+	private JTextField tfMaPhieuMuon;
+	private JTextField tfMaQuyenSach;
+	private JTextField tfXuLy;
 	JTextArea taLyDo;
 
 	private boolean isEdit = true;
@@ -63,16 +62,16 @@ public class QLPhatTienGUI {
 	}
 
 	private void reloadResources() {
-		DefaultTableModel dm = (DefaultTableModel) tbQLViPham.getModel();
-		dm.getDataVector().removeAllElements();
-		dm.fireTableDataChanged();
-		tbQLViPham.setModel(QLPhatTienBLL.getInstance().reloadResources());
+//		DefaultTableModel dm = (DefaultTableModel) tbQLViPham.getModel();
+//		dm.getDataVector().removeAllElements();
+//		dm.fireTableDataChanged();
+//		tbQLViPham.setModel(QLPhatTienBLL.getInstance().reloadResources());
 	}
 
 	private void clearField() {
-		tfSoTien.setText("");
-		tfMaDocGia.setText("");
-		dcNgayPhat.setDate(null);
+		tfMaPhieuMuon.setText("");
+		tfMaQuyenSach.setText("");
+		tfXuLy.setText("");
 		taLyDo.setText("");
 	}
 
@@ -114,9 +113,9 @@ public class QLPhatTienGUI {
 					return;
 				isEdit = false;
 				setStateForTextfeild();
-				tfSoTien.setText(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 2).toString());
-				tfMaDocGia.setText(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 3).toString());
-				dcNgayPhat.setDate(Date.valueOf(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 4).toString()));
+				tfMaPhieuMuon.setText(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 2).toString());
+				tfMaQuyenSach.setText(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 3).toString());
+				tfXuLy.setText(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 4).toString());
 				taLyDo.setText(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 5).toString());
 			}
 		});
@@ -128,8 +127,8 @@ public class QLPhatTienGUI {
 		pnTongQuanQLViPham.add(pnThongTinDocGia);
 		pnThongTinDocGia.setLayout(null);
 
-		JLabel lblThongTinDocGia = new JLabel("THONG TIN VI PHAM");
-		lblThongTinDocGia.setBounds(10, 5, 187, 22);
+		JLabel lblThongTinDocGia = new JLabel("THEM BIEN BAN XU LY");
+		lblThongTinDocGia.setBounds(10, 5, 220, 22);
 		lblThongTinDocGia.setFont(new Font("Times New Roman", Font.BOLD, 17));
 		pnThongTinDocGia.add(lblThongTinDocGia);
 
@@ -139,37 +138,54 @@ public class QLPhatTienGUI {
 		pnThongTinDocGia.add(pnThongTinNhap);
 		pnThongTinNhap.setLayout(null);
 
-		JLabel lblMaDocGia = new JLabel("Ma doc gia:*");
-		lblMaDocGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblMaDocGia.setBounds(30, 52, 80, 30);
-		pnThongTinNhap.add(lblMaDocGia);
+		JLabel lblMaPhieuMuon = new JLabel("Ma phieu muon:*");
+		lblMaPhieuMuon.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblMaPhieuMuon.setBounds(30, 52, 100, 30);
+		pnThongTinNhap.add(lblMaPhieuMuon);
 
-		JLabel lblSoTien = new JLabel("So tien:*");
-		lblSoTien.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblSoTien.setBounds(30, 109, 72, 30);
-		pnThongTinNhap.add(lblSoTien);
+		tfMaPhieuMuon = new JTextField();
+		tfMaPhieuMuon.setBounds(132, 52, 263, 31);
+		tfMaPhieuMuon.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		pnThongTinNhap.add(tfMaPhieuMuon);
+		tfMaPhieuMuon.setColumns(10);
+		
+		JLabel lblMaQuyenSach = new JLabel("Ma quyen sach:*");
+		lblMaQuyenSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblMaQuyenSach.setBounds(30, 109, 100, 30);
+		pnThongTinNhap.add(lblMaQuyenSach);
+		
+		tfMaQuyenSach = new JTextField();
+		tfMaQuyenSach.setBounds(132, 109, 263, 31);
+		tfMaQuyenSach.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		pnThongTinNhap.add(tfMaQuyenSach);
+		tfMaQuyenSach.setColumns(10);
+		
+		JLabel lblXuLy = new JLabel("Xu ly:*");
+		lblXuLy.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblXuLy.setBounds(30, 167, 72, 30);
+		pnThongTinNhap.add(lblXuLy);
+		
+		tfXuLy= new JTextField();
+		tfXuLy.setBounds(132, 166, 263, 31);
+		tfXuLy.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		pnThongTinNhap.add(tfXuLy);
+		tfXuLy.setColumns(10);
 
-		JLabel lblNgayPhat = new JLabel("Ngay phat:*");
-		lblNgayPhat.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblNgayPhat.setBounds(30, 167, 72, 30);
-		pnThongTinNhap.add(lblNgayPhat);
-
-		tfSoTien = new JTextField();
-		tfSoTien.setBounds(112, 109, 263, 31);
-		tfSoTien.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		pnThongTinNhap.add(tfSoTien);
-		tfSoTien.setColumns(10);
+//		JLabel lblNgayPhat = new JLabel("Ngay phat:*");
+//		lblNgayPhat.setFont(new Font("Times New Roman", Font.BOLD, 13));
+//		lblNgayPhat.setBounds(30, 167, 72, 30);
+//		pnThongTinNhap.add(lblNgayPhat);
+//		
+//		dcNgayPhat = new JDateChooser();
+//		dcNgayPhat.setBounds(112, 166, 263, 31);
+//		dcNgayPhat.setDateFormatString("yyyy-MM-dd");
+//		dcNgayPhat.setFont(new Font("Times New Roman", Font.BOLD, 13));
+//		pnThongTinNhap.add(dcNgayPhat);
 
 		JLabel lblLyDo = new JLabel("Loi vi pham:");
 		lblLyDo.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblLyDo.setBounds(441, 52, 59, 30);
+		lblLyDo.setBounds(441, 52, 69, 30);
 		pnThongTinNhap.add(lblLyDo);
-
-		tfMaDocGia = new JTextField();
-		tfMaDocGia.setBounds(112, 52, 263, 31);
-		tfMaDocGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		pnThongTinNhap.add(tfMaDocGia);
-		tfMaDocGia.setColumns(10);
 
 		JLabel lblMessage = new JLabel("(*)Khong duoc de trong");
 		lblMessage.setFont(new Font("Times New Roman", Font.ITALIC, 13));
@@ -177,21 +193,15 @@ public class QLPhatTienGUI {
 		lblMessage.setBounds(112, 11, 683, 30);
 		pnThongTinNhap.add(lblMessage);
 
-		dcNgayPhat = new JDateChooser();
-		dcNgayPhat.setBounds(112, 166, 263, 31);
-		dcNgayPhat.setDateFormatString("yyyy-MM-dd");
-		dcNgayPhat.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		pnThongTinNhap.add(dcNgayPhat);
-
 		taLyDo = new JTextArea();
 		taLyDo.setBackground(SystemColor.controlHighlight);
-		taLyDo.setBounds(510, 53, 308, 142);
+		taLyDo.setBounds(520, 53, 308, 142);
 		taLyDo.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		taLyDo.setLineWrap(true);
 		pnThongTinNhap.add(taLyDo);
 
 		JButton btnThem = new JButton("Them");
-		btnThem.setBounds(897, 37, 138, 41);
+		btnThem.setBounds(897, 93, 138, 41);
 		pnThongTinDocGia.add(btnThem);
 		btnThem.setIcon(new ImageIcon("icon\\new.png"));
 		btnThem.setFont(new Font("Times New Roman", Font.BOLD, 15));
@@ -241,33 +251,33 @@ public class QLPhatTienGUI {
 			}
 		});
 
-		JButton btnXoa = new JButton("Xoa");
-		btnXoa.setBounds(897, 201, 138, 41);
-		pnThongTinDocGia.add(btnXoa);
-		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
-		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnXoa.addActionListener(new ActionListener() {
+//		JButton btnXoa = new JButton("Xoa");
+//		btnXoa.setBounds(897, 201, 138, 41);
+//		pnThongTinDocGia.add(btnXoa);
+//		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
+//		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
+//		btnXoa.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				String msg = QLPhatTienBLL.getInstance()
+//						.deleteProcessing(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 1).toString());
+//				lblMessage.setText(msg);
+//				reloadResources();
+//				clearField();
+//			}
+//		});
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String msg = QLPhatTienBLL.getInstance()
-						.deleteProcessing(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 1).toString());
-				lblMessage.setText(msg);
-				reloadResources();
-				clearField();
-			}
-		});
-
-		JButton btnSua = new JButton("Sua");
-		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
-		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnSua.setBounds(897, 93, 138, 41);
-		btnSua.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		pnThongTinDocGia.add(btnSua);
+//		JButton btnSua = new JButton("Sua");
+//		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
+//		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
+//		btnSua.setBounds(897, 93, 138, 41);
+//		btnSua.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//			}
+//		});
+//		pnThongTinDocGia.add(btnSua);
 	}
 }

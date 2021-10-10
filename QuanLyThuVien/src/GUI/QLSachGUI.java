@@ -48,7 +48,7 @@ public class QLSachGUI {
 	}
 	
 	private void loadResources() {
-		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
+		//tbQLSach.setModel(QLSachBLL.getInstance().getResources());
 	}
 	
 	public static QLSachGUI getInstance() {
@@ -62,7 +62,7 @@ public class QLSachGUI {
 	}
 	
 	public void reloadResources() {
-		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
+		//tbQLSach.setModel(QLSachBLL.getInstance().getResources());
 	}
 	
 	private void clearField() {
@@ -99,14 +99,14 @@ public class QLSachGUI {
 		
 		JPanel pnQLSach = new JPanel();
 		pnQLSach.setBackground(SystemColor.activeCaption);
-		pnQLSach.setBounds(0, 52, 1065, 230);
+		pnQLSach.setBounds(0, 52, 1065, 290);
 		pnTongQuanQLSach.add(pnQLSach);
 		pnQLSach.setLayout(null);
 		
 		
 		JPanel pnThongTinSach = new JPanel();
 		pnThongTinSach.setBackground(SystemColor.activeCaption);
-		pnThongTinSach.setBounds(0, 281, 1065, 279);
+		pnThongTinSach.setBounds(0, 340, 1065, 210);
 		pnTongQuanQLSach.add(pnThongTinSach);
 		pnThongTinSach.setLayout(null);
 		
@@ -194,7 +194,7 @@ public class QLSachGUI {
 		pnThongTinNhap.add(dcNamXuatBan);
 		
 		tbQLSach = new JTable();
-		tbQLSach.setBounds(0, 0, 1050, 167);
+		tbQLSach.setBounds(0, 0, 1050, 227);
 		JScrollPane sc = new JScrollPane(tbQLSach, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		tbQLSach.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
@@ -295,25 +295,25 @@ public class QLSachGUI {
 			}
 		});
 		
-		JButton btnXoa = new JButton("Xoa");
-		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
-		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnXoa.setBounds(900, 226, 138, 41);
-		pnThongTinSach.add(btnXoa);
-		btnXoa.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+//		JButton btnXoa = new JButton("Xoa");
+//		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
+//		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
+//		btnXoa.setBounds(900, 226, 138, 41);
+//		pnThongTinSach.add(btnXoa);
+//		btnXoa.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
 //				String msg = QLSachBLL.getInstance().deleteProcessing(tfMaDauSach.getText());
 //				lblMessage.setText(msg);
 //				TrangChuGUI.getInstance().initTitle();
 //				reloadResources();
 //				clearField();
-			}
-		});
+//			}
+//		});
 //		
 		
 	
 		pnQLSach.add(sc);
-		sc.setBounds(0, 44, 1055, 186);
+		sc.setBounds(0, 44, 1055, 250);
 		
 		tfTimKiem = new JTextField();
 		tfTimKiem.setToolTipText("Nhap ma sach hoac ten sach, ...");

@@ -23,7 +23,6 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import BLL.QLDocGiaBLL;
-import BLL.QLMuonTraBLL;
 import CustomControl.ButtonEditor;
 import CustomControl.ButtonRenderer;
 import DTO.DocGiaDTO;
