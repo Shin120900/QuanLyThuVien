@@ -20,7 +20,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
+import BLL.BienBanBLL;
 import BLL.ChiTietMuonBLL;
 import BLL.QLSachBLL;
 import CustomControl.ButtonEditor;
@@ -33,6 +36,8 @@ public class QLChiTietPhieuMuonGUI {
 	private JTable tbChiTietPM;
 	private JTextField tfMaPM;
 	private JTextField tfTenDocGia;
+	
+	private String maQuyenSach;
 
 	private QLChiTietPhieuMuonGUI(String maPhieuMuon, String tenDocGia, boolean isCheck) {
 		initialize(maPhieuMuon, tenDocGia, isCheck);
@@ -130,49 +135,18 @@ public class QLChiTietPhieuMuonGUI {
 		JScrollPane sc = new JScrollPane(tbChiTietPM, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		sc.setBounds(40, 100, 855, 380);
-//		tbMuonTra.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(java.awt.event.MouseEvent evt) {
-//				int row = tbMuonTra.rowAtPoint(evt.getPoint());
-//				int col = tbMuonTra.columnAtPoint(evt.getPoint());
-//				if (row >= 0 && col >= 0) {
-//					if (col == 7) {
-//						String msg = QLMuonTraBLL.getInstance().traSach(
-//								tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 1).toString(),
-//								tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 3).toString());
-//						lblMessage.setText(msg);
-//						loadResources();
-//					} else {
-//						isEdit = false;
-//						setStateForTextfeild();
-//						// hiá»ƒn thá»‹ thÃ´ng tin vÃ o trong cÃ¡c trÆ°á»�ng
-//						tfMaDocGia.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 1).toString());
-//						tfHoTen.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 2).toString());
-//						tfMaSach.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 3).toString());
-//						tfTenSach.setText(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 4).toString());
-//						try {
-//							dcNgayMuon.setDate(
-//									Date.valueOf(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 5).toString()));
-//							dcNgayTra.setDate(
-//									Date.valueOf(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 6).toString()));
-//							tfTrangThai.setText("Ä�ang Ä‘Æ°á»£c mÆ°á»£n");
-//							Calendar cal = dcNgayMuon.getCalendar();
-//							java.util.Date date = cal.getTime();
-//							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//							String nm = sdf.format(date);
-//							cal = dcNgayTra.getCalendar();
-//							date = cal.getTime();
-//							String nt = sdf.format(date);
-//							QLMuonTraBLL.getInstance().muonTra = new MuonTraDTO(tfMaDocGia.getText(),
-//									tfMaSach.getText(), Date.valueOf(nm), Date.valueOf(nt));
-//						} catch (Exception e1) {
-//							lblMessage.setText(e1.getMessage());
-//
-//						}
-//					}
-//				}
-//			}
-//		});
+		tbChiTietPM.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				if (tbChiTietPM.getSelectedRow()< 0)
+					return;
+				if(isCheck) {
+					maQuyenSach = tbChiTietPM.getValueAt(tbChiTietPM.getSelectedRow(), 1).toString();
+				}
+				
+			}
+		});
 		pnDanhSachMuon.add(sc, BorderLayout.CENTER);
 		
 		if(isCheck) {
@@ -183,7 +157,7 @@ public class QLChiTietPhieuMuonGUI {
 			btnThem.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					NhapMaQuyenSachGUI.getInstance().getFrmMain().setVisible(true);
+					NhapMaQuyenSachGUI.getInstance(maPhieuMuon, tenDocGia, isCheck).getFrmMain().setVisible(true);
 				}
 			});
 			pnDanhSachMuon.add(btnThem);
@@ -196,7 +170,7 @@ public class QLChiTietPhieuMuonGUI {
 			pnDanhSachMuon.add(btnXoa);
 			btnXoa.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+					ChiTietMuonBLL.getInstance().deleteProcessing(maPhieuMuon, maQuyenSach);
 				}
 			});
 			

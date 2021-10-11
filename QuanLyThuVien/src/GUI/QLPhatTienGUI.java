@@ -25,6 +25,10 @@ import DTO.BienBanXuLyDTO;
 
 import javax.swing.ScrollPaneConstants;
 import com.toedter.calendar.JDateChooser;
+
+import BLL.BienBanBLL;
+import BLL.QLThongTinCaNhanBLL;
+
 import javax.swing.JTextArea;
 
 public class QLPhatTienGUI {
@@ -37,7 +41,6 @@ public class QLPhatTienGUI {
 	private JTextField tfXuLy;
 	JTextArea taLyDo;
 
-	private boolean isEdit = true;
 
 	private QLPhatTienGUI() {
 		initialize();
@@ -45,7 +48,7 @@ public class QLPhatTienGUI {
 	}
 
 	private void loadResources() {
-//		tbQLViPham.setModel(QLPhatTienBLL.getInstance().getResources());
+		tbQLViPham.setModel(BienBanBLL.getInstance().getResources());
 	}
 
 	public static QLPhatTienGUI getInstance() {
@@ -58,14 +61,12 @@ public class QLPhatTienGUI {
 		return pnTongQuanQLViPham;
 	}
 
-	private void setStateForTextfeild() {
-	}
 
 	private void reloadResources() {
-//		DefaultTableModel dm = (DefaultTableModel) tbQLViPham.getModel();
-//		dm.getDataVector().removeAllElements();
-//		dm.fireTableDataChanged();
-//		tbQLViPham.setModel(QLPhatTienBLL.getInstance().reloadResources());
+		DefaultTableModel dm = (DefaultTableModel) tbQLViPham.getModel();
+		dm.getDataVector().removeAllElements();
+		dm.fireTableDataChanged();
+		tbQLViPham.setModel(BienBanBLL.getInstance().reloadResources());
 	}
 
 	private void clearField() {
@@ -111,8 +112,6 @@ public class QLPhatTienGUI {
 				// TODO Auto-generated method stub
 				if (tbQLViPham.getSelectedRow() < 0)
 					return;
-				isEdit = false;
-				setStateForTextfeild();
 				tfMaPhieuMuon.setText(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 2).toString());
 				tfMaQuyenSach.setText(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 3).toString());
 				tfXuLy.setText(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 4).toString());
@@ -171,16 +170,6 @@ public class QLPhatTienGUI {
 		pnThongTinNhap.add(tfXuLy);
 		tfXuLy.setColumns(10);
 
-//		JLabel lblNgayPhat = new JLabel("Ngay phat:*");
-//		lblNgayPhat.setFont(new Font("Times New Roman", Font.BOLD, 13));
-//		lblNgayPhat.setBounds(30, 167, 72, 30);
-//		pnThongTinNhap.add(lblNgayPhat);
-//		
-//		dcNgayPhat = new JDateChooser();
-//		dcNgayPhat.setBounds(112, 166, 263, 31);
-//		dcNgayPhat.setDateFormatString("yyyy-MM-dd");
-//		dcNgayPhat.setFont(new Font("Times New Roman", Font.BOLD, 13));
-//		pnThongTinNhap.add(dcNgayPhat);
 
 		JLabel lblLyDo = new JLabel("Loi vi pham:");
 		lblLyDo.setFont(new Font("Times New Roman", Font.BOLD, 13));
@@ -211,20 +200,9 @@ public class QLPhatTienGUI {
 				// TODO Auto-generated method stub
 				try {
 					
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					
-
-					String maLanPhat;
-					if (tbQLViPham.getRowCount() == 0)
-						maLanPhat = "P0";
-					else {
-						maLanPhat = "P" + (1 + Integer.parseInt(
-								tbQLViPham.getValueAt(tbQLViPham.getRowCount() - 1, 1).toString().substring(1)));
-					}
-					/*BienBanXuLyDTO pt = new BienBanXuLyDTO(maLanPhat, tfSoTien.getText(), tfMaDocGia.getText(),
-							Date.valueOf(ngayPhat), taLyDo.getText());
-					String result = QLPhatTienBLL.getInstance().addProcessing(pt);
-					lblMessage.setText(result);*/
+					String result = BienBanBLL.getInstance().addProcessing(tfMaPhieuMuon.getText(), tfMaQuyenSach.getText(),
+							 QLThongTinCaNhanBLL.GetInstance().getNv().getManv(),taLyDo.getText(), tfXuLy.getText());
+					lblMessage.setText(result);
 					reloadResources();
 				} catch (Exception ex) {
 					lblMessage.setText("Ngày phạt phải đúng định dạng ngày");
@@ -244,39 +222,9 @@ public class QLPhatTienGUI {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				clearField();
-				isEdit = true;
-				setStateForTextfeild();
-
 			}
 		});
 
-//		JButton btnXoa = new JButton("Xoa");
-//		btnXoa.setBounds(897, 201, 138, 41);
-//		pnThongTinDocGia.add(btnXoa);
-//		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
-//		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
-//		btnXoa.addActionListener(new ActionListener() {
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				String msg = QLPhatTienBLL.getInstance()
-//						.deleteProcessing(tbQLViPham.getValueAt(tbQLViPham.getSelectedRow(), 1).toString());
-//				lblMessage.setText(msg);
-//				reloadResources();
-//				clearField();
-//			}
-//		});
 
-//		JButton btnSua = new JButton("Sua");
-//		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
-//		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
-//		btnSua.setBounds(897, 93, 138, 41);
-//		btnSua.addActionListener(new ActionListener() {
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//			}
-//		});
-//		pnThongTinDocGia.add(btnSua);
 	}
 }

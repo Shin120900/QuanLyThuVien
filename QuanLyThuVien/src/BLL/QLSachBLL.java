@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import DAL.QuyenSachDAL;
 import DAL.SachDAL;
 import DTO.*;
 import MyException.ContainException;
@@ -147,6 +148,16 @@ public static QLSachBLL instance;
 				}
 			return dtm;
 			}
+
+	public boolean isContain(String maQuyenSach) {
+		boolean isCheck = false;
+		ArrayList<QuyenSachDTO> dsQuyenSach = new ArrayList<QuyenSachDTO>();
+		dsQuyenSach = QuyenSachDAL.getInstance().getResources();
+		for (QuyenSachDTO quyenSachDTO : dsQuyenSach) {
+			if(quyenSachDTO.getMaQuyenSach().equals(maQuyenSach)) isCheck = true;
+		}
+		return isCheck;
+	}
 	}
 	
 

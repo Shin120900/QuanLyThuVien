@@ -46,12 +46,13 @@ public class QLDocGiaBLL {
 	}
 	
 	public boolean isContain(String maSinhVien) {
+		boolean ischeck = false;
 		ArrayList<DocGiaDTO> dsDocGia = new ArrayList<DocGiaDTO>();
 		dsDocGia = DocGiaDAL.getInstance().getResources();
 		for (DocGiaDTO docGiaDTO : dsDocGia) {
-			if(docGiaDTO.getMaDocGia().equals(maSinhVien)) return true;
+			if(docGiaDTO.getMaDocGia().equals(maSinhVien)) ischeck = true;
 		}
-		return false;
+		return ischeck;
 	}
 	
 	public String addProcessing(DocGiaDTO dg) {

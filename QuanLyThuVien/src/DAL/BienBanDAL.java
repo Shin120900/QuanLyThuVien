@@ -27,9 +27,8 @@ public class BienBanDAL {
 //		return false;
 //	}
 	
-	public int addProcessing(String maPhieuMuon,String maQuyenSach,String manv,String loiViPham,String xuLy) throws ContainException{
-//		if(isContain(pt))
-//			throw new ContainException("Mã lần phạt đã tồn tại");
+	public int addProcessing(String maPhieuMuon,String maQuyenSach,String manv,String loiViPham,String xuLy){
+
 		String query="INSERT INTO BIENBANXULY(MAPHIEUMUON,MANV,LOIVIPHAM,XULY) VALUES ('"+maPhieuMuon+"','"+maQuyenSach+"','"+manv+"',N'"+loiViPham+"',N'"+xuLy+"')";
 		int result = DAL.getInstance().executeQueryUpdate(query);
 		if(result>0) loadResources();

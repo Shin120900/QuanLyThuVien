@@ -13,20 +13,19 @@ public class ChiTietMuonDAL {
 	private static ChiTietMuonDAL instance;
 	private ArrayList<ChiTietPhieuMuonDTO> dsChiTietMuon;
 	
-	private ChiTietMuonDAL(String maPhieuMuon) {
-		dsChiTietMuon = new ArrayList<ChiTietPhieuMuonDTO>();
-		loadResources(maPhieuMuon);
+	private ChiTietMuonDAL() {
+		
 	}
 	
-	public static ChiTietMuonDAL getInstance(String maPhieuMuon) {
+	public static ChiTietMuonDAL getInstance() {
 		if (instance == null)
-			instance = new ChiTietMuonDAL(maPhieuMuon);
+			instance = new ChiTietMuonDAL();
 		return instance;
 	}
 	
 	private void loadResources(String maPhieuMuon){
 		try {
-			String query = new String("SELECT * v_CHITIETCHUATRA WHERE MAPHIEUMUON="+maPhieuMuon);
+			String query = new String("SELECT * FORM v_CHITIETCHUATRA WHERE MAPHIEUMUON="+maPhieuMuon);
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);	
 			while(resultSet.next()) {
 				dsChiTietMuon.add(new ChiTietPhieuMuonDTO(
@@ -43,7 +42,9 @@ public class ChiTietMuonDAL {
 	
 
 	
-	public ArrayList<ChiTietPhieuMuonDTO> getResources() {
+	public ArrayList<ChiTietPhieuMuonDTO> getResources(String maPhieuMuon) {
+		dsChiTietMuon = new ArrayList<ChiTietPhieuMuonDTO>();
+		loadResources(maPhieuMuon);
 		return dsChiTietMuon;
 	}
 
@@ -54,6 +55,17 @@ public class ChiTietMuonDAL {
 			 result = DAL.getInstance().executeQueryUpdate(query);			
 			if(result > 0) loadResources(maPhieuMuon);
 
+		}catch(Exception e) {
+		}
+		return result;
+	}
+	
+	public int deleteProcessing(String maPhieuMuon, String maQuyenSach) {
+		int result=0;
+		try {
+			String query ="DELETE FROM CHITIETPHIEUMUON WHERE MAPHIEUMUON="+maPhieuMuon+" AND MAQUYENSACH="+maQuyenSach;
+			 result = DAL.getInstance().executeQueryUpdate(query);			
+			if(result > 0) loadResources(maPhieuMuon);
 		}catch(Exception e) {
 		}
 		return result;
@@ -76,8 +88,9 @@ public class ChiTietMuonDAL {
 		
 	}
 
-	public ArrayList<ChiTietPhieuMuonDTO> reloadResources() {
-		// TODO Auto-generated method stub
+	public ArrayList<ChiTietPhieuMuonDTO> reloadResources(String maPhieuMuon) {
+		dsChiTietMuon = new ArrayList<ChiTietPhieuMuonDTO>();
+		loadResources(maPhieuMuon);
 		return dsChiTietMuon;
 	}
 }

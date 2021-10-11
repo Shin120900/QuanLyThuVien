@@ -362,7 +362,8 @@ public class TrangChuGUI {
 	
 	public void setBgChiTietPM(String maPhieuMuon, String tenDocGia, boolean isCheck) {
 		pnMain.removeAll();
-		QLChiTietPhieuMuonGUI qlChiTietPhieuMuonGUI = QLChiTietPhieuMuonGUI.getInstance(maPhieuMuon, tenDocGia, isCheck);	
+		QLChiTietPhieuMuonGUI qlChiTietPhieuMuonGUI = QLChiTietPhieuMuonGUI.getInstance(maPhieuMuon, tenDocGia, isCheck);
+		qlChiTietPhieuMuonGUI.reloadResources(maPhieuMuon);
 		pnMain.add(qlChiTietPhieuMuonGUI.getPnMain());
 		pnMain.revalidate();
 		pnMain.repaint();
@@ -370,7 +371,8 @@ public class TrangChuGUI {
 	
 	public void setBgPhieuMuon() {
 		pnMain.removeAll();
-		QLMuonTraGUI qlMuonTraGUI = QLMuonTraGUI.getInstance();	
+		QLMuonTraGUI qlMuonTraGUI = QLMuonTraGUI.getInstance();
+		qlMuonTraGUI.reloadResources();
 		pnMain.add(qlMuonTraGUI.getPnMain());
 		pnMain.revalidate();
 		pnMain.repaint();

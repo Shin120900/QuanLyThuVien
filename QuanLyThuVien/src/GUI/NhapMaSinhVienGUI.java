@@ -74,7 +74,7 @@ public class NhapMaSinhVienGUI {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!QLDocGiaBLL.getInstance().isContain(tfMaDg.getName())) {
+				if(!QLDocGiaBLL.getInstance().isContain(tfMaDg.getText())) {
 					clearField();
 					JOptionPane.showMessageDialog(null, "Ma sinh vien khong ton tai!","Thong bao",1);
 				}else {

@@ -25,7 +25,7 @@ public class PhieuMuonDAL {
 	
 	private void loadResources(){
 		try {
-			String query = new String("SELECT * v_PHIEUMUONCHUATRA");
+			String query = new String("SELECT * FROM v_PHIEUMUONCHUATRA");
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);	
 			while(resultSet.next()) {
 				dsPhieuMuon.add(new PhieuMuonDTO(

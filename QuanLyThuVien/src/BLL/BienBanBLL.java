@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 import DAL.BienBanDAL;
+import DAL.ChiTietMuonDAL;
 import DAL.DocGiaDAL;
 import DTO.BienBanXuLyDTO;
+import DTO.ChiTietPhieuMuonDTO;
 import MyException.ContainException;
 import MyException.MyException;
 import MyException.MyNullException;
@@ -23,34 +25,34 @@ public class BienBanBLL {
 			instance = new BienBanBLL();
 		return instance;
 	}
-//
-//	private boolean checkData(PhatTienDTO pt) throws MyNullException, MyException {
-//		if (pt.getMaLanPhat().equals("")) {
-//			throw new MyNullException("MÃ£ láº§n pháº¡t khÃ´ng Ä‘Æ°á»£c bá»� trá»‘ng");
-//		}
-//		if (pt.getSoTien().equals("")) {
-//			throw new MyNullException("Sá»‘ tiá»�n khÃ´ng Ä‘Æ°á»£c bá»� trá»‘ng");
-//		}
-//		if (pt.getMaDocGia().equals("")) {
-//			throw new MyNullException("MÃ£ Ä‘á»™c giáº£ khÃ´ng Ä‘Æ°á»£c bá»� trá»‘ng");
-//		}
-//		if (pt.getNgayPhat().equals("")) {
-//			throw new MyNullException("NgÃ y pháº¡t khÃ´ng Ä‘Æ°á»£c bá»� trá»‘ng");
-//		}
-//		try {
-//			int t = Integer.parseInt(pt.getSoTien());
-//			if (t < 0)
-//				throw new MyException("Sá»‘ tiá»�n pháº¡t pháº£i lá»›n hÆ¡n 0");
-//		} catch (Exception e) {
-//			throw new MyException("Sá»‘ tiá»�n pháº£i lÃ  sá»‘");
-//		}
-//
-//		return true;
-//	}
+
+	private boolean checkData(String maPhieuMuon,String maQuyenSach, String loivipham,String xuly) throws MyNullException, MyException {
+		boolean isCheck = false;
+		ArrayList<ChiTietPhieuMuonDTO> dsChiTietPM = new ArrayList<ChiTietPhieuMuonDTO>();
+		dsChiTietPM = ChiTietMuonDAL.getInstance().getResources(maPhieuMuon);
+		for (ChiTietPhieuMuonDTO chiTietPhieuMuonDTO : dsChiTietPM) {
+			if(chiTietPhieuMuonDTO.getMaQuyenSach().equals(maQuyenSach)) isCheck = true;
+		}
+		if(isCheck) throw new MyNullException("Ma phieu muon va ma quyen sach khong trung khop");
+		if (maPhieuMuon.equals("")) {
+			throw new MyNullException("Ma phieu muon dang bi de trong");
+		}
+		if (maQuyenSach.equals("")) {
+			throw new MyNullException("Ma quyen sach dang bi de trong");
+		}
+		if (loivipham.equals("")) {
+			throw new MyNullException("Loi vi pham dang bi de trong");
+		}
+		if (xuly.equals("")) {
+			throw new MyNullException("Xu ly dang bi de trong");
+		}
+
+		return true;
+	}
 
 	public String addProcessing(String maPhieuMuon,String maQuyenSach,String manv,String loivipham,String xuly) {
 		try {
-//			checkData(pt);
+			checkData(maPhieuMuon, maQuyenSach, loivipham, xuly);
 			String msg;
 			int result = BienBanDAL.getInstance().addProcessing(maPhieuMuon,maQuyenSach,manv,loivipham,xuly);
 			switch (result) {
@@ -62,49 +64,46 @@ public class BienBanBLL {
 				msg = "Them thanh cong";
 			}
 			return msg;
-//		} catch (MyNullException ex1) {
-//			System.out.println(ex1);
-//			return ex1.getMessage();
-//		} catch (ContainException ex2) {
-//			return ex2.getMessage();
-//		} catch (MyException e) {
-//			return e.getMessage();
-//		}
-		}catch (Exception e) {
-			return e.toString();
-		}
+		} catch (MyNullException ex1) {
+			System.out.println(ex1);
+			return ex1.getMessage();
+		} catch (MyException ex2) {
+			return ex2.getMessage();
+		} 
+		
 	}
 
 	
 
-//	public DefaultTableModel reloadResources() {
-//		ArrayList<PhatTienDTO> dsPhatTien = new ArrayList<PhatTienDTO>();
-//		dsPhatTien = PhatTienDAL.getInstance().reloadResources();
-//		DefaultTableModel dtm = new DefaultTableModel();
-//		try {
-//			dtm.addColumn("STT");
-//			dtm.addColumn("MÃ£ láº§n pháº¡t");
-//			dtm.addColumn("Sá»‘ tiá»�n");
-//			dtm.addColumn("MÃ£ Ä‘á»™c giáº£");
-//			dtm.addColumn("NgÃ y pháº¡t");
-//			dtm.addColumn("LÃ½ do");
-//			int i = 1;
-//			for (PhatTienDTO phat : dsPhatTien) {
-//				Object[] row = { i++, phat.getMaLanPhat(), phat.getSoTien(), phat.getMaDocGia(), phat.getNgayPhat(),
-//						phat.getLyDo() };
-//				dtm.addRow(row);
-//			}
-//
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		} finally {
-//
-//		}
-//		return dtm;
-//
-//	}
+
 
 	public DefaultTableModel getResources() {
+		ArrayList<BienBanXuLyDTO> dsBienBan = new ArrayList<BienBanXuLyDTO>();
+		dsBienBan = BienBanDAL.getInstance().getResources();
+		DefaultTableModel dtm = new DefaultTableModel();
+		try {
+			dtm.addColumn("Ma bien ban");
+			dtm.addColumn("Ma phieu muon");
+			dtm.addColumn("Ma quyen sach");
+			dtm.addColumn("Ten nhan vien");
+			dtm.addColumn("Ten sinh vien");
+			dtm.addColumn("Ngay lap");
+			dtm.addColumn("Loi vi pham");
+			dtm.addColumn("Xu ly");
+			for (BienBanXuLyDTO bb : dsBienBan) {
+				Object[] row = { bb.getMaBienBan(),bb.getMaPhieuMuon(),bb.getMaQuyenSach(),bb.getTenNV(),bb.getTenSV(),bb.getNgayLap(),bb.getLoiViPham(),bb.getXuLy()};
+				dtm.addRow(row);
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+
+		}
+		return dtm;
+	}
+	
+	public DefaultTableModel reloadResources() {
 		ArrayList<BienBanXuLyDTO> dsBienBan = new ArrayList<BienBanXuLyDTO>();
 		dsBienBan = BienBanDAL.getInstance().getResources();
 		DefaultTableModel dtm = new DefaultTableModel();

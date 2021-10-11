@@ -14,6 +14,7 @@ public class DocGiaDAL {
 	private static DocGiaDAL instance;
 	private ArrayList<DocGiaDTO> dsDocGia;
 	private DocGiaDAL() {
+		dsDocGia = new ArrayList<DocGiaDTO>();
 		loadResources();
 	}
 	
