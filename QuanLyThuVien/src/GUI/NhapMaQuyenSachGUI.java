@@ -80,7 +80,8 @@ public class NhapMaQuyenSachGUI {
 				}else {
 					int result = ChiTietMuonBLL.getInstance().addProcessing(maPhieuMuon, tfMaQs.getText());
 					if (result > 0) {
-						QLChiTietPhieuMuonGUI.getInstance(maPhieuMuon, tenDocGia, isCheck);
+						QLChiTietPhieuMuonGUI.getInstance(maPhieuMuon, tenDocGia, isCheck).reloadResources(maPhieuMuon);
+						
 						frmMain.setVisible(false);
 					}else {
 						clearField();

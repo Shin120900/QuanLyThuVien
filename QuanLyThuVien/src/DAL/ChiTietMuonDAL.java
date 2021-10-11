@@ -25,7 +25,7 @@ public class ChiTietMuonDAL {
 	
 	private void loadResources(String maPhieuMuon){
 		try {
-			String query = new String("SELECT * FORM v_CHITIETCHUATRA WHERE MAPHIEUMUON="+maPhieuMuon);
+			String query = new String("SELECT * FROM v_CHITIETCHUATRA WHERE MAPHIEUMUON="+maPhieuMuon);
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);	
 			while(resultSet.next()) {
 				dsChiTietMuon.add(new ChiTietPhieuMuonDTO(

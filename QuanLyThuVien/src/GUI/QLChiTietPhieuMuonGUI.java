@@ -142,7 +142,7 @@ public class QLChiTietPhieuMuonGUI {
 				if (tbChiTietPM.getSelectedRow()< 0)
 					return;
 				if(isCheck) {
-					maQuyenSach = tbChiTietPM.getValueAt(tbChiTietPM.getSelectedRow(), 1).toString();
+					maQuyenSach = tbChiTietPM.getValueAt(tbChiTietPM.getSelectedRow(), 0).toString();
 				}
 				
 			}
@@ -171,6 +171,7 @@ public class QLChiTietPhieuMuonGUI {
 			btnXoa.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					ChiTietMuonBLL.getInstance().deleteProcessing(maPhieuMuon, maQuyenSach);
+					reloadResources(maPhieuMuon);
 				}
 			});
 			

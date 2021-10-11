@@ -11,7 +11,6 @@ import MyException.ContainException;
 public class PhieuMuonDAL {
 	private static PhieuMuonDAL instance;
 	private ArrayList<PhieuMuonDTO> dsPhieuMuon;
-	
 	private PhieuMuonDAL() {
 		dsPhieuMuon = new ArrayList<PhieuMuonDTO>();
 		loadResources();
@@ -42,24 +41,35 @@ public class PhieuMuonDAL {
 		}
 	}
 	
-//	private void loadResourcesChiTietPhieuMuon(){
-//		try {
-//			String query = new String("select * from quanlymuonsach");
-//			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);
-//			
-//			while(resultSet.next()) {
-//				/*dsMuonTra.add(new MuonTraDTO(
-//						resultSet.getObject(1).toString(), 
-//						resultSet.getObject(2).toString(), 
-//						Date.valueOf(resultSet.getObject(3).toString()), 
-//						Date.valueOf(resultSet.getObject(4).toString()),
-//						resultSet.getObject(5).toString()));*/
-//			}
-//		}
-//		catch(Exception ex){
-//			ex.printStackTrace();
-//		}
-//	}
+	public String getMaMuon() {
+		String maMuon="";
+		try {
+			String query = new String("SELECT TOP 1 MAPHIEUMUON FROM PHIEUMUON ORDER BY MAPHIEUMUON DESC");
+			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);	
+			while(resultSet.next()) {
+				maMuon=resultSet.getObject(1).toString();
+			}
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return maMuon;
+	}
+
+	public String getTenSV() {
+		String hoTen="";
+		try {
+			String query = new String("SELECT TOP 1 HOTEN FROM PHIEUMUON pm inner join SINHVIEN sv on pm.MSSV=sv.MSSV ORDER BY MAPHIEUMUON DESC");
+			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);	
+			while(resultSet.next()) {
+				hoTen=resultSet.getObject(1).toString();
+			}
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return hoTen;
+	}
 	public int soPhieuMuon() {
 		int count = 0;
 		for (PhieuMuonDTO item: dsPhieuMuon) {
@@ -82,10 +92,6 @@ public class PhieuMuonDAL {
 			String query = "INSERT INTO PHIEUMUON(MANV,MSSV) VALUES ('"+manv+"','"+mssv+"')";
 			 result = DAL.getInstance().executeQueryUpdate(query);
 			if(result > 0) loadResources();
-//			{
-//				SachDAL.getInstance().changeTrangThai(pm.getMaSach(), "Ä�ang Ä‘Æ°á»£c mÆ°á»£n");
-//				dsMuonTra.add(new MuonTraDTO(pm.getMaDocGia(), pm.getMaSach(), pm.getNgayMuon(), mt.getNgayTra(), mt.getTrangThai()));
-//			}
 		
 		}catch (Exception e) {
 			// TODO: handle exception

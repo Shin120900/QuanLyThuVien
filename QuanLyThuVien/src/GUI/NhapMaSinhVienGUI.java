@@ -78,13 +78,13 @@ public class NhapMaSinhVienGUI {
 					clearField();
 					JOptionPane.showMessageDialog(null, "Ma sinh vien khong ton tai!","Thong bao",1);
 				}else {
-					int result = MuonBLL.getInstance().addProcessing(QLThongTinCaNhanBLL.GetInstance().getNv().getManv(), tfMaDg.getName());
+					int result = MuonBLL.getInstance().addProcessing(QLThongTinCaNhanBLL.GetInstance().getNv().getManv(), tfMaDg.getText());
 					if (result > 0) {
 						ArrayList<PhieuMuonDTO> dsPhieuMuon = new ArrayList<PhieuMuonDTO>();
 						dsPhieuMuon = PhieuMuonDAL.getInstance().getResources();
 						frmMain.setVisible(false);
-						TrangChuGUI.getInstance().setBgChiTietPM(dsPhieuMuon.get(dsPhieuMuon.size()-1).getMaPhieuMuon(),
-								dsPhieuMuon.get(dsPhieuMuon.size()-1).getTenSV(), true);
+						TrangChuGUI.getInstance().setBgChiTietPM(PhieuMuonDAL.getInstance().getMaMuon(),
+								PhieuMuonDAL.getInstance().getTenSV(), true);
 					}else {
 						clearField();
 						JOptionPane.showMessageDialog(null, "Them phieu muon khong thanh cong!","Thong bao",1);
