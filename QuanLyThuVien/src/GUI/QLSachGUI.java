@@ -34,10 +34,9 @@ public class QLSachGUI {
 	private JTextField tfNhaXuatBan;
 	private JPanel pnTongQuanQLSach;
 	private JLabel lblMessage;
-	private JRadioButton rdbtnTrong;
-	private JDateChooser dcNgayNhap;
 	private JDateChooser dcNamXuatBan;
-	private boolean isChanging = false;
+
+	private String maSach;
 	
 	static QLSachGUI instance=null;
 	private JTextField tfTimKiem;
@@ -48,7 +47,7 @@ public class QLSachGUI {
 	}
 	
 	private void loadResources() {
-		//tbQLSach.setModel(QLSachBLL.getInstance().getResources());
+		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
 	}
 	
 	public static QLSachGUI getInstance() {
@@ -62,7 +61,7 @@ public class QLSachGUI {
 	}
 	
 	public void reloadResources() {
-		//tbQLSach.setModel(QLSachBLL.getInstance().getResources());
+		tbQLSach.setModel(QLSachBLL.getInstance().getResources());
 	}
 	
 	private void clearField() {
@@ -71,12 +70,8 @@ public class QLSachGUI {
 		tfTacGia.setText("");
 		tfTenSach.setText("");
 		tfTheLoai.setText("");
-		rdbtnTrong.setSelected(true);
 	}
 	
-	private void setStateForTextfield() {
-			tfMaDauSach.setEditable(isChanging);
-	}
 	
 	private void initialize() {
 		
@@ -196,27 +191,23 @@ public class QLSachGUI {
 		tbQLSach = new JTable();
 		tbQLSach.setBounds(0, 0, 1050, 227);
 		JScrollPane sc = new JScrollPane(tbQLSach, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		sc.setBounds(0, 44, 1055, 250);
 		tbQLSach.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				if (tbQLSach.getSelectedRow()< 0)
 					return;
-				isChanging = false;
-				setStateForTextfield();
-				tfMaDauSach.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 1).toString());
-				tfTenSach.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 2).toString());
+				maSach = tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 0).toString();
+				tfTenSach.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 1).toString());
+				tfTacGia.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 2).toString());
 				tfTheLoai.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 3).toString());
-				tfTacGia.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 4).toString());
-				tfNhaXuatBan.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 5).toString());
-				dcNgayNhap.setDate(Date.valueOf(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 6).toString()));
-				if (tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 8).toString().equals("Trá»‘ng"))
-					rdbtnTrong.setSelected(true);
-				else 
-					rdbtnTrong.setSelected(false);
-				dcNamXuatBan.setDate(Date.valueOf(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 9).toString()));
+				tfNhaXuatBan.setText(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 4).toString());
+				dcNamXuatBan.setDate(Date.valueOf(tbQLSach.getValueAt(tbQLSach.getSelectedRow(), 5).toString()));
 			}
 		});
+		pnQLSach.add(sc);
+		
 		
 		JButton btnThem = new JButton("Them");
 		btnThem.setIcon(new ImageIcon("icon\\new.png"));
@@ -231,9 +222,6 @@ public class QLSachGUI {
 					java.util.Date date = cal.getTime();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					String nxb = sdf.format(date);
-//					cal = dcNgayNhap.getCalendar();
-//					date = cal.getTime();
-//					String nn = sdf.format(date);
 					DauSachDTO s = new DauSachDTO(tfTenSach.getText(), tfTacGia.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), Date.valueOf(nxb));
 					String result = QLSachBLL.getInstance().addProcessing(s);
 					lblMessage.setText(result);
@@ -251,22 +239,14 @@ public class QLSachGUI {
 		btnSua.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					String tinhTrang;
-					if (rdbtnTrong.isSelected())
-						tinhTrang = "Trong";
-					else
-						tinhTrang = "Dang duoc muon";
+					
 					Calendar cal = dcNamXuatBan.getCalendar();
 					java.util.Date date = cal.getTime();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					String nxb = sdf.format(date);
-					cal = dcNgayNhap.getCalendar();
-					date = cal.getTime();
-					String nn = sdf.format(date);
-					/*SachDTO s = new SachDTO(tfMaDauSach.getText(), tfTacGia.getText(), tfTenSach.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), 
-							Date.valueOf(nn), tfTriGia.getText(), tinhTrang, Date.valueOf(nxb));
+					DauSachDTO s = new DauSachDTO(maSach, tfTenSach.getText(), tfTacGia.getText(), tfTheLoai.getText(), tfNhaXuatBan.getText(), Date.valueOf(nxb));
 					String result = QLSachBLL.getInstance().changeProcessing(s);
-					lblMessage.setText(result);*/
+					lblMessage.setText(result);
 					reloadResources();
 				}
 				catch(Exception ex) {
@@ -288,32 +268,13 @@ public class QLSachGUI {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clearField();
-				isChanging = true;
-				setStateForTextfield();
-				
+				clearField();			
 			}
 		});
 		
-//		JButton btnXoa = new JButton("Xoa");
-//		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
-//		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
-//		btnXoa.setBounds(900, 226, 138, 41);
-//		pnThongTinSach.add(btnXoa);
-//		btnXoa.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				String msg = QLSachBLL.getInstance().deleteProcessing(tfMaDauSach.getText());
-//				lblMessage.setText(msg);
-//				TrangChuGUI.getInstance().initTitle();
-//				reloadResources();
-//				clearField();
-//			}
-//		});
-//		
 		
 	
-		pnQLSach.add(sc);
-		sc.setBounds(0, 44, 1055, 250);
+		
 		
 		tfTimKiem = new JTextField();
 		tfTimKiem.setToolTipText("Nhap ma sach hoac ten sach, ...");
@@ -330,12 +291,12 @@ public class QLSachGUI {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				if(tfTimKiem.getText().length()==0)
-//					JOptionPane.showMessageDialog(null, "Ban chua nhap tu khoa can tim!","Thong bao",1);
-//				else {
-//					tbQLSach.setModel(QLSachBLL.getInstance().timKiem(tfTimKiem.getText()));
-//				}
-//				
+				if(tfTimKiem.getText().length()==0)
+					JOptionPane.showMessageDialog(null, "Ban chua nhap tu khoa can tim!","Thong bao",1);
+				else {
+					tbQLSach.setModel(QLSachBLL.getInstance().timKiem(tfTimKiem.getText()));
+				}
+				
 			}
 		});
 		pnQLSach.add(btnTimKiem);

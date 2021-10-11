@@ -1,5 +1,9 @@
 package BLL;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import DAL.NhanVienDAL;
 import DTO.NhanVienDTO;
 import GUI.QLThongTinCaNhanGUI;
@@ -25,41 +29,47 @@ public class QLThongTinCaNhanBLL {
 
 	public void luu() {
 		if (QLThongTinCaNhanGUI.getInstance().tfMatKhau.getText().equals("")) {
-			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Máº­t kháº©u Ä‘ang bá»‹ trá»‘ng");
+			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Mat khau dang trong");
 			return;
 		}
 		if (QLThongTinCaNhanGUI.getInstance().tfMatKhauMoi.getText().equals("")) {
-			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Máº­t kháº©u má»›i Ä‘ang bá»‹ trá»‘ng");
+			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Mat khau moi dang trong");
 			return;
 		}
 		if (QLThongTinCaNhanGUI.getInstance().tfNhapLaiMatKhauMoi.getText().equals("")) {
-			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Nháº­p láº¡i máº­t kháº©u má»›i Ä‘ang bá»‹ trá»‘ng");
+			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Nhap lai mat khau moi dang trong");
 			return;
 		}
 		if(!QLThongTinCaNhanGUI.getInstance().tfNhapLaiMatKhauMoi.getText().equals(QLThongTinCaNhanGUI.getInstance().tfMatKhauMoi.getText())) {
-			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Nháº­p láº¡i máº­t kháº©u khÃ¡c vá»›i Máº­t kháº©u má»›i");
+			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Nhap lai mat khau moi khac mat khau moi");
 			return;
 		}
 		if (!QLThongTinCaNhanGUI.getInstance().tfMatKhau.getText().equals(nv.getMatKhau())) {
 			System.out.println(nv.getMatKhau());
-			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Máº­t kháº©u sai");
+			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Mat khau sai");
 			return;
 		}
 		nv.setMatKhau(QLThongTinCaNhanGUI.getInstance().tfMatKhauMoi.getText());
 		int result = NhanVienDAL.getInstance().changeProcessing(nv);
 		if (result > 0) {
-			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Ä�á»•i máº­t kháº©u thÃ nh cÃ´ng");
-			QLThongTinCaNhanGUI.getInstance().huyPro();
+			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Doi mat khau thanh cong");
+			QLThongTinCaNhanGUI.getInstance().clearField();
 		}
 		else
-			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Ä�á»•i máº­t kháº©u tháº¥t báº¡i");
+			QLThongTinCaNhanGUI.getInstance().lblMessage.setText("Doi mat khau that bai");
 	}
 	
 	public void LoadResources() {
-		System.out.println(nv.getTaiKhoan());
 		QLThongTinCaNhanGUI.getInstance().tfMaNhanVien.setText(nv.getTaiKhoan());
-		QLThongTinCaNhanGUI.getInstance().tfChucVu.setText(nv.getLoaiTaiKhoan());
 		QLThongTinCaNhanGUI.getInstance().tfTenNhanVien.setText(nv.getHoTen());
+		QLThongTinCaNhanGUI.getInstance().tfChucVu.setText(nv.getLoaiTaiKhoan());
+		QLThongTinCaNhanGUI.getInstance().tfGioiTinh.setText(nv.getGioiTinh());
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		String ngaySinh = sdf.format(nv.getNgaySinh());
+		QLThongTinCaNhanGUI.getInstance().tfNgaySinh.setText(ngaySinh);
+		QLThongTinCaNhanGUI.getInstance().tfDiaChi.setText(nv.getDiaChi());
+		QLThongTinCaNhanGUI.getInstance().tfSdt.setText(nv.getSdt());
+		
 	}
 	
 	

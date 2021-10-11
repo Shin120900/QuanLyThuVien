@@ -39,14 +39,14 @@ public class QLDocGiaGUI {
 	private JTextField tfHoTen;
 	private JTextField tfLop;
 	private JTextField tfKhoa;
-	private JTextField tfMaDocGia;
 	private JLabel lblMessage;
 	private JTextField tfGioiTinh;
 	private JDateChooser dcNgaySinh;
 	private JTextField tfDiaChi;
 	
+	private String maDocGia;
 
-	private boolean isEdit = true;
+
 	private JTextField tfTimKiem;
 
 	private QLDocGiaGUI() {
@@ -55,7 +55,7 @@ public class QLDocGiaGUI {
 	}
 
 	private void loadResources() {
-//		tbDocGia.setModel(QLDocGiaBLL.getInstance().getResources(cbbLoaiDocGia));
+		tbDocGia.setModel(QLDocGiaBLL.getInstance().getResources());
 	}
 
 	public static QLDocGiaGUI getInstance() {
@@ -72,24 +72,18 @@ public class QLDocGiaGUI {
 		DefaultTableModel dm = (DefaultTableModel) tbDocGia.getModel();
 		dm.getDataVector().removeAllElements();
 		dm.fireTableDataChanged();
-//		tbDocGia.setModel(QLDocGiaBLL.getInstance().reloadResources());
+		tbDocGia.setModel(QLDocGiaBLL.getInstance().reloadResources());
 	}
 
-	private void setStateForTexfeild() {
-		tfMaDocGia.setEditable(isEdit);
-	}
+	
 
 	private void clearField() {
-		
 		tfHoTen.setText("");
 		tfLop.setText("");
 		tfKhoa.setText("");
-		tfMaDocGia.setText("");
 		tfGioiTinh.setText("");
 		dcNgaySinh.setDate(null);
 		tfDiaChi.setText("");
-		
-//		cbbLoaiDocGia.setSelectedItem(0);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -138,24 +132,13 @@ public class QLDocGiaGUI {
 			public void valueChanged(ListSelectionEvent arg0) {
 				if (tbDocGia.getSelectedRow() < 0)
 					return;
-
-				isEdit = false;
-				setStateForTexfeild();
-				tfMaDocGia.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 1).toString());
-				tfHoTen.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 2).toString());
-
-//				for (int i = 0; i < cbbLoaiDocGia.getItemCount(); i++) {
-//					if (tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 3).toString()
-//							.equals(cbbLoaiDocGia.getItemAt(i).toString())) {
-//						cbbLoaiDocGia.setSelectedItem(cbbLoaiDocGia.getItemAt(i));
-//					}
-//				}
-
-				tfLop.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 4).toString());
-				dcNgaySinh.setDate(Date.valueOf(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 5).toString()));
-				tfKhoa.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 6).toString());
-				tfGioiTinh.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 7).toString());
-				tfDiaChi.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 8).toString());
+				maDocGia = tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 0).toString();
+				tfHoTen.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 1).toString());
+				tfGioiTinh.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 2).toString());
+				tfLop.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 3).toString());
+				tfKhoa.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 4).toString());
+				tfDiaChi.setText(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 5).toString());
+				dcNgaySinh.setDate(Date.valueOf(tbDocGia.getValueAt(tbDocGia.getSelectedRow(), 6).toString()));
 			}
 
 		});
@@ -178,7 +161,7 @@ public class QLDocGiaGUI {
 				if (tfTimKiem.getText().length() == 0)
 					JOptionPane.showMessageDialog(null, "Ban chua nhap tu khoa can tim!", "Thong bao", 1);
 				else {
-//					tbDocGia.setModel(QLDocGiaBLL.getInstance().timKiem(tfTimKiem.getText()));
+					tbDocGia.setModel(QLDocGiaBLL.getInstance().timKiem(tfTimKiem.getText()));
 				}
 
 			}
@@ -280,12 +263,11 @@ public class QLDocGiaGUI {
 
 				DocGiaDTO dg = null;
 				try {
-//					Calendar cal = dcNgaySinh.getCalendar();
-//					java.util.Date date = cal.getTime();
-//					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//					dg = new DocGiaDTO(tfMaDocGia.getText(), tfHoTen.getText(),
-//							(LoaiDocGiaDTO) cbbLoaiDocGia.getSelectedItem(), tfLopChuyenMon.getText(),
-//							Date.valueOf(sdf.format(date)), tfSDT.getText(), tfEmail.getText());
+					Calendar cal = dcNgaySinh.getCalendar();
+					java.util.Date date = cal.getTime();
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+					dg = new DocGiaDTO(tfHoTen.getText(), tfGioiTinh.getText(), tfLop.getText(),
+							tfKhoa.getText(), tfDiaChi.getText(), Date.valueOf(sdf.format(date)));
 				} catch (Exception e1) {
 					lblMessage.setText("Kiem tra ngay thang");
 				}
@@ -305,8 +287,6 @@ public class QLDocGiaGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clearField();
-				isEdit = true;
-				setStateForTexfeild();
 
 			}
 		});
@@ -325,9 +305,8 @@ public class QLDocGiaGUI {
 					Calendar cal = dcNgaySinh.getCalendar();
 					java.util.Date date = cal.getTime();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//					dg = new DocGiaDTO(tfMaDocGia.getText(), tfHoTen.getText(),
-//							(LoaiDocGiaDTO) cbbLoaiDocGia.getSelectedItem(), tfLopChuyenMon.getText(),
-//							Date.valueOf(sdf.format(date)), tfSDT.getText(), tfEmail.getText());
+					dg = new DocGiaDTO(maDocGia, tfHoTen.getText(), tfGioiTinh.getText(), tfLop.getText(),
+							tfKhoa.getText(), tfDiaChi.getText(), Date.valueOf(sdf.format(date)));
 				} catch (Exception e1) {
 					lblMessage.setText("Kiem tra ngay thang");
 				}
@@ -346,7 +325,11 @@ public class QLDocGiaGUI {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String msg = QLDocGiaBLL.getInstance().deleteProcessing(tfMaDocGia.getText());
+				if(maDocGia == null) {
+					lblMessage.setText("Chua chon doc gia can xoa");
+					return;
+				}
+				String msg = QLDocGiaBLL.getInstance().deleteProcessing(maDocGia);
 				lblMessage.setText(msg);
 				TrangChuGUI.getInstance().initTitle();
 				reloadResources();
@@ -356,7 +339,7 @@ public class QLDocGiaGUI {
 		pnThongTinDocGia.add(btnXoa);
 
 		// set tab key
-		tfHoTen.setNextFocusableComponent(tfMaDocGia);
+
 //		tfMaDocGia.setNextFocusableComponent(cbbLoaiDocGia);
 //		cbbLoaiDocGia.setNextFocusableComponent(tfLopChuyenMon);
 //		tfSDT.setNextFocusableComponent(btnThem);

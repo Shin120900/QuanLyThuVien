@@ -53,35 +53,11 @@ public class SachDAL {
 	}
 	
 	
-	public DauSachDTO getSach(String maDauSach) {
-		for (DauSachDTO item:dsSach) {
-			
-			if (item.getMaDauSach().equals(maDauSach))
-				return item;
-		}
-		return null;
-	}
 	
-	public String getTenSach(String maSach) {
-		for (DauSachDTO s: dsSach) {
-			if (maSach.equals(s.getMaDauSach()))
-				return s.getTenSach();
-		}
-		return "";
-	}
 	public ArrayList<DauSachDTO> getResources(){
 		return  dsSach;
 	}
-//	Xoa can tao them GUI de xem tung quyen sach de xoa
-//	public int deleteProcessing(String maQuyenSach) {
-//		int result = DAL.getInstance().executeQueryUpdate("delete from dbo.QUYENSACH where MAQUYENSACH="+ maQuyenSach);
-//		if (result > 0) 
-//			for (int i = 0; i <dsSach.size(); i++) {
-//				if (dsSach.get(i).getMaDauSach().equals(ma))
-//					dsSach.remove(i);
-//			}
-//		return result;
-//	}
+
 
 	public String getThongTin(String maSach) {
 		for (DauSachDTO s: dsSach) {
@@ -94,7 +70,6 @@ public class SachDAL {
 	public int changeProcessing(DauSachDTO s) {
 		int result;
 		String query = "UPDATE v_SACH SET TENSACH=N'"+s.getTenSach()+"',TENTG=N'"+s.getTenTG()+"',TENTL=N'"+s.getTenTL()+"',TENNXB=N'"+s.getTenNXB()+"',NAMXB='"+s.getNamXB()+"' WHERE MADAUSACH="+s.getMaDauSach();
-		//System.out.println("Query = "+ query);
 		result = DAL.getInstance().executeQueryUpdate(query);
 		
 		if (result > 0) 

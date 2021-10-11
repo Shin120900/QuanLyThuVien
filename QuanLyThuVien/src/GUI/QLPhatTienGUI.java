@@ -210,10 +210,9 @@ public class QLPhatTienGUI {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-					Calendar cal = dcNgayPhat.getCalendar();
-					java.util.Date date = cal.getTime();
+					
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					String ngayPhat = sdf.format(date);
+					
 
 					String maLanPhat;
 					if (tbQLViPham.getRowCount() == 0)

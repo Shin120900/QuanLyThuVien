@@ -37,7 +37,7 @@ public class QLThongTinCaNhanGUI {
 	}
 	
 	public void loadResources() {
-		//QLThongTinCaNhanBLL.GetInstance().LoadResources();
+		QLThongTinCaNhanBLL.GetInstance().LoadResources();
 	}
 	
 	public static QLThongTinCaNhanGUI getInstance() {
@@ -46,7 +46,7 @@ public class QLThongTinCaNhanGUI {
 		return instance;
 	}
 	
-	public void huyPro() {
+	public void clearField() {
 		tfMatKhau.setText("");
 		tfMatKhauMoi.setText("");
 		tfNhapLaiMatKhauMoi.setText("");
@@ -246,7 +246,7 @@ public class QLThongTinCaNhanGUI {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				huyPro();
+				clearField();
 			}
 		});
 		pnQLMatKhau.add(btnHuy);

@@ -58,18 +58,10 @@ public class DocGiaDAL {
 			instance = new DocGiaDAL();
 		return instance;
 	}
-	
-//	public boolean isContain(DocGiaDTO dg) {
-//		for (DocGiaDTO item: dsDocGia)
-//			if (item.getMaDocGia().equals(dg.getMaDocGia()))
-//				return true;
-//		return false;
-//	}
-//	
+		
 
 	public int addProcessing(DocGiaDTO dg) throws ContainException{
-//		if (isContain(dg))
-//			throw new ContainException("Ä�á»™c giáº£ Ä‘Ã£ tá»“n táº¡i, hoáº·c MÃ£ Ä‘á»™c giáº£ bá»‹ trÃ¹ng!");
+
 		String query ="INSERT INTO v_SINHVIEN(HOTEN,GIOITINH,LOP,KHOA,DIACHI,NGAYSINH) VALUES (N'"+dg.getTenDocGia()+"',N'"+dg.getGioiTinh()+"','"+dg.getLop()
 		+"',N'"+dg.getKhoa()+"',N'"+dg.getDiaChi()+"','"+dg.getNgaySinh()+"')";
 		int result = DAL.getInstance().executeQueryUpdate(query);

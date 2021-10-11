@@ -105,33 +105,7 @@ public class QLDangNhapGUI {
 		pfMatKhau.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		pnDangNhap.add(pfMatKhau);
 		pfMatKhau.setColumns(10);
-		pfMatKhau.addKeyListener(new KeyListener() {
-			
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-//				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
-//					System.out.println(pfMatKhau.getText());
-//					if (DangNhapBLL.getInstance().dangNhap(tfTaiKhoan.getText(), pfMatKhau.getText()))
-//						frame.setVisible(false);
-//					else {
-//						lblMessage.setText("Ä�Äƒng nháº­p khÃ´ng thÃ nh cÃ´ng! vui lÃ²ng kiá»ƒm tra láº¡i");
-//					}
-//				}
-			}
-		});
+		
 		
 		JLabel lblMatKhau = new JLabel("Mat khau:*");
 		lblMatKhau.setFont(new Font("Times New Roman", Font.BOLD, 14));
