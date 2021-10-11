@@ -47,8 +47,8 @@ public class SachDAL {
 				s.getTenTL()+"',N'"+s.getTenNXB()+"','"+s.getNamXB()+"')";
 		int result = DAL.getInstance().executeQueryUpdate(query);
 		System.out.println(result);
-		if (result>0)
-			dsSach.add(s);
+		if (result>0) loadResources();
+//			dsSach.add(s);
 		return result;
 	}
 	
@@ -57,7 +57,10 @@ public class SachDAL {
 	public ArrayList<DauSachDTO> getResources(){
 		return  dsSach;
 	}
-
+	
+	public ArrayList<DauSachDTO> reloadResources(){
+		return  dsSach;
+	}
 
 	public String getThongTin(String maSach) {
 		for (DauSachDTO s: dsSach) {
@@ -66,7 +69,7 @@ public class SachDAL {
 		}
 		return "";
 	}
-//	
+
 	public int changeProcessing(DauSachDTO s) {
 		int result;
 		String query = "UPDATE v_SACH SET TENSACH=N'"+s.getTenSach()+"',TENTG=N'"+s.getTenTG()+"',TENTL=N'"+s.getTenTL()+"',TENNXB=N'"+s.getTenNXB()+"',NAMXB='"+s.getNamXB()+"' WHERE MADAUSACH="+s.getMaDauSach();

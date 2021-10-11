@@ -71,6 +71,10 @@ public class PhieuMuonDAL {
 	public ArrayList<PhieuMuonDTO> getResources() {
 		return dsPhieuMuon;
 	}
+	
+	public ArrayList<PhieuMuonDTO> reloadResources() {
+		return dsPhieuMuon;
+	}
 
 	public int addProcessing(String manv,String mssv) throws ContainException{
 		int result=0;

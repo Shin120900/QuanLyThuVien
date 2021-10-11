@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import BLL.ChiTietMuonBLL;
 import BLL.QLSachBLL;
 import CustomControl.ButtonEditor;
 import CustomControl.ButtonRenderer;
@@ -30,21 +31,25 @@ public class QLChiTietPhieuMuonGUI {
 	static QLChiTietPhieuMuonGUI instance = null;
 	private JPanel pnMain;
 	private JTable tbChiTietPM;
-	private JTextField tfTimKiem;
+	private JTextField tfMaPM;
+	private JTextField tfTenDocGia;
+
+	private QLChiTietPhieuMuonGUI(String maPhieuMuon, String tenDocGia, boolean isCheck) {
+		initialize(maPhieuMuon, tenDocGia, isCheck);
+		loadResources(maPhieuMuon);
+	}
+
+	private void loadResources(String maPhieuMuon) {
+		tbChiTietPM.setModel(ChiTietMuonBLL.getInstance().getResources(maPhieuMuon));
+	}
 	
-
-	private QLChiTietPhieuMuonGUI() {
-		initialize();
-		loadResources();
+	public void reloadResources(String maPhieuMuon) {
+		tbChiTietPM.setModel(ChiTietMuonBLL.getInstance().reloadResources(maPhieuMuon));
 	}
 
-	private void loadResources() {
-
-	}
-
-	public static QLChiTietPhieuMuonGUI getInstance() {
+	public static QLChiTietPhieuMuonGUI getInstance(String maPhieuMuon, String tenDocGia, boolean isCheck) {
 		if (instance == null)
-			instance = new QLChiTietPhieuMuonGUI();
+			instance = new QLChiTietPhieuMuonGUI(maPhieuMuon, tenDocGia, isCheck);
 		return instance;
 	}
 
@@ -52,13 +57,8 @@ public class QLChiTietPhieuMuonGUI {
 		return pnMain;
 	}
 
-	public JTextField getText() {
-		return tfTimKiem;
-	}
 
-	
-
-	private void initialize() {
+	private void initialize(String maPhieuMuon, String tenDocGia, boolean isCheck) {
 		pnMain = new JPanel();
 		pnMain.setLayout(null);
 		pnMain.setBounds(0, 0, 1065, 560);
@@ -84,59 +84,52 @@ public class QLChiTietPhieuMuonGUI {
 		lblTitle.setBounds(340, 16, 400, 40);
 		pnTitle.add(lblTitle);
 		
-		JButton btnThoat = new JButton();
-		btnThoat.setIcon(new ImageIcon("icon\\logout.png"));
-		btnThoat.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnThoat.setBounds(10, 10, 50, 50);
-		btnThoat.addActionListener(new ActionListener() {
+		if(!isCheck) {
+			JButton btnThoat = new JButton();
+			btnThoat.setIcon(new ImageIcon("icon\\logout.png"));
+			btnThoat.setFont(new Font("Times New Roman", Font.BOLD, 15));
+			btnThoat.setBounds(10, 10, 50, 50);
+			btnThoat.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				pnMain.removeAll();
-				QLMuonTraGUI qlMuonTraGUI = QLMuonTraGUI.getInstance();	
-				pnMain.add(qlMuonTraGUI.getPnMain());
-				pnMain.revalidate();
-				pnMain.repaint();
-			}
-		});
-		pnTitle.add(btnThoat);
-
-	
-		
-		/*tfTimKiem = new JTextField();
-		tfTimKiem.setToolTipText("NHAP MA PHIEU MUON HOAC HO TEN SINH VIEN ...");
-		tfTimKiem.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		tfTimKiem.setBounds(559, 15, 337, 30);
-		pnDanhSachMuon.add(tfTimKiem);
-
-
-		JButton btnTimKiem = new JButton();
-		btnTimKiem.setIcon(new ImageIcon("icon\\find.png"));
-		btnTimKiem.setText("Tim kiem");
-		btnTimKiem.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnTimKiem.setBounds(919, 15, 134, 30);
-		pnDanhSachMuon.add(btnTimKiem);
-		
-		
-		btnTimKiem.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (tfTimKiem.getText().length() == 0)
-					JOptionPane.showMessageDialog(null, "Ban chua nhap tu khoa can tim!", "Thong bao", 1);
-				else {
-					tbMuonTra.setModel(QLMuonTraBLL.getInstance().timKiem(tfTimKiem.getText()));
-					tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellRenderer(new ButtonRenderer());
-					tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellEditor(new ButtonEditor(new JCheckBox()));
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					TrangChuGUI.getInstance().setBgPhieuMuon();
 				}
-			}
-		});*/
+			});
+			pnTitle.add(btnThoat);
+		}
+
+		JLabel lblMaPM = new JLabel("Ma phieu muon:");
+		lblMaPM.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblMaPM.setBounds(120, 45, 90, 15);
+		pnDanhSachMuon.add(lblMaPM);
+		
+		tfMaPM = new JTextField();
+		tfMaPM.setBounds(210, 40, 160, 30);
+		tfMaPM.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		pnDanhSachMuon.add(tfMaPM);
+		tfMaPM.setText(maPhieuMuon);
+		tfMaPM.setEditable(false);
+		tfMaPM.setColumns(10);
+		
+		JLabel lblTenDG = new JLabel("Ten doc gia:");
+		lblTenDG.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblTenDG.setBounds(500, 45, 90, 15);
+		pnDanhSachMuon.add(lblTenDG);
+		
+		tfTenDocGia = new JTextField();
+		tfTenDocGia.setBounds(580, 40, 160, 30);
+		tfTenDocGia.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		pnDanhSachMuon.add(tfTenDocGia);
+		tfTenDocGia.setText(tenDocGia);
+		tfTenDocGia.setEditable(false);
+		tfTenDocGia.setColumns(10);
 
 		tbChiTietPM = new JTable();
-		tbChiTietPM.setBounds(10, 34, 855, 433);
+		tbChiTietPM.setBounds(10, 34, 855, 350);
 		JScrollPane sc = new JScrollPane(tbChiTietPM, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		sc.setBounds(10, 34, 855, 443);
+		sc.setBounds(40, 100, 855, 380);
 //		tbMuonTra.addMouseListener(new MouseAdapter() {
 //			@Override
 //			public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,55 +174,43 @@ public class QLChiTietPhieuMuonGUI {
 //			}
 //		});
 		pnDanhSachMuon.add(sc, BorderLayout.CENTER);
-		JButton btnThem = new JButton("Them");
-		btnThem.setIcon(new ImageIcon("icon\\new.png"));
-		btnThem.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnThem.setBounds(900, 200, 138, 40);
-		btnThem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
+		
+		if(isCheck) {
+			JButton btnThem = new JButton("Them");
+			btnThem.setIcon(new ImageIcon("icon\\new.png"));
+			btnThem.setFont(new Font("Times New Roman", Font.BOLD, 15));
+			btnThem.setBounds(900, 200, 138, 40);
+			btnThem.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					NhapMaQuyenSachGUI.getInstance().getFrmMain().setVisible(true);
+				}
+			});
+			pnDanhSachMuon.add(btnThem);
 			
-			}
-		});
-		pnDanhSachMuon.add(btnThem);
-		
-		JButton btnSua = new JButton("Sua");
-		btnSua.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-//		btnSua.setIcon(new ImageIcon("icon\\setting.png"));
-//		btnSua.setFont(new Font("Times New Roman", Font.BOLD, 15));
-//		btnSua.setBounds(900, 200, 138, 40);
-//		pnDanhSachMuon.add(btnSua);
-		
-//		JButton btnHuy = new JButton("Huy");
-//		btnHuy.setIcon(new ImageIcon("icon\\del.png"));
-//		btnHuy.setFont(new Font("Times New Roman", Font.BOLD, 15));
-//		btnHuy.setBounds(900, 265, 138, 40);
-//		pnDanhSachMuon.add(btnHuy);
-//		btnHuy.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				clearField();
-//				isChanging = true;
-//				setStateForTextfield();
-//				
-//			}
-//		});
-		
-		JButton btnXoa = new JButton("Xoa");
-		btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
-		btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		btnXoa.setBounds(900, 265, 138, 40);
-		pnDanhSachMuon.add(btnXoa);
-		btnXoa.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
+			
+			JButton btnXoa = new JButton("Xoa");
+			btnXoa.setIcon(new ImageIcon("icon\\delete.png"));
+			btnXoa.setFont(new Font("Times New Roman", Font.BOLD, 15));
+			btnXoa.setBounds(900, 265, 138, 40);
+			pnDanhSachMuon.add(btnXoa);
+			btnXoa.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+				}
+			});
+			
+			JButton btnLuu = new JButton("Luu");
+			btnLuu.setIcon(new ImageIcon("icon\\save.png"));
+			btnLuu.setFont(new Font("Times New Roman", Font.BOLD, 15));
+			btnLuu.setBounds(900, 330, 138, 40);
+			pnDanhSachMuon.add(btnLuu);
+			btnLuu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					TrangChuGUI.getInstance().setBgPhieuMuon();
+				}
+			});
+		}
 
 	}
 	

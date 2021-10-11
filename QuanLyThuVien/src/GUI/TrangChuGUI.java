@@ -357,9 +357,22 @@ public class TrangChuGUI {
 				pnMain.repaint();
 			}
 		});
-		
-		
-		
-		
+	
+	}
+	
+	public void setBgChiTietPM(String maPhieuMuon, String tenDocGia, boolean isCheck) {
+		pnMain.removeAll();
+		QLChiTietPhieuMuonGUI qlChiTietPhieuMuonGUI = QLChiTietPhieuMuonGUI.getInstance(maPhieuMuon, tenDocGia, isCheck);	
+		pnMain.add(qlChiTietPhieuMuonGUI.getPnMain());
+		pnMain.revalidate();
+		pnMain.repaint();
+	}
+	
+	public void setBgPhieuMuon() {
+		pnMain.removeAll();
+		QLMuonTraGUI qlMuonTraGUI = QLMuonTraGUI.getInstance();	
+		pnMain.add(qlMuonTraGUI.getPnMain());
+		pnMain.revalidate();
+		pnMain.repaint();
 	}
 }

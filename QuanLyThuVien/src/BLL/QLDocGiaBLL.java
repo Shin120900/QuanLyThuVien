@@ -45,6 +45,15 @@ public class QLDocGiaBLL {
 		return true;
 	}
 	
+	public boolean isContain(String maSinhVien) {
+		ArrayList<DocGiaDTO> dsDocGia = new ArrayList<DocGiaDTO>();
+		dsDocGia = DocGiaDAL.getInstance().getResources();
+		for (DocGiaDTO docGiaDTO : dsDocGia) {
+			if(docGiaDTO.getMaDocGia().equals(maSinhVien)) return true;
+		}
+		return false;
+	}
+	
 	public String addProcessing(DocGiaDTO dg) {
 		try {
 			checkData(dg);

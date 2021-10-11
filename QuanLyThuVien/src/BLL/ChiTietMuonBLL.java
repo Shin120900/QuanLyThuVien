@@ -52,6 +52,34 @@ public class ChiTietMuonBLL {
 		}
 		return dtm;
 	}
+	
+	public DefaultTableModel reloadResources(String maPhieuMuon) {
+		ArrayList<ChiTietPhieuMuonDTO> dsctMuon = new ArrayList<ChiTietPhieuMuonDTO>();
+		dsctMuon = ChiTietMuonDAL.getInstance(maPhieuMuon).reloadResources();
+		DefaultTableModel dtm = new DefaultTableModel();
+		try {
+			dtm.addColumn("Ma phieu muon");
+			dtm.addColumn("Ma quyen sach");
+			dtm.addColumn("Ten Sach");
+			dtm.addColumn("Trang thai");
+			for(ChiTietPhieuMuonDTO ctMuon : dsctMuon) {
+				Object[] row = {ctMuon.getMaPhieuMuon(),
+						ctMuon.getMaQuyenSach(),
+						ctMuon.getTenSach(),
+						ctMuon.getTrangThai(),
+						"Trả"};
+				dtm.addRow(row);
+			}
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			
+		}
+		return dtm;
+	}
+	
 	public DefaultTableModel loadResources(String maPhieuMuon) {
 		ArrayList<ChiTietPhieuMuonDTO> dsctMuon = new ArrayList<ChiTietPhieuMuonDTO>();
 		dsctMuon = ChiTietMuonDAL.getInstance(maPhieuMuon).getResources();

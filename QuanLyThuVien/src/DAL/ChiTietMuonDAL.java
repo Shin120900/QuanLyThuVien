@@ -29,7 +29,6 @@ public class ChiTietMuonDAL {
 			String query = new String("SELECT * v_CHITIETCHUATRA WHERE MAPHIEUMUON="+maPhieuMuon);
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);	
 			while(resultSet.next()) {
-				//khong hien thi ma phieu muon vi ma phieu muon chung nen se hien o phia tren
 				dsChiTietMuon.add(new ChiTietPhieuMuonDTO(
 						resultSet.getObject(2).toString(), 
 						resultSet.getObject(3).toString(), 
@@ -42,14 +41,7 @@ public class ChiTietMuonDAL {
 	}
 	
 	
-//	public int soSachDangMuon(String maDocGia) {
-//		int count = 0;
-//		for (PhieuMuonDTO item: dsMuonTra) {
-//			/*if (item.getMaDocGia().equals(maDocGia) && Integer.parseInt(item.getTrangThai())>= 0)
-//				count++;*/
-//		}
-//		return count;
-//	}
+
 	
 	public ArrayList<ChiTietPhieuMuonDTO> getResources() {
 		return dsChiTietMuon;
@@ -58,13 +50,10 @@ public class ChiTietMuonDAL {
 	public int addProcessing(String maPhieuMuon,String maQuyenSach) {
 		int result=0;
 		try {
-			String query ="INSERT INTO CHITIETPHIEUMUON (MAQUYENSACH) VALUES('"+maQuyenSach+"')" ;
+			String query ="INSERT INTO CHITIETPHIEUMUON (MAPHIEUMUON,MAQUYENSACH) VALUES('"+maPhieuMuon+"','"+maQuyenSach+"')";
 			 result = DAL.getInstance().executeQueryUpdate(query);			
 			if(result > 0) loadResources(maPhieuMuon);
-//			{
-//				SachDAL.getInstance().changeTrangThai(pm.getMaSach(), "Ä�ang Ä‘Æ°á»£c mÆ°á»£n");
-//				dsMuonTra.add(new MuonTraDTO(pm.getMaDocGia(), pm.getMaSach(), pm.getNgayMuon(), mt.getNgayTra(), mt.getTrangThai()));
-//			}
+
 		}catch(Exception e) {
 		}
 		return result;
@@ -87,8 +76,8 @@ public class ChiTietMuonDAL {
 		
 	}
 
-//	public ArrayList<PhieuMuonDTO> reloadResources() {
-//		// TODO Auto-generated method stub
-//		return dsMuonTra;
-//	}
+	public ArrayList<ChiTietPhieuMuonDTO> reloadResources() {
+		// TODO Auto-generated method stub
+		return dsChiTietMuon;
+	}
 }

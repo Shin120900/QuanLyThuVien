@@ -23,6 +23,13 @@ public class QLThongTinCaNhanBLL {
 		return instance;
 	}
 	
+	
+	
+	public NhanVienDTO getNv() {
+		return nv;
+	}
+
+
 	public void setNhanVien(NhanVienDTO nv) {
 		this.nv = nv;
 	}

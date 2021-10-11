@@ -37,21 +37,6 @@ public class DocGiaDAL {
 		}
 	}
 	
-	public String getTenDocGia(String maDocGia) {
-		for (DocGiaDTO item: dsDocGia) {
-			if (item.getMaDocGia() == maDocGia)
-				return item.getTenDocGia();
-		}
-		return "";
-	}
-	
-	public DocGiaDTO getDocGia(String maDocGia) {
-		for (DocGiaDTO item : dsDocGia) {
-			if (item.getMaDocGia().equals(maDocGia))
-				return item;
-		}
-		return null;
-	}
 	
 	public static DocGiaDAL getInstance() {
 		if (instance == null)
@@ -65,8 +50,8 @@ public class DocGiaDAL {
 		String query ="INSERT INTO v_SINHVIEN(HOTEN,GIOITINH,LOP,KHOA,DIACHI,NGAYSINH) VALUES (N'"+dg.getTenDocGia()+"',N'"+dg.getGioiTinh()+"','"+dg.getLop()
 		+"',N'"+dg.getKhoa()+"',N'"+dg.getDiaChi()+"','"+dg.getNgaySinh()+"')";
 		int result = DAL.getInstance().executeQueryUpdate(query);
-		if (result>0)
-			dsDocGia.add(dg);
+		if (result>0) loadResources();
+//			dsDocGia.add(dg);
 		return result;
 	}
 	
