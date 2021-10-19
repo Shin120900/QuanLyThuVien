@@ -363,6 +363,7 @@ public class TrangChuGUI {
 	public void setBgChiTietPM(String maPhieuMuon, String tenDocGia, boolean isCheck) {
 		pnMain.removeAll();
 		QLChiTietPhieuMuonGUI qlChiTietPhieuMuonGUI = QLChiTietPhieuMuonGUI.getInstance(maPhieuMuon, tenDocGia, isCheck);
+		qlChiTietPhieuMuonGUI.initialize(maPhieuMuon, tenDocGia, isCheck);
 		qlChiTietPhieuMuonGUI.reloadResources(maPhieuMuon);
 		pnMain.add(qlChiTietPhieuMuonGUI.getPnMain());
 		pnMain.revalidate();

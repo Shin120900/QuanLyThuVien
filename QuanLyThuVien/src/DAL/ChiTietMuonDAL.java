@@ -39,6 +39,24 @@ public class ChiTietMuonDAL {
 		}
 	}
 	
+	public ArrayList<ChiTietPhieuMuonDTO> loadAll(){
+		ArrayList<ChiTietPhieuMuonDTO> dsAll = new ArrayList<ChiTietPhieuMuonDTO>();
+		try {
+			String query = new String("SELECT * FROM v_CHITIETCHUATRA");
+			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);	
+			while(resultSet.next()) {
+				dsAll.add(new ChiTietPhieuMuonDTO(
+						resultSet.getObject(2).toString(), 
+						resultSet.getObject(3).toString(), 
+						resultSet.getObject(4).toString()));
+			}
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return dsAll;
+	}
+
 	
 
 	
@@ -77,13 +95,7 @@ public class ChiTietMuonDAL {
 		String query ="UPDATE v_CHITIETCHUATRA SET TRANGTHAI=1 WHERE MAPHIEUMUON="+maPhieuMuon+",MAQUYENSACH="+maQuyenSach;
 		result = DAL.getInstance().executeQueryUpdate(query);
 		if (result >0) loadResources(maPhieuMuon);
-//		{
-//			for (MuonTraDTO item:dsMuonTra) {
-//				if(item.getMaDocGia().equals(maDocGia)&& item.getMaSach().equals(maSach))
-//					item.setTrangThai("-1");
-//			}
-//			SachDAL.getInstance().changeTrangThai(maSach, "Trá»‘ng");
-//		}
+
 		return result;
 		
 	}

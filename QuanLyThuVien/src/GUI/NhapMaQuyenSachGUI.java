@@ -77,7 +77,10 @@ public class NhapMaQuyenSachGUI {
 				if(!QLSachBLL.getInstance().isContain(tfMaQs.getText())) {
 					clearField();
 					JOptionPane.showMessageDialog(null, "Ma quyen sach khong ton tai!","Thong bao",1);
-				}else {
+				}else if (!ChiTietMuonBLL.getInstance().isCheck(tfMaQs.getText())) {
+					clearField();
+					JOptionPane.showMessageDialog(null, "Ma quyen sach dang duoc muon!","Thong bao",1);
+				} else {
 					int result = ChiTietMuonBLL.getInstance().addProcessing(maPhieuMuon, tfMaQs.getText());
 					if (result > 0) {
 						QLChiTietPhieuMuonGUI.getInstance(maPhieuMuon, tenDocGia, isCheck).reloadResources(maPhieuMuon);

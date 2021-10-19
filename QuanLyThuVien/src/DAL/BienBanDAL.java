@@ -20,12 +20,7 @@ public class BienBanDAL {
 			instance=new BienBanDAL();
 		return instance;
 	}
-//	public boolean isContain(BienBanXuLyDTO bb) {
-//		for(PhatTienDTO p:dsPhatTien)
-//			if(p.getMaLanPhat().equals(pt.getMaLanPhat()))
-//				return true;
-//		return false;
-//	}
+
 	
 	public int addProcessing(String maPhieuMuon,String maQuyenSach,String manv,String loiViPham,String xuLy){
 
@@ -42,9 +37,15 @@ public class BienBanDAL {
 			String query=new String("select * from v_BIENBANXULY");
 			ResultSet resultSet=DAL.getInstance().executeQueryToGetData(query);
 			while(resultSet.next()) {
+				String maQuyenSach;
+				try{
+					maQuyenSach = resultSet.getObject(2).toString();
+				}catch(NullPointerException e) {
+					maQuyenSach = "Da xoa";
+				}
 				dsBienBan.add(new BienBanXuLyDTO(
 						resultSet.getObject(1).toString(),
-						resultSet.getObject(2).toString(),
+						maQuyenSach,
 						resultSet.getObject(3).toString(),
 						resultSet.getObject(4).toString(),
 						resultSet.getObject(5).toString(),

@@ -25,6 +25,15 @@ public class ChiTietMuonBLL {
 			instance = new ChiTietMuonBLL();
 		return instance;
 	}
+	
+	public boolean isCheck(String maQuyenSach) {
+		ArrayList<ChiTietPhieuMuonDTO> dsChiTietPM = new ArrayList<ChiTietPhieuMuonDTO>();
+		dsChiTietPM = ChiTietMuonDAL.getInstance().loadAll();
+		for (ChiTietPhieuMuonDTO chiTietPhieuMuonDTO : dsChiTietPM) {
+			if(chiTietPhieuMuonDTO.getMaQuyenSach().equals(maQuyenSach)) return true;
+		}
+		return false;
+	}
 
 	public DefaultTableModel getResources(String maPhieuMuon) {
 		ArrayList<ChiTietPhieuMuonDTO> dsctMuon = new ArrayList<ChiTietPhieuMuonDTO>();

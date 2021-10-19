@@ -63,7 +63,7 @@ public class QLChiTietPhieuMuonGUI {
 	}
 
 
-	private void initialize(String maPhieuMuon, String tenDocGia, boolean isCheck) {
+	public void initialize(String maPhieuMuon, String tenDocGia, boolean isCheck) {
 		pnMain = new JPanel();
 		pnMain.setLayout(null);
 		pnMain.setBounds(0, 0, 1065, 560);
