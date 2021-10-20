@@ -183,6 +183,7 @@ public class QLChiTietPhieuMuonGUI {
 			btnLuu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					TrangChuGUI.getInstance().setBgPhieuMuon();
+					
 				}
 			});
 		}

@@ -12,7 +12,7 @@ public class NhanVienDAL {
 	private ArrayList<NhanVienDTO> dsNhanVien;
 	
 	private NhanVienDAL() {
-		dsNhanVien=new ArrayList<NhanVienDTO>();
+
 		loadResource();
 	}
 	
@@ -23,6 +23,7 @@ public class NhanVienDAL {
 	}
 	public void loadResource() {
 		try {
+			dsNhanVien=new ArrayList<NhanVienDTO>();
 			String query=new String("select * from dbo.v_NhanVien");
 			ResultSet resultSet=DAL.getInstance().executeQueryToGetData(query);
 			while(resultSet.next()) {

@@ -14,12 +14,13 @@ public class DocGiaDAL {
 	private static DocGiaDAL instance;
 	private ArrayList<DocGiaDTO> dsDocGia;
 	private DocGiaDAL() {
-		dsDocGia = new ArrayList<DocGiaDTO>();
+
 		loadResources();
 	}
 	
 	private void loadResources(){
 		try {	
+			dsDocGia = new ArrayList<DocGiaDTO>();
 			String query = new String("select * from v_SINHVIEN");
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);
 			while (resultSet.next()) {

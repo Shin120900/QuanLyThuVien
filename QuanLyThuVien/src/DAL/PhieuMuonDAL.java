@@ -12,7 +12,7 @@ public class PhieuMuonDAL {
 	private static PhieuMuonDAL instance;
 	private ArrayList<PhieuMuonDTO> dsPhieuMuon;
 	private PhieuMuonDAL() {
-		dsPhieuMuon = new ArrayList<PhieuMuonDTO>();
+
 		loadResources();
 	}
 	
@@ -24,6 +24,7 @@ public class PhieuMuonDAL {
 	
 	private void loadResources(){
 		try {
+			dsPhieuMuon = new ArrayList<PhieuMuonDTO>();
 			String query = new String("SELECT * FROM v_PHIEUMUONCHUATRA");
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);	
 			while(resultSet.next()) {
@@ -83,6 +84,7 @@ public class PhieuMuonDAL {
 	}
 	
 	public ArrayList<PhieuMuonDTO> reloadResources() {
+		loadResources();
 		return dsPhieuMuon;
 	}
 

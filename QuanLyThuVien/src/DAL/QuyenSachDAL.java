@@ -11,7 +11,7 @@ public class QuyenSachDAL {
 	private static QuyenSachDAL instance;
 	private ArrayList<QuyenSachDTO> dsSach;
 	private QuyenSachDAL() {
-		dsSach=new ArrayList<QuyenSachDTO>();
+
 		loadResources();
 	}
 	
@@ -23,6 +23,7 @@ public class QuyenSachDAL {
 	
 	private void loadResources() {
 		try {
+			dsSach=new ArrayList<QuyenSachDTO>();
 			String query = new String("SELECT * FROM dbo.QUYENSACH");;
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);
 			

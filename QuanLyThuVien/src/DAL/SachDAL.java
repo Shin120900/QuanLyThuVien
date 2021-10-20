@@ -12,7 +12,6 @@ public class SachDAL {
 	private static SachDAL instance;
 	private ArrayList<DauSachDTO> dsSach;
 	private SachDAL() {
-		dsSach=new ArrayList<DauSachDTO>();
 		loadResources();
 	}
 	
@@ -24,9 +23,9 @@ public class SachDAL {
 	
 	private void loadResources() {
 		try {
+			dsSach=new ArrayList<DauSachDTO>();
 			String query = new String("select * from dbo.v_Sach");
 			ResultSet resultSet = DAL.getInstance().executeQueryToGetData(query);
-			
 			while(resultSet.next()) {
 				dsSach.add(new DauSachDTO(
 						resultSet.getObject(1).toString(), 

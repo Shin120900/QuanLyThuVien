@@ -11,7 +11,7 @@ public class BienBanDAL {
 	private static BienBanDAL instance;
 	private ArrayList<BienBanXuLyDTO> dsBienBan;
 	private BienBanDAL() {
-		dsBienBan=new ArrayList<BienBanXuLyDTO>();
+
 		loadResources();
 	}
 	
@@ -23,7 +23,7 @@ public class BienBanDAL {
 
 	
 	public int addProcessing(String maPhieuMuon,String maQuyenSach,String manv,String loiViPham,String xuLy){
-
+		
 		String query="INSERT INTO BIENBANXULY(MAPHIEUMUON,MANV,LOIVIPHAM,XULY) VALUES ('"+maPhieuMuon+"','"+maQuyenSach+"','"+manv+"',N'"+loiViPham+"',N'"+xuLy+"')";
 		int result = DAL.getInstance().executeQueryUpdate(query);
 		if(result>0) loadResources();
@@ -34,19 +34,20 @@ public class BienBanDAL {
 
 	public ArrayList<BienBanXuLyDTO> getResources(){
 		try {
+			dsBienBan=new ArrayList<BienBanXuLyDTO>();
 			String query=new String("select * from v_BIENBANXULY");
 			ResultSet resultSet=DAL.getInstance().executeQueryToGetData(query);
 			while(resultSet.next()) {
 				String maQuyenSach;
 				try{
-					maQuyenSach = resultSet.getObject(2).toString();
+					maQuyenSach = resultSet.getObject(3).toString();
 				}catch(NullPointerException e) {
 					maQuyenSach = "Da xoa";
 				}
 				dsBienBan.add(new BienBanXuLyDTO(
 						resultSet.getObject(1).toString(),
+						resultSet.getObject(2).toString(),
 						maQuyenSach,
-						resultSet.getObject(3).toString(),
 						resultSet.getObject(4).toString(),
 						resultSet.getObject(5).toString(),
 						Date.valueOf(resultSet.getObject(6).toString()),
