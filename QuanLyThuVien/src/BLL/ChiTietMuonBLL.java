@@ -16,7 +16,7 @@ import MyException.MyNullException;
 
 public class ChiTietMuonBLL {
 	public static ChiTietMuonBLL instance;
-	public ChiTietPhieuMuonDTO ctMuon;// SÃ¡ch Ä‘ang thao tÃ¡c Ä‘á»ƒ thay Ä‘á»•i thÃ´ng tin
+	public ChiTietPhieuMuonDTO ctMuon;
 	private ChiTietMuonBLL(){
 	}
 	
@@ -35,20 +35,22 @@ public class ChiTietMuonBLL {
 		return false;
 	}
 
-	public DefaultTableModel getResources(String maPhieuMuon) {
+	
+	public DefaultTableModel loadResources(String maPhieuMuon) {
 		ArrayList<ChiTietPhieuMuonDTO> dsctMuon = new ArrayList<ChiTietPhieuMuonDTO>();
 		dsctMuon = ChiTietMuonDAL.getInstance().getResources(maPhieuMuon);
 		DefaultTableModel dtm = new DefaultTableModel();
-		try {			dtm.addColumn("Ma phieu muon");
+		try {
 			dtm.addColumn("Ma quyen sach");
 			dtm.addColumn("Ten Sach");
 			dtm.addColumn("Trang thai");
+			dtm.addColumn("Tra sach");
 			for(ChiTietPhieuMuonDTO ctMuon : dsctMuon) {
 				Object[] row = {
 						ctMuon.getMaQuyenSach(),
 						ctMuon.getTenSach(),
 						ctMuon.getTrangThai(),
-						"Trả"};
+						"Tra"};
 				dtm.addRow(row);
 			}
 		}
@@ -64,43 +66,19 @@ public class ChiTietMuonBLL {
 	public DefaultTableModel reloadResources(String maPhieuMuon) {
 		ArrayList<ChiTietPhieuMuonDTO> dsctMuon = new ArrayList<ChiTietPhieuMuonDTO>();
 		dsctMuon = ChiTietMuonDAL.getInstance().reloadResources(maPhieuMuon);
+		
 		DefaultTableModel dtm = new DefaultTableModel();
 		try {
 			dtm.addColumn("Ma quyen sach");
-			dtm.addColumn("Ten Sach");
+			dtm.addColumn("Ten sach");
 			dtm.addColumn("Trang thai");
+			dtm.addColumn("Tra sach");
 			for(ChiTietPhieuMuonDTO ctMuon : dsctMuon) {
 				Object[] row = {
 						ctMuon.getMaQuyenSach(),
 						ctMuon.getTenSach(),
 						ctMuon.getTrangThai(),
 						"Trả"};
-				dtm.addRow(row);
-			}
-		}
-		catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		finally {
-			
-		}
-		return dtm;
-	}
-	
-	public DefaultTableModel loadResources(String maPhieuMuon) {
-		ArrayList<ChiTietPhieuMuonDTO> dsctMuon = new ArrayList<ChiTietPhieuMuonDTO>();
-		dsctMuon = ChiTietMuonDAL.getInstance().getResources(maPhieuMuon);
-		DefaultTableModel dtm = new DefaultTableModel();
-		try {
-			dtm.addColumn("Ma phieu muon");
-			dtm.addColumn("Ma quyen sach");
-			dtm.addColumn("Ten Sach");
-			dtm.addColumn("Trang thai");
-			for(ChiTietPhieuMuonDTO ctMuon : dsctMuon) {
-				Object[] row = {ctMuon.getMaPhieuMuon(),
-						ctMuon.getMaQuyenSach(),
-						ctMuon.getTenSach(),
-						ctMuon.getTrangThai()};
 				dtm.addRow(row);
 			}
 		}
@@ -135,29 +113,7 @@ public class ChiTietMuonBLL {
 		}
 	}
 
-//		public String changeProcessing(MuonTraDTO mt) {
-//		try {
-//			String msg;
-//			checkData(mt);
-//			if(!mt.getMaDocGia().equals(mt.getMaDocGia())) {
-//				msg= "MÃ£ Ä‘á»™c giáº£ khÃ´ng Ä‘Æ°á»£c thay Ä‘á»•i";
-//				
-//			}
-//			if(!mt.getMaSach().equalsIgnoreCase(mt.getMaSach())) {
-//				msg= "MÃ£ sÃ¡ch khÃ´ng Ä‘Æ°á»£c thay Ä‘á»•i";
-//			}
-//			int result = MuonTraDAL.getInstance().changeProcessing(mt);
-//			if(result>0)
-//				msg= "Thay Ä‘á»•i thÃ nh cÃ´ng";
-//			else
-//				msg= "Thay Ä‘á»•i khÃ´ng thÃ nh cÃ´ng";
-//			return msg;
-//		}catch(MyNullException e1) {
-//			return e1.getMessage();
-//		}catch(MyException e2) {
-//			return e2.getMessage();
-//		}
-//	}
+
 
 	public String traSach(String maPhieuMuon, String maQuyenSach) {
 		try{

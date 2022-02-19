@@ -48,8 +48,6 @@ public class QLMuonTraGUI {
 
 	private void loadResources() {
 		tbMuonTra.setModel(MuonBLL.getInstance().getResources());
-//		tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellRenderer(new ButtonRenderer());
-//		tbMuonTra.getColumn("Tráº£ sÃ¡ch").setCellEditor(new ButtonEditor(new JCheckBox()));
 	}
 	
 	public void reloadResources() {
@@ -150,16 +148,6 @@ public class QLMuonTraGUI {
 		tbMuonTra.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-//				int row = tbMuonTra.rowAtPoint(evt.getPoint());
-//				int col = tbMuonTra.columnAtPoint(evt.getPoint());
-//				if (row >= 0 && col >= 0) {
-//					if (col == 7) {
-//						String msg = QLMuonTraBLL.getInstance().traSach(
-//								tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 1).toString(),
-//								tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 3).toString());
-//						lblMessage.setText(msg);
-//						loadResources();
-//					} else {
 					TrangChuGUI.getInstance().setBgChiTietPM(tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 0).toString(),
 							tbMuonTra.getValueAt(tbMuonTra.getSelectedRow(), 2).toString(), false);	
 					

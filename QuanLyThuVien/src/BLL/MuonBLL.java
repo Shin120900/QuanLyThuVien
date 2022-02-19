@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import DAL.ChiTietMuonDAL;
 import DAL.DocGiaDAL;
 import DAL.PhieuMuonDAL;
 import DAL.SachDAL;
@@ -32,6 +33,7 @@ public class MuonBLL {
 	public DefaultTableModel getResources() {		
 		ArrayList<PhieuMuonDTO> dsPhieuMuon = new ArrayList<PhieuMuonDTO>();
 		dsPhieuMuon = PhieuMuonDAL.getInstance().getResources();
+
 		DefaultTableModel dtm = new DefaultTableModel();
 		try {
 			dtm.addColumn("Ma phieu muon");
@@ -73,22 +75,12 @@ public class MuonBLL {
 
 
 
-//	public String traSach(String maDocGia, String maSach) {
-//		try{
-//			int result = MuonTraDAL.getInstance().traSach(maDocGia, maSach);
-//			if (result > 0)
-//				return "Tráº£ sÃ¡ch thÃ nh cÃ´ng";
-//			else
-//				return "Tráº£ sÃ¡ch khÃ´ng thÃ nh cÃ´ng";
-//		}catch(Exception e1) {
-//			return e1.getMessage();
-//		}	
-//	}
 
-//	public int SoSachMuon() {
-//		// TODO Auto-generated method stub
-//		return MuonTraDAL.getInstance().getResources().size();
-//	}
+
+	public int SoSachMuon() {
+		// TODO Auto-generated method stub
+		return PhieuMuonDAL.getInstance().getResources().size();
+	}
 
 	public DefaultTableModel reloadResources() {
 		ArrayList<PhieuMuonDTO> dsPhieuMuon = new ArrayList<PhieuMuonDTO>();
@@ -129,21 +121,33 @@ public class MuonBLL {
 		dtm.addColumn("So luong");
 		dtm.addColumn("Ngay muon");
 		dtm.addColumn("Ngay hen tra");
-		
-		for(PhieuMuonDTO pm : dsMuonTra) {
-			String thongTin = SachDAL.getInstance().getThongTin(pm.getMaPhieuMuon())+ pm.getTenSV();
-			thongTin = thongTin.toLowerCase();
-			key = key.toLowerCase();
-			if(thongTin.contains(key)) {
-				Object[] row = { pm.getMaPhieuMuon(), 
-						pm.getTenNV(), 
-						pm.getTenSV(),
-						pm.getSoLuong(),
-						pm.getNgayMuon(),
-						pm.getNgayHenTra()};				
-				dtm.addRow(row);
+		if(key.equals("")) {
+			for(PhieuMuonDTO pm : dsMuonTra) {
+					Object[] row = { pm.getMaPhieuMuon(), 
+							pm.getTenNV(), 
+							pm.getTenSV(),
+							pm.getSoLuong(),
+							pm.getNgayMuon(),
+							pm.getNgayHenTra()};				
+					dtm.addRow(row);
+			}
+		}else {
+			for(PhieuMuonDTO pm : dsMuonTra) {
+				String thongTin = SachDAL.getInstance().getThongTin(pm.getMaPhieuMuon())+ pm.getTenSV();
+				thongTin = thongTin.toLowerCase();
+				key = key.toLowerCase();
+				if(thongTin.contains(key)) {
+					Object[] row = { pm.getMaPhieuMuon(), 
+							pm.getTenNV(), 
+							pm.getTenSV(),
+							pm.getSoLuong(),
+							pm.getNgayMuon(),
+							pm.getNgayHenTra()};				
+					dtm.addRow(row);
+				}
 			}
 		}
+		
 		return dtm;
 	}
 }

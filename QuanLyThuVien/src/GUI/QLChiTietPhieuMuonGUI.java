@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -41,11 +43,15 @@ public class QLChiTietPhieuMuonGUI {
 
 	private QLChiTietPhieuMuonGUI(String maPhieuMuon, String tenDocGia, boolean isCheck) {
 		initialize(maPhieuMuon, tenDocGia, isCheck);
-		loadResources(maPhieuMuon);
+		loadResources(maPhieuMuon, isCheck);
 	}
 
-	private void loadResources(String maPhieuMuon) {
-		tbChiTietPM.setModel(ChiTietMuonBLL.getInstance().getResources(maPhieuMuon));
+	private void loadResources(String maPhieuMuon, boolean isCheck) {
+		tbChiTietPM.setModel(ChiTietMuonBLL.getInstance().loadResources(maPhieuMuon));
+		if(!isCheck) {
+			tbChiTietPM.getColumn("Tra sach").setCellRenderer(new ButtonRenderer());
+			tbChiTietPM.getColumn("Tra sach").setCellEditor(new ButtonEditor(new JCheckBox()));
+		}
 	}
 	
 	public void reloadResources(String maPhieuMuon) {
@@ -53,8 +59,9 @@ public class QLChiTietPhieuMuonGUI {
 	}
 
 	public static QLChiTietPhieuMuonGUI getInstance(String maPhieuMuon, String tenDocGia, boolean isCheck) {
-		if (instance == null)
+		if (instance == null) 
 			instance = new QLChiTietPhieuMuonGUI(maPhieuMuon, tenDocGia, isCheck);
+		
 		return instance;
 	}
 
@@ -135,18 +142,29 @@ public class QLChiTietPhieuMuonGUI {
 		JScrollPane sc = new JScrollPane(tbChiTietPM, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		sc.setBounds(40, 100, 855, 380);
-		tbChiTietPM.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-			
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
+		tbChiTietPM.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
 				if (tbChiTietPM.getSelectedRow()< 0)
 					return;
 				if(isCheck) {
 					maQuyenSach = tbChiTietPM.getValueAt(tbChiTietPM.getSelectedRow(), 0).toString();
 				}
-				
+					
+					int row = tbChiTietPM.rowAtPoint(e.getPoint());
+					int col = tbChiTietPM.columnAtPoint(e.getPoint());
+					if (row >= 0 && col >= 0) {
+						if (col == 7) {
+							ChiTietMuonBLL.getInstance().traSach(
+								tfMaPM.getText().toString(),
+								tbChiTietPM.getValueAt(tbChiTietPM.getSelectedRow(), 1).toString());
+							loadResources(maPhieuMuon, isCheck);
+						}
+				}
 			}
 		});
+		
 		pnDanhSachMuon.add(sc, BorderLayout.CENTER);
 		
 		if(isCheck) {

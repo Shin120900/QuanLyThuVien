@@ -8,6 +8,7 @@ import javax.swing.*;
 
 import com.toedter.calendar.JCalendar;
 
+import BLL.MuonBLL;
 import BLL.QLDocGiaBLL;
 import BLL.QLSachBLL;
 
@@ -41,10 +42,10 @@ public class TrangChuGUI {
 	}
 	
 	public void initTitle() {
-//		soCuonSach=QLSachBLL.getInstance().SoCuonSach();
-//		soTheLoai=QLSachBLL.getInstance().SoTheLoai();
-//		soDocGia=QLDocGiaBLL.getInstance().SoDocGia();
-//		soSachMuon=QLMuonTraBLL.getInstance().SoSachMuon();
+		soCuonSach=QLSachBLL.getInstance().SoCuonSach();
+		soTheLoai=QLSachBLL.getInstance().SoTheLoai();
+		soDocGia=QLDocGiaBLL.getInstance().SoDocGia();
+		soSachMuon=MuonBLL.getInstance().SoSachMuon();
 		
 		pnTitle = new JPanel();
 		pnTitle.setBounds(10, 0, 1060, 118);
@@ -363,6 +364,7 @@ public class TrangChuGUI {
 	public void setBgChiTietPM(String maPhieuMuon, String tenDocGia, boolean isCheck) {
 		pnMain.removeAll();
 		QLChiTietPhieuMuonGUI qlChiTietPhieuMuonGUI = QLChiTietPhieuMuonGUI.getInstance(maPhieuMuon, tenDocGia, isCheck);
+		
 		qlChiTietPhieuMuonGUI.initialize(maPhieuMuon, tenDocGia, isCheck);
 		qlChiTietPhieuMuonGUI.reloadResources(maPhieuMuon);
 		pnMain.add(qlChiTietPhieuMuonGUI.getPnMain());
